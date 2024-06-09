@@ -876,38 +876,40 @@ if (!function_exists('check_file')) {
 
         if (!empty($path)) {
             $storage_settings = getAdminAllSetting();
-            if ($storage_settings['storage_setting'] == null || $storage_settings['storage_setting'] == 'local') {
+            if(!empty($storage_settings) && !empty($storage_settings['storage_setting'])){
+                if ($storage_settings['storage_setting'] == null || $storage_settings['storage_setting'] == 'local') {
 
-                return file_exists(base_path($path));
-            } else {
-
-                if (isset($storage_settings['storage_setting']) && $storage_settings['storage_setting'] == 's3') {
-                    config(
-                        [
-                            'filesystems.disks.s3.key' => $storage_settings['s3_key'],
-                            'filesystems.disks.s3.secret' => $storage_settings['s3_secret'],
-                            'filesystems.disks.s3.region' => $storage_settings['s3_region'],
-                            'filesystems.disks.s3.bucket' => $storage_settings['s3_bucket'],
-                            'filesystems.disks.s3.url' => $storage_settings['s3_url'],
-                            'filesystems.disks.s3.endpoint' => $storage_settings['s3_endpoint'],
-                        ]
-                    );
-                } else if (isset($storage_settings['storage_setting']) && $storage_settings['storage_setting'] == 'wasabi') {
-                    config(
-                        [
-                            'filesystems.disks.wasabi.key' => $storage_settings['wasabi_key'],
-                            'filesystems.disks.wasabi.secret' => $storage_settings['wasabi_secret'],
-                            'filesystems.disks.wasabi.region' => $storage_settings['wasabi_region'],
-                            'filesystems.disks.wasabi.bucket' => $storage_settings['wasabi_bucket'],
-                            'filesystems.disks.wasabi.root' => $storage_settings['wasabi_root'],
-                            'filesystems.disks.wasabi.endpoint' => $storage_settings['wasabi_url']
-                        ]
-                    );
-                }
-                try {
-                    return  Storage::disk($storage_settings['storage_setting'])->exists($path);
-                } catch (\Throwable $th) {
-                    return 0;
+                    return file_exists(base_path($path));
+                } else {
+    
+                    if (isset($storage_settings['storage_setting']) && $storage_settings['storage_setting'] == 's3') {
+                        config(
+                            [
+                                'filesystems.disks.s3.key' => $storage_settings['s3_key'],
+                                'filesystems.disks.s3.secret' => $storage_settings['s3_secret'],
+                                'filesystems.disks.s3.region' => $storage_settings['s3_region'],
+                                'filesystems.disks.s3.bucket' => $storage_settings['s3_bucket'],
+                                'filesystems.disks.s3.url' => $storage_settings['s3_url'],
+                                'filesystems.disks.s3.endpoint' => $storage_settings['s3_endpoint'],
+                            ]
+                        );
+                    } else if (isset($storage_settings['storage_setting']) && $storage_settings['storage_setting'] == 'wasabi') {
+                        config(
+                            [
+                                'filesystems.disks.wasabi.key' => $storage_settings['wasabi_key'],
+                                'filesystems.disks.wasabi.secret' => $storage_settings['wasabi_secret'],
+                                'filesystems.disks.wasabi.region' => $storage_settings['wasabi_region'],
+                                'filesystems.disks.wasabi.bucket' => $storage_settings['wasabi_bucket'],
+                                'filesystems.disks.wasabi.root' => $storage_settings['wasabi_root'],
+                                'filesystems.disks.wasabi.endpoint' => $storage_settings['wasabi_url']
+                            ]
+                        );
+                    }
+                    try {
+                        return  Storage::disk($storage_settings['storage_setting'])->exists($path);
+                    } catch (\Throwable $th) {
+                        return 0;
+                    }
                 }
             }
         } else {
