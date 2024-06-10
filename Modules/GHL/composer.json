@@ -1,0 +1,23 @@
+{
+    "name": "workdo/ghl",
+    "description": "",
+    "authors": [
+        {
+            "name": "Mushe Abdul-Hakim",
+            "email": "musheabdulhakim99@gmial.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\GHL\\": ""
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "name": "GHL",
+    "alias": "ghl",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "version":1.0,
+    "providers": [
+        "Modules\\GHL\\Providers\\GHLServiceProvider"
+    ],
+    "files": []
+}
