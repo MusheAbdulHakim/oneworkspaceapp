@@ -1,4 +1,4 @@
-<!--Brand Settings-->
+{{-- <!--Brand Settings-->
 <div id="site-settings" class="">
     {{ Form::open(['route' => ['company.settings.save'], 'enctype' => 'multipart/form-data', 'id' => 'setting-form']) }}
     @method('post')
@@ -131,7 +131,7 @@
                                             data-value="theme-3"></a>
                                         <input type="radio" class="theme_color d-none" name="color"
                                             value="theme-3"{{ isset($settings['color']) && $settings['color'] == 'theme-3' ? 'checked' : '' }}>
-                                           
+
                                         <a href="#!"
                                             class="themes-color-change {{ isset($settings['color']) && $settings['color'] == 'theme-4' ? 'active_color' : '' }}"
                                             data-value="theme-4"></a>
@@ -143,19 +143,19 @@
                                             data-value="theme-5"></a>
                                         <input type="radio" class="theme_color d-none" name="color"
                                             value="theme-5"{{ isset($settings['color']) && $settings['color'] == 'theme-5' ? 'checked' : '' }}>
-                                          
+
                                         <a href="#!"
                                             class="themes-color-change {{ isset($settings['color']) && $settings['color'] == 'theme-6' ? 'active_color' : '' }}"
                                             data-value="theme-6"></a>
                                         <input type="radio" class="theme_color d-none" name="color"
                                             value="theme-6"{{ isset($settings['color']) && $settings['color'] == 'theme-6' ? 'checked' : '' }}>
-                                           
+
                                         <a href="#!"
                                             class="themes-color-change {{ isset($settings['color']) && $settings['color'] == 'theme-7' ? 'active_color' : '' }}"
                                             data-value="theme-7"></a>
                                         <input type="radio" class="theme_color d-none" name="color"
                                             value="theme-7"{{ isset($settings['color']) && $settings['color'] == 'theme-7' ? 'checked' : '' }}>
-                                            
+
                                         <a href="#!"
                                             class="themes-color-change {{ isset($settings['color']) && $settings['color'] == 'theme-8' ? 'active_color' : '' }}"
                                             data-value="theme-8"></a>
@@ -167,7 +167,7 @@
                                             data-value="theme-9"></a>
                                         <input type="radio" class="theme_color d-none" name="color"
                                             value="theme-9"{{ isset($settings['color']) && $settings['color'] == 'theme-9' ? 'checked' : '' }}>
-                                       
+
                                         <a href="#!"
                                             class="themes-color-change {{ isset($settings['color']) && $settings['color'] == 'theme-10' ? 'active_color' : '' }}"
                                             data-value="theme-10"></a>
@@ -182,7 +182,7 @@
                                                     value={{ isset($settings['color_flag']) && $settings['color_flag'] == 'true' ? 'true' : 'false' }}>
                                             </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                             <div class="col-xxl-2 col-md-4 col-sm-6 col-12">
@@ -237,7 +237,7 @@
 
                                     <input type="checkbox" class="form-check-input" id="category_wise_sidemenu" name="category_wise_sidemenu"
                                         {{ isset($settings['category_wise_sidemenu']) && $settings['category_wise_sidemenu'] == 'on' ? 'checked' : '' }} />
-                                    <label class="form-check-label f-w-600 pl-1" 
+                                    <label class="form-check-label f-w-600 pl-1"
                                         for="category_wise_sidemenu">{{ __('Category Wise Sidemenu') }}</label>
 
                                 </div>
@@ -253,7 +253,7 @@
         </div>
         {{ Form::close() }}
     </div>
-</div>
+</div> --}}
 
 <!--system settings-->
 <div class="row">
@@ -764,7 +764,7 @@
                                     {{ Form::textarea('invoice_footer_notes', isset($settings['invoice_footer_notes']) ? $settings['invoice_footer_notes'] : '', ['class' => 'form-control', 'rows' => '1', 'placeholder' => 'Enter Footer Notes']) }}
                                 </div>
                             </div>
-                            
+
 
                         </div>
                     </div>
@@ -1019,6 +1019,7 @@
     });
 </script>
 {{-- Dark Mod --}}
+@if (!empty($logo_light) || !empty($logo_dark))
 <script>
     var custdarklayout = document.querySelector("#cust-darklayout");
     custdarklayout.addEventListener("click", function() {
@@ -1077,6 +1078,7 @@
         });
     }
 </script>
+@endif
 {{-- VAT & GST Number --}}
 <script>
     $(document).on('change', '#vat_gst_number_switch', function() {
