@@ -12,21 +12,18 @@ jobs:
         with:
           php-version: '8.2'
 
-      - name: Set up SSH key
+      - name: Create SSH key
         run: |
-          env
-          mkdir -p ~/.ssh
-          echo "${{ secrets.ARTIFACT_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 22 ${{ secrets.ARTIFACT_HOST }} >> ~/.ssh/known_hosts
-          sudo apt-get install sshpass
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
       - name: Deploy to server
         run: |
-          sshpass -p '${{ secrets.PSWD }}' ssh -v -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} <<'ENDSSH'
           cd ${{ secrets.APP_PATH }}
           git pull
           (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
+
       - name: Run composer install
         run: |
           composer install --no-interaction --prefer-dist --optimize-autoloader
