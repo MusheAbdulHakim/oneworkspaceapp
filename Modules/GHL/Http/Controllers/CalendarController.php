@@ -11,11 +11,16 @@ class CalendarController extends Controller
     public function index()
     {
         $ghlAccess = auth()->user()->ghl;
-        $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-        $calendars = $ghl->withVersion('2021-04-15')
-                        ->make()->calendars()->list($ghlAccess->locationId);
-        return view('ghl::calendars.index',compact(
-            'calendars'    
-        ));
+        if(!empty($ghlAccess)){
+
+            $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
+            $calendars = $ghl->withVersion('2021-04-15')
+                            ->make()->calendars()->list($ghlAccess->locationId);
+            return view('ghl::calendars.index',compact(
+                'calendars'
+            ));
+        }
+        return back()->with('error','Please authenticate your ghl account to continue');
+
     }
 }

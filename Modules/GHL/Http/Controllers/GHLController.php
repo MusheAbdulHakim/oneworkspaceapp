@@ -11,7 +11,7 @@ use MusheAbdulHakim\GoHighLevel;
 
 class GHLController extends Controller
 {
-    
+
     public function redirect(){
         $auth_url = env("GHL_AUTH_URL");
         $scopes = env("GHL_API_SCOPES");
@@ -20,17 +20,12 @@ class GHLController extends Controller
         $callback_url = env('GHL_CALLBACK_URL');
         $authUrl = "{$auth_url}/oauth/chooselocation?response_type=code&redirect_uri={$callback_url}&client_id={$client_id}&scope={$scopes}";
 
-        
+
         return redirect()->away($authUrl);
     }
-    
-    public function userGHL(){
-        $ghlAccess = auth()->user()->ghl;
-        return $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-    }
-    
+
     public function callback(Request $request){
-        
+
         try{
             $code = $request->code;
             $client_id = env("GHL_CLIENT_ID");
@@ -47,7 +42,7 @@ class GHLController extends Controller
             // dd($response);
             if(is_array($response)){
                 $ghlAccess = auth()->user()->ghl;
-                
+
                 if(!empty($ghlAccess)){
                     $ghlAccess->access_token = $response['access_token'];
                     $ghlAccess->access_expires_in = $response['expires_in'];
@@ -79,10 +74,10 @@ class GHLController extends Controller
         }catch(\Exception $e) {
             return redirect()->route("home")->with('error', $e->getMessage());
         }
-        
+
     }
-    
-    
+
+
     public function generateToken(string $code, $params = []){
         $client = new \GuzzleHttp\Client([
             'base_uri' => env('GHL_API_URL')
@@ -96,15 +91,15 @@ class GHLController extends Controller
               ],
             ]);
         return json_decode($response->getBody()->getContents(), true);
-   
+
     }
-    
-    
+
+
     public function dashboard(){
         try{
             $ghlAccess = auth()->user()->ghl;
             $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-            
+
             $contacts = $ghl->withVersion('2021-07-28')
                 ->make()
                 ->contacts()->list($ghlAccess->locationId);
@@ -113,7 +108,7 @@ class GHLController extends Controller
             $funnels = $ghl->withVersion('2021-07-28')
                             ->make()->funnels()->list($ghlAccess->locationId,[
                                 'locationId' => $ghlAccess->locationId]);
-           
+
             $calendars = $ghl->withVersion('2021-04-15')
                             ->make()->calendars()->list($ghlAccess->locationId);
             // dd($invoices);
@@ -129,13 +124,18 @@ class GHLController extends Controller
 
     public function contacts()
     {
-        $contacts = $this->userGHL()->withVersion('2021-07-28')
-                ->make()
-                ->contacts()->list($ghlAccess->locationId);
-        return view('ghl::contacts.index',compact(
-            'contaacts'    
-        ));
+        $ghlAccess = auth()->user()->ghl;
+        if(!empty($ghlAccess)){
+            $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
+            $contacts = $ghl->withVersion('2021-07-28')
+                    ->make()
+                    ->contacts()->list($ghlAccess->locationId);
+            return view('ghl::contacts.index',compact(
+                'contaacts'
+            ));
+        }
+        // return redirect()->route()
     }
 
-  
+
 }

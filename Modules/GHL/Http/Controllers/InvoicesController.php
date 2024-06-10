@@ -15,13 +15,17 @@ class InvoicesController extends Controller
     public function index()
     {
         $ghlAccess = auth()->user()->ghl;
-        $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-        $invoices = $ghl->withVersion('2021-07-28')
-                        ->make()->invoices()->list($ghlAccess->locationId,'location',200,0);
-        return view('ghl::invoices.index',compact(
-            'invoices'    
-        ));
+        if(!empty($ghlAccess)){
+
+            $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
+            $invoices = $ghl->withVersion('2021-07-28')
+                            ->make()->invoices()->list($ghlAccess->locationId,'location',200,0);
+            return view('ghl::invoices.index',compact(
+                'invoices'
+            ));
+        }
+        return back()->with('error','Please authenticate your ghl account to continue');
     }
 
-  
+
 }
