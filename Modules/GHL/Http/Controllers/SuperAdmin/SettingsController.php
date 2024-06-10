@@ -12,7 +12,8 @@ class SettingsController extends Controller
      */
     public function index($settings)
     {
-        return view('ghl::super-admin.settings.index',compact('settings'));
+        $userGhl = auth()->user()->ghl;
+        return view('ghl::super-admin.settings.index',compact('settings','userGhl'));
     }
 
 
