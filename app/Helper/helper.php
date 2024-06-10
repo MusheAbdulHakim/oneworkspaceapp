@@ -881,7 +881,7 @@ if (!function_exists('check_file')) {
 
                     return file_exists(base_path($path));
                 } else {
-    
+
                     if (isset($storage_settings['storage_setting']) && $storage_settings['storage_setting'] == 's3') {
                         config(
                             [
@@ -1415,7 +1415,7 @@ if (!function_exists('sidebar_logo')) {
     function sidebar_logo()
     {
         $admin_settings = getAdminAllSetting();
-        if (\Auth::check() && (\Auth::user()->type != 'super admin')) {
+        if (false) {
             $company_settings = getCompanyAllSetting();
 
             if ((isset($company_settings['cust_darklayout']) ? $company_settings['cust_darklayout'] : 'off') == 'on') {
