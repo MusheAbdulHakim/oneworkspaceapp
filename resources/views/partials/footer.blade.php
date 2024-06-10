@@ -4,8 +4,8 @@
     <div class="footer-wrapper">
         <div class="py-1">
             <span class="text-muted">
-                @if (isset($company_settings['footer_text']))
-                    {{ $company_settings['footer_text'] }}
+                @if (isset($admin_settings['footer_text']))
+                    {{ $admin_settings['footer_text'] }}
                 @elseif(isset($admin_settings['footer_text']))
                     {{ $admin_settings['footer_text'] }}
                 @else
@@ -75,7 +75,7 @@
 <script src="{{ asset('assets/js/plugins/flatpickr.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/choices.min.js') }}"></script>
 <script src="{{ asset('js/jquery.form.js') }}"></script>
-@if(!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on')
+@if(!empty($admin_settings['category_wise_sidemenu']) && $admin_settings['category_wise_sidemenu'] == 'on')
     <script src="{{ asset('assets/js/layout-tab.js') }}"></script>
 @endif
 

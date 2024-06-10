@@ -3,15 +3,15 @@
 
     $company_settings = getCompanyAllSetting(creatorId());
 
-    $color = !empty($company_settings['color']) ? $company_settings['color'] : 'theme-1';
-      if (isset($company_settings['color_flag']) && $company_settings['color_flag'] == 'true') {
+    $color = !empty($admin_settings['color']) ? $admin_settings['color'] : 'theme-1';
+      if (isset($admin_settings['color_flag']) && $admin_settings['color_flag'] == 'true') {
           $themeColor = 'custom-color';
       } else {
           $themeColor = $color;
       }
 @endphp
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ isset($company_settings['site_rtl']) && $company_settings['site_rtl'] == 'on' ? 'rtl' : '' }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ isset($admin_settings['site_rtl']) && $admin_settings['site_rtl'] == 'on' ? 'rtl' : '' }}">
 <html lang="en">
 
 @include('partials.head')

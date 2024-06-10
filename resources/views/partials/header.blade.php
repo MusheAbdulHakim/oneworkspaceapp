@@ -1,5 +1,5 @@
 <header
-    class="dash-header {{ empty($company_settings['site_transparent']) || $company_settings['site_transparent'] == 'on' ? 'transprent-bg' : '' }} ">
+    class="dash-header {{ empty($admin_settings['site_transparent']) || $admin_settings['site_transparent'] == 'on' ? 'transprent-bg' : '' }} ">
     <div class="header-wrapper">
         <div class="me-auto dash-mob-drp">
             <ul class="list-unstyled">

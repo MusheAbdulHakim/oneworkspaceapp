@@ -1,4 +1,4 @@
-<nav class="dash-sidebar light-sidebar {{ empty($company_settings['site_transparent']) || $company_settings['site_transparent'] == 'on' ? 'transprent-bg' : '' }}">
+<nav class="dash-sidebar light-sidebar {{ empty($admin_settings['site_transparent']) || $admin_settings['site_transparent'] == 'on' ? 'transprent-bg' : '' }}">
     <div class="navbar-wrapper">
         <div class="m-header main-logo">
             <a href="{{ route('home') }}" class="b-brand">
@@ -7,7 +7,7 @@
                 {{-- <img src="{{ get_file(sidebar_logo()) }}{{ '?' . time() }}" alt="" class="logo logo-sm" /> --}}
             </a>
         </div>
-        @if(!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on')
+        @if(!empty($admin_settings['category_wise_sidemenu']) && $admin_settings['category_wise_sidemenu'] == 'on')
           <div class="tab-container">
             <div class="tab-sidemenu">
               <ul class="dash-tab-link nav flex-column" role="tablist" id="dash-layout-submenus">
@@ -31,7 +31,7 @@
                   @stack('custom_side_menu')
               </ul>
           </div>
-        @endif  
-        
+        @endif
+
     </div>
 </nav>

@@ -1,9 +1,9 @@
 @php
-    $favicon = isset($company_settings['favicon']) ? $company_settings['favicon'] : (isset($admin_settings['favicon']) ? $admin_settings['favicon'] : 'uploads/logo/favicon.png');
+    $favicon = isset($admin_settings['favicon']) ? $admin_settings['favicon'] : (isset($admin_settings['favicon']) ? $admin_settings['favicon'] : 'uploads/logo/favicon.png');
 @endphp
 <head>
 
-    <title>@yield('page-title') | {{ !empty($company_settings['title_text']) ? $company_settings['title_text'] : (!empty($admin_settings['title_text']) ? $admin_settings['title_text'] :'WorkDo') }}
+    <title>@yield('page-title') | {{ !empty($admin_settings['title_text']) ? $admin_settings['title_text'] : (!empty($admin_settings['title_text']) ? $admin_settings['title_text'] :'WorkDo') }}
     </title>
 
     <meta name="title" content="{{ !empty($admin_settings['meta_title']) ? $admin_settings['meta_title'] : 'WOrkdo Dash' }}">
@@ -59,14 +59,14 @@
     </style>
 
     <link rel="stylesheet" href="{{ asset('css/custom-color.css') }}">
-    @if ((isset($company_settings['site_rtl']) ? $company_settings['site_rtl'] : 'off')== 'on')
+    @if ((isset($admin_settings['site_rtl']) ? $admin_settings['site_rtl'] : 'off')== 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
     @endif
 
-    @if ((isset($company_settings['cust_darklayout']) ? $company_settings['cust_darklayout'] : 'off') == 'on')
+    @if ((isset($admin_settings['cust_darklayout']) ? $admin_settings['cust_darklayout'] : 'off') == 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css') }}" id="main-style-link">
     @endif
-    @if ((isset($company_settings['site_rtl']) ? $company_settings['site_rtl'] : 'off' )!= 'on' && (isset($company_settings['cust_darklayout']) ? $company_settings['cust_darklayout'] : 'off') != 'on')
+    @if ((isset($admin_settings['site_rtl']) ? $admin_settings['site_rtl'] : 'off' )!= 'on' && (isset($admin_settings['cust_darklayout']) ? $admin_settings['cust_darklayout'] : 'off') != 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link">
     @else
         <link rel="stylesheet" href="" id="main-style-link">
