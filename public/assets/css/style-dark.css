@@ -13,8 +13,10 @@ File: style.css
    * Copyright 2011-2022 Twitter, Inc.
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap");
+@supports (font-variation-settings: normal) {
+    :root { font-family: 'Inter var', sans-serif; }
+  }
 :root {
     --bs-blue: #51459d;
     --bs-indigo: #6610f2;
@@ -58,10 +60,10 @@ File: style.css
     --bs-black-rgb: 0, 0, 0;
     --bs-body-color-rgb: 128, 129, 145;
     --bs-body-bg-rgb: 34, 36, 44;
-    --bs-font-sans-serif: "Open Sans", sans-serif;
+    --bs-font-sans-serif: "Inter", sans-serif;
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-family: 'Inter', sans-serif;
     --bs-body-font-size: 0.875rem;
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
