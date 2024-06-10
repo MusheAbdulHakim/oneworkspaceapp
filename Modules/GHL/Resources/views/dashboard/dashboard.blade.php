@@ -12,30 +12,34 @@
 @section('content')
     <div class="row">
         <div class="col-md-4 col-sm-6">
-          <div class="card text-center">
-              <div class="card-body">
-                  <div class="avatar p-50 mb-1">
-                    <div class="avatar-content">
-                        <i data-feather="users"></i>
+          <a href="{{ route('ghl.contacts') }}">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="avatar p-50 mb-1">
+                      <div class="avatar-content">
+                          <i data-feather="users"></i>
+                      </div>
                     </div>
-                  </div>
-                  <h2 class="fw-bolder">{{count($contacts) ?? 0}}</h2>
-                  <p class="card-text">Contacts</p>
-              </div>
-          </div>
+                    <h2 class="fw-bolder">{{count($contacts) ?? 0}}</h2>
+                    <p class="card-text">Contacts</p>
+                </div>
+            </div>
+          </a>
         </div>
         <div class="col-md-4 col-sm-6">
-          <div class="card text-center">
-              <div class="card-body">
-                  <div class="avatar p-50 mb-1">
-                    <div class="avatar-content">
-                        <i data-feather="page"></i>
+          <a href="{{ route('ghl.invoices') }}">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="avatar p-50 mb-1">
+                      <div class="avatar-content">
+                          <i data-feather="page"></i>
+                      </div>
                     </div>
-                  </div>
-                  <h2 class="fw-bolder">{{count($invoices) ?? 0}}</h2>
-                  <p class="card-text">Invoices</p>
-              </div>
-          </div>
+                    <h2 class="fw-bolder">{{count($invoices) ?? 0}}</h2>
+                    <p class="card-text">Invoices</p>
+                </div>
+            </div>
+          </a>
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="card text-center">
@@ -89,7 +93,7 @@
 @push('scripts')
     <script>
         (function() {
-            
+
         });
     </script>
 @endpush
