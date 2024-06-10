@@ -2,13 +2,13 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label for="mail_driver" class="form-label">{{ __('Mail Driver') }}</label>
-            {{ Form::text('mail_driver', isset($settings['mail_driver']) ? $settings['mail_driver'] : null,  ['class' => 'form-control', 'placeholder' => __('Enter Mail Driver'), 'id' => 'mail_driver']) }}
+            {{ Form::text('mail_driver', isset($settings['mail_driver']) ? $settings['mail_driver'] : old('mail_driver'),  ['class' => 'form-control', 'placeholder' => __('Enter Mail Driver'), 'id' => 'mail_driver']) }}
 
         </div>
         @if ($email_setting == 'custom')
         <div class="form-group col-md-4">
             <label for="mail_host" class="form-label">{{ __('Mail Host') }}</label>
-            {{ Form::text('mail_host', isset($settings['mail_host']) ? $settings['mail_host'] : null, ['class' => 'form-control', 'placeholder' => __('Enter Mail Host'), 'id' => 'mail_host']) }}
+            {{ Form::text('mail_host', isset($settings['mail_host']) ? $settings['mail_host'] : old('mail_host'), ['class' => 'form-control', 'placeholder' => __('Enter Mail Host'), 'id' => 'mail_host']) }}
         </div>
         @elseif ($email_setting == 'gmail')
         <div class="form-group col-md-4">
@@ -165,12 +165,12 @@
         @if ($email_setting == 'custom')
         <div class="form-group col-md-4">
             <label for="" class="form-label">{{ __('Mail Encryption') }}</label>
-            {{ Form::text('mail_encryption',isset($settings['mail_encryption']) ? $settings['mail_encryption'] : null, ['class' => 'form-control', 'placeholder' => __('Enter Mail Encryption'), 'id' => 'mail_encryption']) }}
+            {{ Form::text('mail_encryption',isset($settings['mail_encryption']) ? $settings['mail_encryption'] : old('mail_encryption'), ['class' => 'form-control', 'placeholder' => __('Enter Mail Encryption'), 'id' => 'mail_encryption']) }}
         </div>
         @elseif ($email_setting == 'smtp')
         <div class="form-group col-md-4">
             <label for="mail_encryption" class="form-label">{{ __('Mail Encryption') }}</label>
-            {{ Form::text('mail_encryption',isset($settings['mail_encryption']) ? $settings['mail_encryption'] : null, ['class' => 'form-control', 'placeholder' => __('Enter Mail Encryption'), 'id' => 'mail_encryption']) }}
+            {{ Form::text('mail_encryption',isset($settings['mail_encryption']) ? $settings['mail_encryption'] : old('mail_encryption'), ['class' => 'form-control', 'placeholder' => __('Enter Mail Encryption'), 'id' => 'mail_encryption']) }}
         </div>
         @else
         <div class="form-group col-md-4">
@@ -180,11 +180,11 @@
         @endif
         <div class="form-group col-md-4">
             <label for="mail_from_address" class="form-label">{{ __('Mail From Address') }}</label>
-            {{ Form::text('mail_from_address',isset($settings['mail_from_address']) ? $settings['mail_from_address'] : null, ['class' => 'form-control ', 'placeholder' => __('Enter mail from address'), 'id' => 'mail_from_address']) }}
+            {{ Form::text('mail_from_address',isset($settings['mail_from_address']) ? $settings['mail_from_address'] : old('mail_from_address'), ['class' => 'form-control ', 'placeholder' => __('Enter mail from address'), 'id' => 'mail_from_address']) }}
         </div>
         <div class="form-group col-md-4">
             <label for="mail_from_name" class="form-label">{{ __('Mail From Name') }}</label>
-            {{ Form::text('mail_from_name', isset($settings['mail_from_name']) ? $settings['mail_from_name'] : null, ['class' => 'form-control', 'placeholder' => __('Enter mail from name'), 'id' => 'mail_from_name']) }}
+            {{ Form::text('mail_from_name', isset($settings['mail_from_name']) ? $settings['mail_from_name'] : old('mail_from_name'), ['class' => 'form-control', 'placeholder' => __('Enter mail from name'), 'id' => 'mail_from_name']) }}
         </div>
     </div>
 </div>
