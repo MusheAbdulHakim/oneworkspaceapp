@@ -5,24 +5,69 @@ namespace Modules\GHL\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\GHL\Traits\UserGHL;
 
 class ContactsController extends Controller
 {
 
+    use UserGHL;
+
+    public $apiVersion = '2021-07-28';
 
   public function index()
     {
-        $ghlAccess = auth()->user()->ghl;
-        if(!empty($ghlAccess)){
-            $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-            $contacts = $ghl->withVersion('2021-07-28')
+        $ghl = $this->initGHL();
+        if(!empty($ghl)){
+            $contacts = $ghl->withVersion($this->apiVersion)
                     ->make()
-                    ->contacts()->list($ghlAccess->locationId);
+                    ->contacts()->list($this->userGHL()->locationId);
             return view('ghl::contacts.index',compact(
                 'contacts'
             ));
         }
         return back()->with('error','Please authenticate your ghl account to continue');
+    }
+
+    public function appointments(Request $request, $contactId){
+        $ghl = $this->initGHL();
+        if(!empty($ghl)){
+            $appointments = $ghl->withVersion($this->apiVersion)
+                                ->make()
+                                ->contacts()
+                                ->appointments()
+                                ->contacts($contactId);
+            return view('ghl::contacts.appointments',compact(
+                'appointments'
+            ));
+
+        }
+    }
+
+    public function notes(Request $request, $contactId){
+        $ghl = $this->initGHL();
+        if(!empty($ghl)){
+            $slots = $ghl->withVersion($this->apiVersion)
+                            ->make()->contacts()->notes()->list($contactId);
+
+            return view('ghl::contacts.notes',compact(
+                'slots'
+            ));
+
+        }
+    }
+
+    public function tasks(Request $request, $contactId){
+        $ghl = $this->initGHL();
+        if(!empty($ghl)){
+
+            $slots = $ghl->withVersion('2021-04-15')
+                            ->make()->contacts()->tasks()->list($contactId);
+
+            return view('ghl::contacts.tasks',compact(
+                'slots'
+            ));
+
+        }
     }
 
 }
