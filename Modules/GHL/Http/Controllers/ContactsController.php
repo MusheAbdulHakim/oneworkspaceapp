@@ -41,6 +41,7 @@ class ContactsController extends Controller
             ));
 
         }
+        return back()->with('error','Please authenticate your ghl account to continue');
     }
 
     public function notes(Request $request, $contactId){
@@ -54,6 +55,7 @@ class ContactsController extends Controller
             ));
 
         }
+        return back()->with('error','Please authenticate your ghl account to continue');
     }
 
     public function tasks(Request $request, $contactId){
@@ -68,6 +70,7 @@ class ContactsController extends Controller
             ));
 
         }
+        return back()->with('error','Please authenticate your ghl account to continue');
     }
 
 }

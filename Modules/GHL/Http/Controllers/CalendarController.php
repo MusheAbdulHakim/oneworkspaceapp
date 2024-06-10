@@ -40,6 +40,7 @@ class CalendarController extends Controller
             ));
 
         }
+        return back()->with('error','Please authenticate your ghl account to continue');
     }
 
 
