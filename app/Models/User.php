@@ -39,6 +39,10 @@ class User extends Authenticatable implements LaratrustUser,MustVerifyEmail,JWTS
     {
         return [];
     }
+    
+    public function ghl(){
+        return $this->hasOne(\Modules\GHL\Entities\GhlIntegration::class,'user_id');
+    }
 
     protected $fillable = [
         'name',
