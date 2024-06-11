@@ -61,6 +61,18 @@ class SuperAdminMenuListener
             'permission' => ''
         ]);
         $menu->add([
+            'title' => __('Calendars Events'),
+            'icon' => '',
+            'name' => 'ghl-calendars-events',
+            'parent' => 'ghl',
+            'order' => 2,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'ghl.calendars.events',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
             'title' => __('Funnels'),
             'icon' => '',
             'name' => 'ghl-funnels',

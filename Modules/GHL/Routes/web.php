@@ -22,6 +22,7 @@ Route::prefix('ghl')->group(function() {
         Route::get("contacts/tasks/{contactId}", "ContactsController@tasks")->name('ghl.contact.tasks');
         Route::get("contacts/notes/{contactId}", "ContactsController@notes")->name('ghl.contact.notes');
         Route::get("calendars", "CalendarController@index")->name('ghl.calendars');
+        Route::get("calendars/events", "CalendarController@events")->name('ghl.calendars.events');
         Route::get("calendars/slots/{calendarId}", "CalendarController@slots")->name('ghl.calendar.slots');
         Route::get("invoices", "InvoicesController@index")->name('ghl.invoices');
         Route::get("funnels", "FunnelsController@index")->name('ghl.funnels');
