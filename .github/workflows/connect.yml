@@ -27,19 +27,31 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+
       - name: Run Deployment Commands
         run: |
             ssh -T ${{ secrets.HOST }}  /bin/bash <<'EOT'
-            cd /www/wwwroot/app.oneworkspace.io/
-            sudo bash
-            git pull
-            (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
-            composer install --no-interaction --prefer-dist --optimize-autoloader
-            php artisan migrate
-            php artisan view:clear
-            php artisan config:clear
-            php artisan cache:clear
-            php artisan optimize
-            EOT
+
+      - name: Give Directory Permission
+        run: sudo chown -R www-data:www-data /www/wwwroot/app.oneworkspace.io/
+
+      - name: Pull Changes
+        run:  |
+          cd /www/wwwroot/app.oneworkspace.io/
+          git pull
+      - name: Install Composer dependencies
+        run:
+          composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Laravel Commands
+        run:  |
+          (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
+          php artisan migrate
+          php artisan view:clear
+          php artisan config:clear
+          php artisan cache:clear
+          php artisan optimize
+          php artisan up
+
 
 
