@@ -92,7 +92,7 @@ if (!function_exists('generateMenu')) {
 
         foreach ($grouped as $category => $menuItems)
         {
-            $company_settings = getCompanyAllSetting();
+            $company_settings = getAdminAllSetting();
             if(!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on'){
                 $icon = isset(categoryIcon()[$category]) ? categoryIcon()[$category] : 'home';
                 $html .= '<li class="dash-item dash-caption">
@@ -156,6 +156,10 @@ if (!function_exists('categoryIcon')) {
     function categoryIcon()
     {
         $categoryIcon = [
+        'Start Here' => 'school',
+        'Dashboards' => 'home',
+        'ERP & Operations' => 'shopping-cart',
+        'BPA & Automation' => 'brand-gitlab',
         'General' => 'indent-increase',
         'Addon Manager' => 'apps',
         'Finance' => 'chart-dots',
@@ -215,7 +219,7 @@ if (!function_exists('generateSettingMenu')) {
         $html = '';
         foreach ($menuItems as $menu) {
             $method = isset($menu['method']) ? $menu['method'] : null;
-            $html .= '<a href="#' . $menu['navigation'] . '" data-module="' . $menu['module'] . '" data-method="' . $method . '"  class="list-group-item list-group-item-action setting-menu-nav">' . $menu['title'] . '<div class="float-end"><i class="ti ti-chevron-right"></i></div></a>';
+            $html .= '<a href="#' . (!empty($menu['navigation']) ? $menu['navigation']: '') . '" data-module="' . $menu['module'] . '" data-method="' . $method . '"  class="list-group-item list-group-item-action setting-menu-nav">' . $menu['title'] . '<div class="float-end"><i class="ti ti-chevron-right"></i></div></a>';
         }
         return $html;
     }

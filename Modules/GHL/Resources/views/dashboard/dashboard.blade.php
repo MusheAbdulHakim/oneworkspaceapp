@@ -10,6 +10,7 @@
 
 
 @section('content')
+    <x-active-modules />
     <div class="row">
         <div class="col-md-4 col-sm-6">
           <a href="{{ route('ghl.contacts') }}">
@@ -42,17 +43,19 @@
           </a>
         </div>
         <div class="col-md-4 col-sm-6">
-          <div class="card text-center">
-              <div class="card-body">
-                  <div class="avatar p-50 mb-1">
-                    <div class="avatar-content">
-                        <i data-feather="page"></i>
+          <a href="{{ route('ghl.funnels') }}">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="avatar p-50 mb-1">
+                      <div class="avatar-content">
+                          <i data-feather="page"></i>
+                      </div>
                     </div>
-                  </div>
-                  <h2 class="fw-bolder">{{$funnels['count'] ?? 0}}</h2>
-                  <p class="card-text">Funnels</p>
-              </div>
-          </div>
+                    <h2 class="fw-bolder">{{$funnels['count'] ?? 0}}</h2>
+                    <p class="card-text">Funnels</p>
+                </div>
+            </div>
+        </a>
         </div>
     </div>
     <hr>
