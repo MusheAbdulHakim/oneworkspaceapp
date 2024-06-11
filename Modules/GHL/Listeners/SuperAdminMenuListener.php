@@ -61,6 +61,18 @@ class SuperAdminMenuListener
             'permission' => ''
         ]);
         $menu->add([
+            'title' => __('Funnels'),
+            'icon' => '',
+            'name' => 'ghl-funnels',
+            'parent' => 'ghl',
+            'order' => 2,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'ghl.funnels',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
             'title' => __('Invoices'),
             'icon' => '',
             'name' => 'ghl-invoices',

@@ -12,9 +12,10 @@
 */
 
 
+Route::get('dashboard/ghl',"DashboardController@index")->name('ghl.dashboard')->middleware(['auth']);
 Route::prefix('ghl')->group(function() {
     Route::group(['middleware' => 'auth'], function(){
-        Route::get("dashboard", "GHLController@dashboard")->name('ghl.dashboard');
+        Route::get("dashboard", "GHLController@dashboard");
         Route::get("contacts", "ContactsController@index")->name('ghl.contacts');
         Route::get("contacts/appointments/{contactId}", "ContactsController@appointments")->name('ghl.contact.appointments');
         Route::get("contacts/tasks/{contactId}", "ContactsController@tasks")->name('ghl.contact.tasks');
@@ -22,6 +23,8 @@ Route::prefix('ghl')->group(function() {
         Route::get("calendars", "CalendarController@index")->name('ghl.calendars');
         Route::get("calendars/slots/{calendarId}", "CalendarController@slots")->name('ghl.calendar.slots');
         Route::get("invoices", "InvoicesController@index")->name('ghl.invoices');
+        Route::get("funnels", "FunnelsController@index")->name('ghl.funnels');
+        Route::get("funnel/pages/{funnelId}", "FunnelsController@pages")->name('ghl.funnel.pages');
         Route::post('/settings/store', "\SuperAdmin\SettingsController@store")->name('ghl.setting.store');
 
     });
