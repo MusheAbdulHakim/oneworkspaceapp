@@ -23,19 +23,16 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Reference secret containing private key
           HOST: ${{ secrets.HOST }}  # Reference secret with server hostname
           USER: ${{ secrets.USER }}  # Reference secret with server username
-
-      - name: Run Linux Commands  # Execute commands on server
-        run: |
-            ssh ${{ secrets.HOST }}  # Connect to server
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-      - name: Deploy to server
+      - name: Run Linux Commands  # Execute commands on server
         run: |
-          cd /www/wwwroot/app.oneworkspace.io/
-          git pull
-          (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
+            ssh ${{ secrets.HOST }}  # Connect to server
+            cd /www/wwwroot/app.oneworkspace.io/
+            git pull
+            (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
 
       - name: Run composer install
         run: |
