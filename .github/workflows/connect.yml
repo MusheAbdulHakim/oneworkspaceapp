@@ -29,7 +29,7 @@ jobs:
           php-version: '8.2'
       - name: Run Linux Commands  # Execute commands on server
         run: |
-            ssh ${{ secrets.HOST }}  # Connect to server
+            ssh -t -t ${{ secrets.HOST }}  # Connect to server
             cd /www/wwwroot/app.oneworkspace.io/
             git pull
             (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
