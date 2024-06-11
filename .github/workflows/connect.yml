@@ -30,17 +30,15 @@ jobs:
       - name: Run Deployment Commands
         run: |
             ssh -T ${{ secrets.HOST }}  /bin/bash <<'EOT'
-              cd /www/wwwroot/app.oneworkspace.io/
-              git pull
-              (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
-
+            cd /www/wwwroot/app.oneworkspace.io/
+            git pull
+            (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
+            composer install --no-interaction --prefer-dist --optimize-autoloader
+            php artisan migrate
+            php artisan view:clear
+            php artisan config:clear
+            php artisan cache:clear
+            php artisan optimize
             EOT
 
-      - name: Run composer install
-        run: |
-          composer install --no-interaction --prefer-dist --optimize-autoloader
-      # - name: Run migrations
-      #   run: |
-      #     php artisan migrate
-      #     php artisan optimize
 
