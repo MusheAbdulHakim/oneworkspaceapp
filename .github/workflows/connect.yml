@@ -29,7 +29,7 @@ jobs:
           php-version: '8.2'
 
       - name: Run Deployment Commands
-        run: ssh -T ${{ secrets.HOST }}  /bin/bash
+        run: ssh -T ${{ secrets.HOST }}
 
       - name: Give Directory Permission
         run: sudo chown -R www-data:www-data /www/wwwroot/app.oneworkspace.io/
