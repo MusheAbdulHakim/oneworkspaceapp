@@ -30,7 +30,7 @@ jobs:
       - name: Run Deployment Commands
         run: |
             ssh -T ${{ secrets.HOST }}  /bin/bash <<'EOT'
-            sudo chown -R 777 /www/wwwroot/app.oneworkspace.io/;cd /www/wwwroot/app.oneworkspace.io/
+            sudo chmod -R 777 /www/wwwroot/app.oneworkspace.io/;cd /www/wwwroot/app.oneworkspace.io/
             sudo git pull
             composer install --no-interaction --optimize-autoloader
             (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
