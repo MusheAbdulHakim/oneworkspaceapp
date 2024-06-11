@@ -16,6 +16,7 @@ Route::get('dashboard/ghl',"DashboardController@index")->name('ghl.dashboard')->
 Route::prefix('ghl')->group(function() {
     Route::group(['middleware' => 'auth'], function(){
         Route::get("dashboard", "GHLController@dashboard");
+        Route::get("campaigns", "CampaignsController@index")->name('ghl.campaigns');
         Route::get("contacts", "ContactsController@index")->name('ghl.contacts');
         Route::get("contacts/appointments/{contactId}", "ContactsController@appointments")->name('ghl.contact.appointments');
         Route::get("contacts/tasks/{contactId}", "ContactsController@tasks")->name('ghl.contact.tasks');

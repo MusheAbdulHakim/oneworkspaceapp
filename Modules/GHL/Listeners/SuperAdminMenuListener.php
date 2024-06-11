@@ -84,5 +84,17 @@ class SuperAdminMenuListener
             'module' => $module,
             'permission' => ''
         ]);
+        $menu->add([
+            'title' => __('Campaigns'),
+            'icon' => '',
+            'name' => 'ghl-campaigns',
+            'parent' => 'ghl',
+            'order' => 3,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'ghl.campaigns',
+            'module' => $module,
+            'permission' => ''
+        ]);
     }
 }

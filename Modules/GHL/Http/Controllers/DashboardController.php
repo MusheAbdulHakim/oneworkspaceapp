@@ -5,6 +5,7 @@ namespace Modules\GHL\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Carbon;
 use Modules\GHL\Traits\UserGHL;
 
 class DashboardController extends Controller
