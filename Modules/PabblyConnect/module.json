@@ -1,0 +1,12 @@
+{
+    "name": "PabblyConnect",
+    "alias": "Pabbly Connect",
+    "description": "",
+    "keywords": [],
+    "priority": 940,
+    "version":1.4,
+    "providers": [
+        "Modules\\PabblyConnect\\Providers\\PabblyConnectServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,26 @@
+{
+    "name": "workdo/aiassistant",
+    "description": "",
+    "authors": [
+        {
+            "name": "WorkDo",
+            "email": "support@workdo.io"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\AIAssistant\\": ""
+        }
+    },
+    "require": {
+        "orhanerday/open-ai": "4.8"
+    }
+}
