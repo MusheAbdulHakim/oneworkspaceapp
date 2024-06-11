@@ -31,8 +31,8 @@ jobs:
         run: |
             ssh -T ${{ secrets.HOST }}  /bin/bash <<'EOT'
             sudo chown -R www-data:www-data /www/wwwroot/app.oneworkspace.io/;cd /www/wwwroot/app.oneworkspace.io/
-            git pull
-            composer install --no-interaction --prefer-dist --optimize-autoloader
+            sudo git pull
+            composer install --no-interaction --optimize-autoloader
             (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
             php artisan migrate
             php artisan view:clear
