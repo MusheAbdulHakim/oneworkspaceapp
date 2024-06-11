@@ -29,10 +29,13 @@ jobs:
           php-version: '8.2'
       - name: Run Linux Commands  # Execute commands on server
         run: |
-            ssh -T ${{ secrets.HOST }}  # Connect to server
-            cd /www/wwwroot/app.oneworkspace.io/
-            git pull
-            (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
+            ssh -T ${{ secrets.HOST }}  /bin/bash <<'EOT'
+            echo "These commands will be run on: $( uname -a )"
+            echo "They are executed by: $( whoami )"
+            EOT
+            # cd /www/wwwroot/app.oneworkspace.io/
+            # git pull
+            # (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
 
       - name: Run composer install
         run: |
