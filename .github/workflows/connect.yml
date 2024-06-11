@@ -27,7 +27,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-      - name: Run Linux Commands  # Execute commands on server
+      - name: Run Linux Commands
         run: |
             ssh -T ${{ secrets.HOST }}  /bin/bash <<'EOT'
             echo "These commands will be run on: $( uname -a )"
@@ -37,11 +37,11 @@ jobs:
             # git pull
             # (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
 
-      - name: Run composer install
-        run: |
-          composer install --no-interaction --prefer-dist --optimize-autoloader
-      - name: Run migrations
-        run: |
-          php artisan migrate
-          php artisan optimize
+      # - name: Run composer install
+      #   run: |
+      #     composer install --no-interaction --prefer-dist --optimize-autoloader
+      # - name: Run migrations
+      #   run: |
+      #     php artisan migrate
+      #     php artisan optimize
 
