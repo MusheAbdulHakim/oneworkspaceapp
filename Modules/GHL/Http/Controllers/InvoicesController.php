@@ -24,7 +24,7 @@ class InvoicesController extends Controller
                 'invoices'
             ));
         }
-        return back()->with('error','Please authenticate your ghl account to continue');
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
 
 

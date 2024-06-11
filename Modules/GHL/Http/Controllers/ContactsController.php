@@ -25,7 +25,7 @@ class ContactsController extends Controller
                 'contacts'
             ));
         }
-        return back()->with('error','Please authenticate your ghl account to continue');
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
 
     public function appointments(Request $request, $contactId){
@@ -41,7 +41,7 @@ class ContactsController extends Controller
             ));
 
         }
-        return back()->with('error','Please authenticate your ghl account to continue');
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
 
     public function notes(Request $request, $contactId){
@@ -55,7 +55,7 @@ class ContactsController extends Controller
             ));
 
         }
-        return back()->with('error','Please authenticate your ghl account to continue');
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
 
     public function tasks(Request $request, $contactId){
@@ -70,7 +70,7 @@ class ContactsController extends Controller
             ));
 
         }
-        return back()->with('error','Please authenticate your ghl account to continue');
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
 
 }

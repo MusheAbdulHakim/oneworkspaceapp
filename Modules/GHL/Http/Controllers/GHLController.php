@@ -5,21 +5,23 @@ namespace Modules\GHL\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Carbon;
 use Modules\GHL\Entities\GhlIntegration;
+use Modules\GHL\Traits\UserGHL;
 use MusheAbdulHakim\GoHighLevel;
 
 
 class GHLController extends Controller
 {
 
+    use UserGHL;
+
     public function redirect(){
         $auth_url = env("GHL_AUTH_URL");
         $scopes = env("GHL_API_SCOPES");
-        // $scopes = "contacts.readonly contacts.write";
         $client_id = env("GHL_CLIENT_ID");
         $callback_url = env('GHL_CALLBACK_URL');
         $authUrl = "{$auth_url}/oauth/chooselocation?response_type=code&redirect_uri={$callback_url}&client_id={$client_id}&scope={$scopes}";
-
 
         return redirect()->away($authUrl);
     }
@@ -70,7 +72,7 @@ class GHLController extends Controller
                 }
                 return redirect()->route("home")->with('success', __('Your gohighlevel account has been linked.'));
             }
-            return redirect()->route("home")->with('error', __('Account Not linked.'));
+            return redirect()->route("settings.index")->with('error', __('Account Not linked.'));
         }catch(\Exception $e) {
             return redirect()->route("home")->with('error', $e->getMessage());
         }
@@ -96,46 +98,40 @@ class GHLController extends Controller
 
 
     public function dashboard(){
-        try{
-            $ghlAccess = auth()->user()->ghl;
-            $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-
+        $ghl = $this->initGHL();
+        if(!empty($ghl)){
+            $locationId = $this->userGHL()->locationId;
             $contacts = $ghl->withVersion('2021-07-28')
                 ->make()
-                ->contacts()->list($ghlAccess->locationId);
+                ->contacts()->list($locationId);
             $invoices = $ghl->withVersion('2021-07-28')
-                            ->make()->invoices()->list($ghlAccess->locationId,'location',100,0);
+                            ->make()->invoices()
+                            ->list($locationId,'location',100,0);
             $funnels = $ghl->withVersion('2021-07-28')
-                            ->make()->funnels()->list($ghlAccess->locationId,[
-                                'locationId' => $ghlAccess->locationId]);
+                            ->make()->funnels()->list($locationId,[
+                                'locationId' => $locationId
+                            ]);
 
             $calendars = $ghl->withVersion('2021-04-15')
-                            ->make()->calendars()->list($ghlAccess->locationId);
-            // dd($invoices);
+                            ->make()
+                            ->calendars()
+                            ->list($locationId);
+            $start = now()->startOfWeek(Carbon::TUESDAY)->valueOf();
+            $end = now()->endOfWeek(Carbon::MONDAY)->valueOf();
+            // $events = $ghl->withVersion('2021-04-15')
+            //                 ->make()->calendars()
+            //                 ->events()->get($end, $start,$locationId,'',[
+            //                     'userId' => $this->userGHL()->userId,
+            //                     'endTime' => $end,
+            //                 ]);
             return view('ghl::dashboard.dashboard',compact(
                 'contacts','invoices','calendars','funnels'
             ));
         }
-        catch(\Exception $e) {
-            // throw $e;
-            return back()->with('error', $e->getMessage());
-        }
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
+
     }
 
-    public function contacts()
-    {
-        $ghlAccess = auth()->user()->ghl;
-        if(!empty($ghlAccess)){
-            $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-            $contacts = $ghl->withVersion('2021-07-28')
-                    ->make()
-                    ->contacts()->list($ghlAccess->locationId);
-            return view('ghl::contacts.index',compact(
-                'contaacts'
-            ));
-        }
-        // return redirect()->route()
-    }
 
 
 }

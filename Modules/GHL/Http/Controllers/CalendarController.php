@@ -23,7 +23,7 @@ class CalendarController extends Controller
                 'calendars'
             ));
         }
-        return back()->with('error','Please authenticate your ghl account to continue');
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
 
     }
 
@@ -40,7 +40,7 @@ class CalendarController extends Controller
             ));
 
         }
-        return back()->with('error','Please authenticate your ghl account to continue');
+        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
 
 
