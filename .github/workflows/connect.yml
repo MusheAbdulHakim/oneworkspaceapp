@@ -31,6 +31,7 @@ jobs:
         run: |
             ssh -T ${{ secrets.HOST }}  /bin/bash <<'EOT'
             cd /www/wwwroot/app.oneworkspace.io/
+            sudo bash
             git pull
             (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
             composer install --no-interaction --prefer-dist --optimize-autoloader
