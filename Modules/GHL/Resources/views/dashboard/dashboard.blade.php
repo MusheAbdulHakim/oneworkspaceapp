@@ -10,6 +10,7 @@
 
 
 @section('content')
+<x-active-modules />
     <div class="row">
         <div class="col-md-4 col-sm-6">
           <a href="{{ route('ghl.contacts') }}">
