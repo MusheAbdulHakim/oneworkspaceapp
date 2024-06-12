@@ -117,19 +117,6 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
-        $menu->add([
-            'category' => 'Settings',
-            'title' => __('My Settings'),
-            'icon' => 'settings',
-            'name' => 'my-settings',
-            'parent' => null,
-            'order' => 2000,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => '',
-            'module' => $module,
-            'permission' => ''
-        ]);
 
         $menu->add([
             'category' => 'Erp-operation',
@@ -327,10 +314,10 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'Settings',
-            'title' => __('Settings'),
+            'title' => __('My Settings'),
             'icon' => 'settings',
             'name' => 'settings',
-            'parent' => 'my-settings',
+            'parent' => null,
             'order' => 2000,
             'ignore_if' => [],
             'depend_on' => [],
