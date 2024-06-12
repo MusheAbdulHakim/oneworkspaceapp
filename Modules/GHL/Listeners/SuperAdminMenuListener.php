@@ -10,6 +10,7 @@ class SuperAdminMenuListener
      */
     public function handle(SuperAdminMenuEvent $event): void
     {
+        /**
         $module = 'GHL';
         $menu = $event->menu;
         $menu->add([
@@ -108,5 +109,6 @@ class SuperAdminMenuListener
             'module' => $module,
             'permission' => ''
         ]);
+        **/
     }
 }
