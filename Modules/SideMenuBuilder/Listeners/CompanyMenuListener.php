@@ -14,11 +14,11 @@ class CompanyMenuListener
         $module = 'SideMenuBuilder';
         $menu = $event->menu;
         $menu->add([
-            'category' => 'Settings',
-            'title' => __('Side Menu Builder'),
+            'category' => 'Erp-operation',
+            'title' => __('Custom Menus'),
             'icon' => 'circle-plus',
             'name' => 'sidemenubuilder',
-            'parent' => null,
+            'parent' => 'erp-operations',
             'order' => 1300,
             'ignore_if' => [],
             'depend_on' => [],

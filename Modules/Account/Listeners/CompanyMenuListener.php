@@ -31,7 +31,7 @@ class CompanyMenuListener
             'title' => __('Accounting'),
             'icon' => 'layout-grid-add',
             'name' => 'accounting',
-            'parent' => null,
+            'parent' => 'erp-operations',
             'order' => 400,
             'ignore_if' => [],
             'depend_on' => [],

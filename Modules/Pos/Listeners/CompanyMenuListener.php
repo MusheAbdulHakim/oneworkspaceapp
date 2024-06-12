@@ -14,7 +14,7 @@ class CompanyMenuListener
         $module = 'Pos';
         $menu = $event->menu;
         $menu->add([
-            'category' => 'General',
+            'category' => 'Dashboard',
             'title' => __('POS Dashboard'),
             'icon' => '',
             'name' => 'pos-dashboard',
@@ -27,11 +27,11 @@ class CompanyMenuListener
             'permission' => 'pos dashboard manage'
         ]);
         $menu->add([
-            'category' => 'Sales',
+            'category' => 'Erp-operation',
             'title' => __('POS'),
             'icon' => 'grid-dots',
             'name' => 'pos',
-            'parent' => null,
+            'parent' => 'erp-operations',
             'order' => 475,
             'ignore_if' => [],
             'depend_on' => [],
@@ -42,7 +42,7 @@ class CompanyMenuListener
 
 
         $menu->add([
-            'category' => 'Sales',
+            'category' => 'Erp-operation',
             'title' => __('Add POS'),
             'icon' => '',
             'name' => 'add-pos',
@@ -55,7 +55,7 @@ class CompanyMenuListener
             'permission' => 'pos add manage'
         ]);
         $menu->add([
-            'category' => 'Sales',
+            'category' => 'Erp-operation',
             'title' => __('POS Order'),
             'icon' => '',
             'name' => 'pos-order',
@@ -68,7 +68,7 @@ class CompanyMenuListener
             'permission' => 'pos add manage'
         ]);
         $menu->add([
-            'category' => 'Sales',
+            'category' => 'Erp-operation',
             'title' => __('Print Barcode'),
             'icon' => '',
             'name' => 'pos-print-barcode',
@@ -81,7 +81,7 @@ class CompanyMenuListener
             'permission' => 'pos add manage'
         ]);
         $menu->add([
-            'category' => 'Sales',
+            'category' => 'Erp-operation',
             'title' => __('Report'),
             'icon' => '',
             'name' => 'pos-reports',
@@ -96,7 +96,7 @@ class CompanyMenuListener
 
 
         $menu->add([
-            'category' => 'Sales',
+            'category' => 'Erp-operation',
             'title' => __('Pos Daily/Monthly Report'),
             'icon' => '',
             'name' => 'pos-report',
@@ -109,7 +109,7 @@ class CompanyMenuListener
             'permission' => 'report pos'
         ]);
         $menu->add([
-            'category' => 'Sales',
+            'category' => 'Erp-operation',
             'title' => __('Pos VS Purchase Report'),
             'icon' => '',
             'name' => 'pos-vs-purchase-report',

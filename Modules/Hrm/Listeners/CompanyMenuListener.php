@@ -14,7 +14,7 @@ class CompanyMenuListener
         $module = 'Hrm';
         $menu = $event->menu;
         $menu->add([
-            'category' => 'General',
+            'category' => 'Dashboard',
             'title' => __('HRM Dashboard'),
             'icon' => '',
             'name' => 'hrm-dashboard',
@@ -27,11 +27,11 @@ class CompanyMenuListener
             'permission' => 'hrm dashboard manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('HRM'),
             'icon' => 'ti ti-3d-cube-sphere',
             'name' => 'hrm',
-            'parent' => null,
+            'parent' => 'erp-operations',
             'order' => 450,
             'ignore_if' => [],
             'depend_on' => [],
@@ -40,7 +40,7 @@ class CompanyMenuListener
             'permission' => 'hrm manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Employee'),
             'icon' => '',
             'name' => 'employee',
@@ -53,7 +53,7 @@ class CompanyMenuListener
             'permission' => 'employee manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Payroll'),
             'icon' => '',
             'name' => 'payroll',
@@ -66,7 +66,7 @@ class CompanyMenuListener
             'permission' => 'sidebar payroll manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Set salary'),
             'icon' => '',
             'name' => 'set-salary',
@@ -79,7 +79,7 @@ class CompanyMenuListener
             'permission' => 'setsalary manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Payslip'),
             'icon' => '',
             'name' => 'payslip',
@@ -92,7 +92,7 @@ class CompanyMenuListener
             'permission' => 'setsalary pay slip manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Attendance'),
             'icon' => '',
             'name' => 'attendance',
@@ -105,7 +105,7 @@ class CompanyMenuListener
             'permission' => 'attendance manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Mark Attendance'),
             'icon' => '',
             'name' => 'mark-attendance',
@@ -118,7 +118,7 @@ class CompanyMenuListener
             'permission' => 'attendance manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Bulk Attendance'),
             'icon' => '',
             'name' => 'bulk-attendance',
@@ -131,7 +131,7 @@ class CompanyMenuListener
             'permission' => 'bulk attendance manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Manage Leave'),
             'icon' => '',
             'name' => 'manage-leave',
@@ -144,7 +144,7 @@ class CompanyMenuListener
             'permission' => 'leave manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('HR Admin'),
             'icon' => '',
             'name' => 'hr-admin',
@@ -157,7 +157,7 @@ class CompanyMenuListener
             'permission' => 'sidebar hr admin manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Award'),
             'icon' => '',
             'name' => 'award',
@@ -170,7 +170,7 @@ class CompanyMenuListener
             'permission' => 'award manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Transfer'),
             'icon' => '',
             'name' => 'transfer',
@@ -183,7 +183,7 @@ class CompanyMenuListener
             'permission' => 'transfer manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Resignation'),
             'icon' => '',
             'name' => 'resignation',
@@ -196,7 +196,7 @@ class CompanyMenuListener
             'permission' => 'resignation manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Trip'),
             'icon' => '',
             'name' => 'trip',
@@ -209,7 +209,7 @@ class CompanyMenuListener
             'permission' => 'travel manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Promotion'),
             'icon' => '',
             'name' => 'promotion',
@@ -222,7 +222,7 @@ class CompanyMenuListener
             'permission' => 'promotion manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Complaints'),
             'icon' => '',
             'name' => 'complaints',
@@ -235,7 +235,7 @@ class CompanyMenuListener
             'permission' => 'complaint manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Warning'),
             'icon' => '',
             'name' => 'warning',
@@ -248,7 +248,7 @@ class CompanyMenuListener
             'permission' => 'warning manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Termination'),
             'icon' => '',
             'name' => 'termination',
@@ -261,7 +261,7 @@ class CompanyMenuListener
             'permission' => 'termination manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Announcement'),
             'icon' => '',
             'name' => 'announcement',
@@ -274,7 +274,7 @@ class CompanyMenuListener
             'permission' => 'announcement manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Holidays'),
             'icon' => '',
             'name' => 'holidays',
@@ -287,7 +287,7 @@ class CompanyMenuListener
             'permission' => 'holiday manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Event'),
             'icon' => '',
             'name' => 'event',
@@ -300,7 +300,7 @@ class CompanyMenuListener
             'permission' => 'event manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Document'),
             'icon' => '',
             'name' => 'document',
@@ -313,7 +313,7 @@ class CompanyMenuListener
             'permission' => 'document manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Company Policy'),
             'icon' => '',
             'name' => 'company-policy',
@@ -326,7 +326,7 @@ class CompanyMenuListener
             'permission' => 'companypolicy manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('System Setup'),
             'icon' => '',
             'name' => 'system-setup',
@@ -339,7 +339,7 @@ class CompanyMenuListener
             'permission' => 'branch manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Report'),
             'icon' => '',
             'name' => 'hrm-report',
@@ -352,7 +352,7 @@ class CompanyMenuListener
             'permission' => 'sidebar hrm report manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Monthly Attendance'),
             'icon' => '',
             'name' => 'monthly-attendance',
@@ -365,7 +365,7 @@ class CompanyMenuListener
             'permission' => 'attendance report manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Leave'),
             'icon' => '',
             'name' => 'leave',
@@ -378,7 +378,7 @@ class CompanyMenuListener
             'permission' => 'leave report manage'
         ]);
         $menu->add([
-            'category' => 'HR',
+            'category' => 'Erp-operation',
             'title' => __('Payroll'),
             'icon' => '',
             'name' => 'report-payroll',

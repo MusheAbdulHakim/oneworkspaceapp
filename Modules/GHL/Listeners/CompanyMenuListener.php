@@ -14,10 +14,11 @@ class CompanyMenuListener
         $module = 'GHL';
         $menu = $event->menu;
         $menu->add([
+            'category' => 'Erp-operation',
             'title' => 'GHL',
             'icon' => 'home',
             'name' => 'ghl',
-            'parent' => null,
+            'parent' => 'erp-operations',
             'order' => 2,
             'ignore_if' => [],
             'depend_on' => [],

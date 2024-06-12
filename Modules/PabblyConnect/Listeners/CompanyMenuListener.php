@@ -14,10 +14,11 @@ class CompanyMenuListener
         $module = 'PabblyConnect';
         $menu = $event->menu;
         $menu->add([
+            'category' => 'Erp-operation',
             'title' => 'PabblyConnect',
             'icon' => 'home',
             'name' => 'pabblyconnect',
-            'parent' => null,
+            'parent' => 'erp-operations',
             'order' => 2,
             'ignore_if' => [],
             'depend_on' => [],
