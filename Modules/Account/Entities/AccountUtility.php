@@ -17,15 +17,20 @@ class AccountUtility extends Model
 {
     use HasFactory;
     public static $taxes = null;
-    
+
+
     public static function countCustomers()
     {
-        return Customer::where('workspace', '=', getActiveWorkSpace())->count();
+        if(!empty(getActiveWorkSpace())){
+            return Customer::where('workspace', '=', getActiveWorkSpace())->count();
+        }
     }
 
     public static function countVendors()
     {
-        return Vender::where('workspace', '=', getActiveWorkSpace())->count();
+        if(!empty(getActiveWorkSpace())){
+            return Vender::where('workspace', '=', getActiveWorkSpace())->count();
+        }
     }
 
     public static function countBills()
