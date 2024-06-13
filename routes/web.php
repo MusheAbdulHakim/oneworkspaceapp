@@ -1,38 +1,39 @@
 <?php
 
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\BanktransferController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\Company\SettingsController as CompanySettingsController;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\CustomDomainRequestController;
-use App\Http\Controllers\EmailTemplateController;
-use App\Http\Controllers\HelpdeskConversionController;
-use App\Http\Controllers\HelpdeskTicketController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\PurchaseController;
-use App\Http\Controllers\PurchaseDebitNoteController;
-use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PlanController;
-use App\Http\Controllers\ProposalController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SuperAdmin\SettingsController as SuperAdminSettingsController;
-use App\Http\Controllers\WarehouseTransferController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\WorkSpaceController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\BanktransferController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\EmailTemplateController;
+use App\Http\Controllers\HelpdeskTicketController;
 use App\Http\Controllers\ReferralProgramController;
+use App\Http\Controllers\PurchaseDebitNoteController;
+use App\Http\Controllers\WarehouseTransferController;
+use App\Http\Controllers\HelpdeskConversionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CustomDomainRequestController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Company\SettingsController as CompanySettingsController;
+use App\Http\Controllers\SuperAdmin\SettingsController as SuperAdminSettingsController;
+use App\Http\Controllers\EmbedsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -232,6 +233,11 @@ Route::middleware(['auth','verified'])->group(function () {
 
     Route::group(['middleware' => 'PlanModuleCheck:Account-Taskly'], function ()
     {
+        //page embeds
+        Route::get('DBoS', [EmbedsController::class, 'strategy'])->name('embeds.strategy');
+        Route::get('app-integrations', [EmbedsController::class, 'integrations'])->name('embeds.app-integrations');
+        Route::get('onboarding', [EmbedsController::class, 'onboarding'])->name('embeds.onboarding');
+
         // invoice
         Route::post('invoice/customer', [InvoiceController::class, 'customer'])->name('invoice.customer');
         Route::post('invoice-attechment/{id}', [InvoiceController::class, 'invoiceAttechment'])->name('invoice.file.upload');
