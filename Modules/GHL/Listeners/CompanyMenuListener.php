@@ -15,16 +15,28 @@ class CompanyMenuListener
         $menu = $event->menu;
         $menu->add([
             'category' => 'Erp-operation',
-            'title' => 'GHL',
-            'icon' => 'home',
-            'name' => 'ghl',
+            'title' => __('GoHighLevel'),
+            'icon' => 'location',
+            'name' => 'gohigh',
             'parent' => 'erp-operations',
-            'order' => 2,
+            'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => 'home',
+            'route' => '',
             'module' => $module,
-            'permission' => 'ghl manage'
+            // 'permission' => 'hrm manage'
+        ]);
+        $menu->add([
+            'title' => __('Dashboard'),
+            'icon' => '',
+            'name' => 'ghl-dashboard',
+            'parent' => 'gohigh',
+            'order' => 1,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'ghl.dashboard',
+            'module' => $module,
+            'permission' => ''
         ]);
     }
 }
