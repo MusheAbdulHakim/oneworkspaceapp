@@ -1,4 +1,4 @@
-<nav class="dash-sidebar light-sidebar {{ empty($admin_settings['site_transparent']) || $admin_settings['site_transparent'] == 'on' ? 'transprent-bg' : '' }}">
+<nav class="dash-sidebar light-sidebar shadow-lg {{ empty($admin_settings['site_transparent']) || $admin_settings['site_transparent'] == 'on' ? 'transprent-bg' : '' }}">
     <div class="navbar-wrapper">
         <div class="m-header main-logo">
             <a href="{{ route('home') }}" class="b-brand">
