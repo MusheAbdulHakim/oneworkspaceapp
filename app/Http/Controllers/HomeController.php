@@ -88,13 +88,14 @@ class HomeController extends Controller
                     return $item['parent'] === 'dashboard';
                 });
 
-                if ($dashboardItem) {
-                    $route = isset($dashboardItem['route']) ? $dashboardItem['route'] : null;
-                    if($route)
-                    {
-                        return redirect()->route($route);
-                    }
-                }
+                // if ($dashboardItem) {
+                //     $route = isset($dashboardItem['route']) ? $dashboardItem['route'] : null;
+                //     if($route)
+                //     {
+                //         return redirect()->route($route);
+                //     }
+                // }
+                // dd(ActivatedModule());
                 return view('dashboard');
             }
         }
