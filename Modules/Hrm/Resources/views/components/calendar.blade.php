@@ -77,7 +77,7 @@
 @if (!in_array(Auth::user()->type, Auth::user()->not_emp_type))
     <div class="col-xxl-12">
         <div class="row">
-            <div class="col-xxl-7">
+            <div class="col-xxl-12">
                 <div class="card">
                     <div class="card-header">
                         <h5>{{ __("Holiday's ") }}</h5>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-5">
+            <div class="col-xxl-12">
                 <div class="card" style="height: 232px;">
                     <div class="card-header">
                         <h5>{{ __('Mark Attandance ') }}<span>{{ company_date_formate(date('Y-m-d')) }}</span></h5>

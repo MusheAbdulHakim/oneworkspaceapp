@@ -7,9 +7,6 @@
     <div class="col-12">
         <x-active-modules />
     </div>
-    <div class="col-12">
-
-    </div>
     @php
         $activeModules = ActivatedModule();
     @endphp

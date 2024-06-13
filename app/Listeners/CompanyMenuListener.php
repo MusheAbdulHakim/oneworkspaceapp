@@ -70,7 +70,7 @@ class CompanyMenuListener
             'category' => 'General',
             'title' => __('ERP & Operations'),
             'icon' => 'stack-2',
-            'name' => 'erp-operations',
+            'name' => 'operations',
             'parent' => null,
             'order' => 5,
             'ignore_if' => [],
@@ -84,7 +84,7 @@ class CompanyMenuListener
             'title' => __('Proposal'),
             'icon' => 'replace',
             'name' => 'proposal',
-            'parent' => 'erp-operations',
+            'parent' => 'operations',
             'order' => 1,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
@@ -97,7 +97,7 @@ class CompanyMenuListener
             'title' => __('Invoice'),
             'icon' => 'file-invoice',
             'name' => 'invoice',
-            'parent' => 'erp-operations',
+            'parent' => 'operations',
             'order' => 2,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
@@ -111,7 +111,7 @@ class CompanyMenuListener
             'title' => __('Purchases'),
             'icon' => 'shopping-cart',
             'name' => 'purchases',
-            'parent' => 'erp-operations',
+            'parent' => 'operations',
             'order' => 3,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
@@ -267,12 +267,39 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
+
+        $menu->add([
+            'category' => 'General',
+            'title' => __('Helpdesk'),
+            'icon' => 'headphones',
+            'name' => 'helpdesk',
+            'parent' => null,
+            'order' => 13,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => 'helpdesk ticket manage'
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('HelpDesk'),
+            'icon' => 'headphones',
+            'name' => 'main-helpdesk',
+            'parent' => 'helpdesk',
+            'order' => 13,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'helpdesk.index',
+            'module' => $module,
+            'permission' => 'helpdesk ticket manage'
+        ]);
         $menu->add([
             'category' => 'General',
             'title' => __('Knowledgebase'),
             'icon' => 'book',
             'name' => 'knowledgebase',
-            'parent' => null,
+            'parent' => 'helpdesk',
             'order' => 11,
             'ignore_if' => [],
             'depend_on' => [],
@@ -285,26 +312,13 @@ class CompanyMenuListener
             'title' => __('Messenger'),
             'icon' => 'brand-hipchat',
             'name' => 'messenger',
-            'parent' => null,
-            'order' => 12,
+            'parent' => 'helpdesk',
+            'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'chatify',
             'module' => $module,
             'permission' => 'user chat manage'
-        ]);
-        $menu->add([
-            'category' => 'General',
-            'title' => __('Helpdesk'),
-            'icon' => 'headphones',
-            'name' => 'helpdesk',
-            'parent' => null,
-            'order' => 13,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => 'helpdesk.index',
-            'module' => $module,
-            'permission' => 'helpdesk ticket manage'
         ]);
         $menu->add([
             'category' => 'Settings',

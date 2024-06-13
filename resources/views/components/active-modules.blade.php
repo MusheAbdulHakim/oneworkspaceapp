@@ -16,18 +16,15 @@
 
                             @endif
                             @if ($module == 'Account')
-                            <p class="text-muted text-sm mb-0">{{ __('Income Today') }}</p>
-                            <h5 class="mb-0 text-success">
+                            <p class="text-sm mb-0">{{ __('Income Today') }}</p>
+                            <h5 class="mb-0">
                                 {{ currency_format_with_sym(\Modules\Account\Entities\AccountUtility::todayIncome()) }}
                             </h5>
-                            <p class="text-muted text-sm mb-0">{{ __('Customers') }}</p>
-                            <h5 class="mb-0 text-success">
-                                {{ currency_format_with_sym(\Modules\Account\Entities\AccountUtility::countCustomers()) }}
+                            <p class="text-sm mb-0">{{ __('Customers') }}</p>
+                            <h5 class="mb-0">
+                                {{ (\Modules\Account\Entities\AccountUtility::countCustomers()) }}
                             </h5>
-                            <p class="text-muted text-sm mb-0">{{ __('Customers') }}</p>
-                            <h5 class="mb-0 text-success">
-                                {{ currency_format_with_sym(\Modules\Account\Entities\AccountUtility::countCustomers()) }}
-                            </h5>
+
                             @endif
                         </div>
                     </div>
