@@ -162,7 +162,6 @@ if (!function_exists('categoryIcon')) {
         'ERP & Operations' => 'shopping-cart',
         'Automation' => 'brand-gitlab',
         'General' => 'indent-increase',
-        'Dashboard' => 'home',
         'Erp-operation' => 'apps',
         'Addon Manager' => 'apps',
         'Finance' => 'chart-dots',
