@@ -14,10 +14,10 @@ class CompanyMenuListener
         $module = 'Base';
         $menu = $event->menu;
         $menu->add([
-            'category' => 'Start-here',
-            'title' => __('Start Here'),
-            'icon' => 'home',
-            'name' => 'start-here',
+            'category' => 'General',
+            'title' => __('Dashboards'),
+            'icon' => 'dashboard',
+            'name' => 'dashboard',
             'parent' => null,
             'order' => 1,
             'ignore_if' => [],
@@ -28,35 +28,35 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('Dashboard'),
-            'icon' => 'dashboard',
-            'name' => 'dashboard',
+            'title' => __('Onboarding'),
+            'icon' => 'shopping-cart',
+            'name' => 'onboarding',
             'parent' => null,
             'order' => 2,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.onboarding',
             'module' => $module,
             'permission' => ''
         ]);
         $menu->add([
-            'category' => 'Marketing',
-            'title' => __('Marketing'),
-            'icon' => 'map',
-            'name' => 'marketing',
+            'category' => 'General',
+            'title' => __('DBoS Strategy'),
+            'icon' => 'shopping-cart',
+            'name' => 'strategy',
             'parent' => null,
             'order' => 3,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.strategy',
             'module' => $module,
             'permission' => ''
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
-            'title' => __('ERP Operations'),
-            'icon' => 'stack-2',
-            'name' => 'erp-operations',
+            'category' => 'General',
+            'title' => __('Marketing Hub'),
+            'icon' => 'map',
+            'name' => 'marketing',
             'parent' => null,
             'order' => 4,
             'ignore_if' => [],
@@ -65,11 +65,12 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
+
         $menu->add([
-            'category' => 'Automation',
-            'title' => __('Automation Hub'),
-            'icon' => 'replace',
-            'name' => 'automation-hub',
+            'category' => 'General',
+            'title' => __('ERP & Operations'),
+            'icon' => 'stack-2',
+            'name' => 'erp-operations',
             'parent' => null,
             'order' => 5,
             'ignore_if' => [],
@@ -79,93 +80,12 @@ class CompanyMenuListener
             'permission' => ''
         ]);
         $menu->add([
-            'category' => 'App-integration',
-            'title' => __('App Integrations'),
-            'icon' => 'pin',
-            'name' => 'app-integrations',
-            'parent' => null,
-            'order' => 6,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => '',
-            'module' => $module,
-            'permission' => ''
-        ]);
-        $menu->add([
-            'category' => 'Marketplace',
-            'title' => __('Marketplaces'),
-            'icon' => 'cloud',
-            'name' => 'marketplace',
-            'parent' => null,
-            'order' => 7,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => '',
-            'module' => $module,
-            'permission' => ''
-        ]);
-        $menu->add([
-            'category' => 'Knowledgebase',
-            'title' => __('Knowledgebase'),
-            'icon' => 'book',
-            'name' => 'knowledgebase',
-            'parent' => null,
-            'order' => 8,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => '',
-            'module' => $module,
-            'permission' => ''
-        ]);
-
-        $menu->add([
-            'category' => 'Erp-operation',
-            'title' => __('User Management'),
-            'icon' => 'users',
-            'name' => 'user-management',
-            'parent' => 'my-settings',
-            'order' => 50,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => '',
-            'module' => $module,
-            'permission' => 'user manage'
-        ]);
-
-        //old menu
-        $menu->add([
-            'category' => 'Setting',
-            'title' => __('User'),
-            'icon' => '',
-            'name' => 'user',
-            'parent' => 'user-management',
-            'order' => 10,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => 'users.index',
-            'module' => $module,
-            'permission' => 'user manage'
-        ]);
-        $menu->add([
-            'category' => 'Erp-operation',
-            'title' => __('Role'),
-            'icon' => '',
-            'name' => 'role',
-            'parent' => 'user-management',
-            'order' => 20,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => 'roles.index',
-            'module' => $module,
-            'permission' => 'roles manage'
-        ]);
-        $menu->add([
             'category' => 'Erp-operation',
             'title' => __('Proposal'),
             'icon' => 'replace',
             'name' => 'proposal',
             'parent' => 'erp-operations',
-            'order' => 150,
+            'order' => 1,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
             'route' => 'proposal.index',
@@ -178,15 +98,13 @@ class CompanyMenuListener
             'icon' => 'file-invoice',
             'name' => 'invoice',
             'parent' => 'erp-operations',
-            'order' => 200,
+            'order' => 2,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
             'route' => 'invoice.index',
             'module' => $module,
-        'permission' => 'invoice manage'
+            'permission' => 'invoice manage'
         ]);
-
-
 
         $menu->add([
             'category' => 'Erp-operation',
@@ -194,20 +112,20 @@ class CompanyMenuListener
             'icon' => 'shopping-cart',
             'name' => 'purchases',
             'parent' => 'erp-operations',
-            'order' => 250,
+            'order' => 3,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
             'route' => '',
             'module' => $module,
             'permission' => 'purchase manage'
         ]);
-          $menu->add([
+        $menu->add([
             'category' => 'Erp-operation',
             'title' => __('Purchase'),
             'icon' => '',
             'name' => 'purchase',
             'parent' => 'purchases',
-            'order' => 10,
+            'order' => 1,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
             'route' => 'purchases.index',
@@ -221,7 +139,7 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'warehouse',
             'parent' => 'purchases',
-            'order' => 15,
+            'order' => 2,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
             'route' => 'warehouses.index',
@@ -235,7 +153,7 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'transfer',
             'parent' => 'purchases',
-            'order' => 20,
+            'order' => 3,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'warehouses-transfer.index',
@@ -249,7 +167,7 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'reports',
             'parent' => 'purchases',
-            'order' => 25,
+            'order' => 4,
             'ignore_if' => [],
             'depend_on' => ['Account','Taskly'],
             'route' => '',
@@ -263,7 +181,7 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'purchase-monthly',
             'parent' => 'reports',
-            'order' => 10,
+            'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'reports.daily.purchase',
@@ -277,22 +195,98 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'warehouse-report',
             'parent' => 'reports',
-            'order' => 20,
+            'order' => 2,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'reports.warehouse',
             'module' => $module,
             'permission' => 'report warehouse'
         ]);
-
-
         $menu->add([
-            'category' => 'Communication',
+            'category' => 'General',
+            'title' => __('Customer Success'),
+            'icon' => 'stack-2',
+            'name' => 'customer-success',
+            'parent' => null,
+            'order' => 6,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('Process Automation'),
+            'icon' => 'replace',
+            'name' => 'process-automation',
+            'parent' => null,
+            'order' => 7,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('App Integrations'),
+            'icon' => 'pin',
+            'name' => 'app-integrations',
+            'parent' => null,
+            'order' => 8,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'embeds.app-integrations',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('Marketplaces'),
+            'icon' => 'cloud',
+            'name' => 'marketplace',
+            'parent' => null,
+            'order' => 9,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('Community'),
+            'icon' => 'users',
+            'name' => 'community',
+            'parent' => null,
+            'order' => 10,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('Knowledgebase'),
+            'icon' => 'book',
+            'name' => 'knowledgebase',
+            'parent' => null,
+            'order' => 11,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
             'title' => __('Messenger'),
             'icon' => 'brand-hipchat',
             'name' => 'messenger',
-            'parent' => '',
-            'order' => 1500,
+            'parent' => null,
+            'order' => 12,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'chatify',
@@ -300,12 +294,12 @@ class CompanyMenuListener
             'permission' => 'user chat manage'
         ]);
         $menu->add([
-            'category' => 'Settings',
+            'category' => 'General',
             'title' => __('Helpdesk'),
             'icon' => 'headphones',
             'name' => 'helpdesk',
             'parent' => null,
-            'order' => 1900,
+            'order' => 13,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'helpdesk.index',
@@ -314,24 +308,25 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'Settings',
-            'title' => __('My Settings'),
+            'title' => __('Settings'),
             'icon' => 'settings',
             'name' => 'settings',
             'parent' => null,
-            'order' => 2000,
+            'order' => 14,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => '',
             'module' => $module,
             'permission' => 'setting manage'
         ]);
+
         $menu->add([
             'category' => 'Settings',
             'title' => __('System Settings'),
             'icon' => '',
             'name' => 'system-settings',
             'parent' => 'settings',
-            'order' => 10,
+            'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'settings.index',
@@ -344,7 +339,7 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'setup-subscription-plan',
             'parent' => 'settings',
-            'order' => 20,
+            'order' => 2,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'plans.index',
@@ -357,7 +352,7 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'referral-program',
             'parent' => 'settings',
-            'order' => 25,
+            'order' => 3,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'referral-program.company',
@@ -370,7 +365,7 @@ class CompanyMenuListener
             'icon' => '',
             'name' => 'order',
             'parent' => 'settings',
-            'order' => 30,
+            'order' => 4,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'plan.order.index',
@@ -378,5 +373,44 @@ class CompanyMenuListener
             'permission' => 'plan orders'
         ]);
 
+        $menu->add([
+            'category' => 'Settings',
+            'title' => __('User Management'),
+            'icon' => 'users',
+            'name' => 'user-management',
+            'parent' => 'settings',
+            'order' => 5,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => 'user manage'
+        ]);
+        $menu->add([
+            'category' => 'Settings',
+            'title' => __('User'),
+            'icon' => '',
+            'name' => 'user',
+            'parent' => 'user-management',
+            'order' => 1,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'users.index',
+            'module' => $module,
+            'permission' => 'user manage'
+        ]);
+        $menu->add([
+            'category' => 'Settings',
+            'title' => __('Role'),
+            'icon' => '',
+            'name' => 'role',
+            'parent' => 'user-management',
+            'order' => 2,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'roles.index',
+            'module' => $module,
+            'permission' => 'roles manage'
+        ]);
     }
 }
