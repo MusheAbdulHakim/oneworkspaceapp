@@ -18095,7 +18095,7 @@ body.theme-10 .card .card-header h5:after, body.theme-10 .card .card-header .h5:
 
 .dash-sidebar .dash-micon {
     margin-right: 15px;
-    border-radius: 5px;
+    border-radius: 0px;
     height: 35px;
     width: 35px;
     display: inline-flex;

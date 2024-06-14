@@ -96,7 +96,7 @@ if (!function_exists('generateMenu')) {
             if(!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on'){
                 $icon = isset(categoryIcon()[$category]) ? categoryIcon()[$category] : 'home';
                 $html .= '<li class="dash-item dash-caption">
-                        <label>'.$category.'</label>
+                        <label class="text-black text-dark"><b>'.$category.'</b></label>
                         <i class="ti ti-'.$icon.'"></i>
                       </li>';
             }
