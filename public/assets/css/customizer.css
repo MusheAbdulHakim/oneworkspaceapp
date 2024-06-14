@@ -296,7 +296,7 @@ File: style.css
 }
 
 .dash-sidebar.light-sidebar .dash-navbar > .dash-item > .dash-link {
-    border-radius: 12px;
+    border-radius: 0px;
     margin-left: 15px;
     margin-right: 15px;
     padding: 7px 10px 7px 7px;
@@ -305,13 +305,12 @@ File: style.css
 }
 
 .dash-sidebar.light-sidebar .dash-link {
-    color: #333333;
+    color: #000000;
     font-size: 14px;
 }
 
 .dash-sidebar.light-sidebar .dash-link .dash-micon {
     background-color: #fff;
-    box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1);
 }
 
 .dash-sidebar.light-sidebar .dash-link .dash-mtext {

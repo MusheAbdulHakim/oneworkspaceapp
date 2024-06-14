@@ -18274,7 +18274,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-item:before {
     height: 8px;
     border: 2px solid #ced4dc;
     border-right-color: #51459d;
-    border-radius: 50%;
+    border-radius: 0%;
     z-index: 1;
     transform: rotate(45deg);
     transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
