@@ -1,7 +1,9 @@
 @extends('layouts.main')
+
 @section('page-title')
-{{ __('Strategy')}}
+{{ __('Marketplace')}}
 @endsection
+
 @push('css')
     <style>
         iframe {
@@ -14,10 +16,9 @@
 @endpush
 @section('content')
 <div class="row">
-    <iframe class="h-vh w-100" src="https://pages.oneworkspace.io/business-strategy"
+    <iframe class="h-vh w-100" src="https://marketplace.oneworkspace.io"
     seamless="seamless" frameborder="0"></iframe>
 </div>
 @endsection
-
 
 

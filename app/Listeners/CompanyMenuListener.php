@@ -211,7 +211,7 @@ class CompanyMenuListener
             'order' => 6,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.customer-success',
             'module' => $module,
             'permission' => ''
         ]);
@@ -224,7 +224,7 @@ class CompanyMenuListener
             'order' => 7,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.process-automation',
             'module' => $module,
             'permission' => ''
         ]);
@@ -250,7 +250,7 @@ class CompanyMenuListener
             'order' => 9,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.marketplace',
             'module' => $module,
             'permission' => ''
         ]);
@@ -263,7 +263,7 @@ class CompanyMenuListener
             'order' => 10,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.community',
             'module' => $module,
             'permission' => ''
         ]);
@@ -303,7 +303,7 @@ class CompanyMenuListener
             'order' => 11,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.knowledgebase',
             'module' => $module,
             'permission' => ''
         ]);

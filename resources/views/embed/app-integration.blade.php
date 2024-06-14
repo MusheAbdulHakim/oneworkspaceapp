@@ -17,7 +17,8 @@
 @endpush
 @section('content')
 <div class="row">
-    {{-- <iframe class="h-vh w-100" src="https://pages.oneworkspace.io/onboarding" frameborder="0"></iframe> --}}
+    <iframe class="h-vh w-100" src="https://integrations.oneworkspace.io"
+    seamless="seamless" frameborder="0"></iframe>
 </div>
 @endsection
 

@@ -18,4 +18,24 @@ class EmbedsController extends Controller
     public function onboarding(){
         return view('embed.onboarding');
     }
+
+    public function marketplace(){
+        return view("embed.marketplace");
+    }
+
+    public function community(){
+        return view('embed.community');
+    }
+
+    public function processAutomation(){
+        return view('embed.process-automation');
+    }
+
+    public function knowledgebase(){
+        return view('embed.knowledgebase');
+    }
+
+    public function customerSuccess(){
+        return view('embed.customsuccess');
+    }
 }
