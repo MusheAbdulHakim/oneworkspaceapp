@@ -97,7 +97,7 @@ if (!function_exists('generateMenu')) {
                 $icon = isset(categoryIcon()[$category]) ? categoryIcon()[$category] : 'home';
                 $html .= '<li class="dash-item dash-caption">
                         <label class="text-black text-dark"><b>'.$category.'</b></label>
-                        <i class="ti ti-'.$icon.'"></i>
+                        <span class="material-icons">storefront</span>
                       </li>';
             }
 
@@ -132,7 +132,9 @@ if (!function_exists('generateSubMenu')) {
             $html .= '<a href="' . (!empty($item['route']) ? route($item['route']) : '#!') . '" class="dash-link">';
 
             if ($item['parent'] == null) {
-                $html .= ' <span class="dash-micon"><i class="ti ti-' . $item['icon'] . '"></i></span>
+                $html .= ' <span class="dash-micon">
+                <span class="material-icons">storefront</span>
+                </span>
                 <span class="dash-mtext">';
             }
             $html .= __($item['title']) . '</span>';
