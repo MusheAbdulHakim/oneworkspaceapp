@@ -1,9 +1,12 @@
 <div class="row">
     <h5>Active Modules</h5>
     @if (!empty(ActivatedModule()))
+        @php
+            $exceptions = ['ProductService','Stripe','Paypal'];
+        @endphp
         @foreach (ActivatedModule() as $module)
-        @if ($module != 'ProductService')
-        <div class="col-lg-4 col-md-6 col-12">
+        @if (!in_array($module, $exceptions))
+        <div class="col-lg-3 col-md-4 col-12">
             <div class="card">
                 <h6 class="card-header bg-secondary text-center text-white">
                  {{ $module }}
