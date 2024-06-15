@@ -8,6 +8,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\EmbedsController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\InvoiceController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\WorkSpaceController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PinnedAppsController;
 use App\Http\Controllers\BanktransferController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\EmailTemplateController;
@@ -33,7 +35,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Company\SettingsController as CompanySettingsController;
 use App\Http\Controllers\SuperAdmin\SettingsController as SuperAdminSettingsController;
-use App\Http\Controllers\EmbedsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -211,6 +212,10 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('modules-enable', [ModuleController::class, 'enable'])->name('module.enable');
     Route::get('cancel/add-on/{name}', [ModuleController::class, 'CancelAddOn'])->name('cancel.add.on');
     // End Module Install
+
+    //Pin Apps(modules)
+    Route::get('modules/pin', [PinnedAppsController::class, 'index'])->name('pinned-apps.index');
+    Route::post('modules/pin', [PinnedAppsController::class, 'index'])->name('pinned-apps.pin');
 
     // Email Templates
     Route::resource('email-templates', EmailTemplateController::class);
