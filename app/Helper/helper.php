@@ -97,7 +97,7 @@ if (!function_exists('generateMenu')) {
                 $icon = isset(categoryIcon()[$category]) ? categoryIcon()[$category] : 'home';
                 $html .= '<li class="dash-item dash-caption">
                         <label class="text-black text-dark"><b>'.$category.'</b></label>
-                        <span class="material-icons">storefront</span>
+                        <span class="material-icons text-black">storefront</span>
                       </li>';
             }
 
@@ -133,7 +133,7 @@ if (!function_exists('generateSubMenu')) {
 
             if ($item['parent'] == null) {
                 $html .= ' <span class="dash-micon">
-                <span class="material-icons">storefront</span>
+                <span class="material-icons text-black">storefront</span>
                 </span>
                 <span class="dash-mtext">';
             }
