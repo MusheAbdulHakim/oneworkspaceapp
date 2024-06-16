@@ -26,11 +26,10 @@
             <div class="row">
                 <x-dashboard.pinned-apps />
             </div>
-            <div class="row" style="background-color: #888686">
-                <h4>My Pinned Apps</h4>
+            <div class="row">
+                <h4 class="my-3">My Pinned Apps</h4>
                 @php
                     $pin_categories = \App\Models\PinnedAppCategory::where('user_id',auth()->user()->id)->get();
-                    $pinned_apps = \App\Models\PinnedApp::where('user_id',auth()->user()->id)->get();
                 @endphp
                 @if (!empty($pin_categories) && ($pin_categories->count() > 0))
                 @foreach ($pin_categories as $category)
@@ -45,7 +44,7 @@
                                 </div>
                             </div>
                             <div>
-                                <span class="position-absolute top-70 start-100 translate-middle p-2 bg-danger text-white rounded-circle">
+                                <span style="left: 90%; top: 90%;" class="position-absolute translate-middle p-2 bg-danger text-white rounded-circle">
                                     {{ $category->apps->count() }}
                                 </span>
                             </div>
