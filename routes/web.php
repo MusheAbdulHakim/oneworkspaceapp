@@ -19,7 +19,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\WorkSpaceController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\PinnedAppsController;
+use App\Http\Controllers\PinAppsController;
 use App\Http\Controllers\BanktransferController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\EmailTemplateController;
@@ -214,8 +214,11 @@ Route::middleware(['auth','verified'])->group(function () {
     // End Module Install
 
     //Pin Apps(modules)
-    Route::get('modules/pin', [PinnedAppsController::class, 'index'])->name('pinned-apps.index');
-    Route::post('modules/pin', [PinnedAppsController::class, 'index'])->name('pinned-apps.pin');
+    Route::resource('pin-apps', PinAppsController::class);
+    Route::get('apps/pin/{module?}', [PinAppsController::class, 'create'])->name('apps.pin');
+    Route::get('apps/pin-category/{category}', [PinAppsController::class, 'createCategory'])->name('app-pin.category');
+    Route::delete('delete/pin-category/{category}', [PinAppsController::class, 'deleteCategory'])->name('app-pin.category.destroy');
+    Route::get('apps/edit/{module?}/pin', [PinAppsController::class, 'edit'])->name('pin-app.edit');
 
     // Email Templates
     Route::resource('email-templates', EmailTemplateController::class);

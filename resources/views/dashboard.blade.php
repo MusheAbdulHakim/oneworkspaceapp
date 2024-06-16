@@ -1,7 +1,14 @@
 @extends('layouts.main')
+
 @section('page-title')
 {{ __('Dashboard')}}
 @endsection
+
+@push('css')
+<link rel="stylesheet" href="{{ asset('js/owlcarousel/assets/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('js/owlcarousel/assets/owl.theme.default.min.css') }}">
+@endpush
+
 @section('content')
 
 <div class="row">
@@ -15,6 +22,54 @@
             </div>
             <div class="row">
                 <x-dashboard.addons />
+            </div>
+            <div class="row">
+                <x-dashboard.pinned-apps />
+            </div>
+            <div class="row" style="background-color: #888686">
+                <h4>My Pinned Apps</h4>
+                @php
+                    $pin_categories = \App\Models\PinnedAppCategory::where('user_id',auth()->user()->id)->get();
+                    $pinned_apps = \App\Models\PinnedApp::where('user_id',auth()->user()->id)->get();
+                @endphp
+                @if (!empty($pin_categories) && ($pin_categories->count() > 0))
+                @foreach ($pin_categories as $category)
+                <div class="col-2">
+                    <a data-ajax-popup="true"
+                        data-title="{{ __('Pin App') }}"
+                        data-url="{{ route('app-pin.category', $category->id) }}" data-toggle="tooltip" href="#">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="theme-avtar">
+                                    <span class="text-black"><i class="ti ti-plus"></i></span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="position-absolute top-70 start-100 translate-middle p-2 bg-danger text-white rounded-circle">
+                                    {{ $category->apps->count() }}
+                                </span>
+                            </div>
+                        </div>
+                        <h6 class="text-center">{{ $category->name }}</h6>
+                    </a>
+                </div>
+                @endforeach
+                <div class="col-2">
+                    <a data-ajax-popup="true" data-title="{{ __('Pin App') }}"
+                        data-url="{{ route('apps.pin') }}" data-toggle="tooltip" href="#">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="theme-avtar">
+                                        <span class="text-black"><i class="ti ti-plus"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-center">Add New Pin</h6>
+                    </a>
+                </div>
+                @endif
             </div>
             <div class="row">
                 @php
@@ -153,3 +208,8 @@
     </div>
 </div>
 @endsection
+
+
+@push('scripts')
+<script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
+@endpush

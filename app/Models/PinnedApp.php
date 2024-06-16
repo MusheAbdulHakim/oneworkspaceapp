@@ -10,8 +10,12 @@ class PinnedApp extends Model
     use HasFactory;
 
     protected $fillable = [
-        'module','user_id',
+        'pinned_app_category_id','module','user_id',
     ];
+
+    public function category(){
+        return $this->belongsTo(PinnedAppCategory::class, 'pinned_app_category_id');
+    }
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');

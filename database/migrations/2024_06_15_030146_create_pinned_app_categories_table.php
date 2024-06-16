@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pinned_apps', function (Blueprint $table) {
+        Schema::create('pinned_app_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pinned_app_category_id')->nullable()->constrained('pinned_app_categories')->onDelete('cascade');
-            $table->string('module');
+            $table->string('name');
             $table->integer('user_id');
             $table->timestamps();
         });
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pinned_apps');
+        Schema::dropIfExists('pinned_app_categories');
     }
 };
