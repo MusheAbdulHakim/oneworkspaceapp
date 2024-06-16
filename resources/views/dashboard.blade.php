@@ -14,53 +14,7 @@
                 </div>
             </div>
             <div class="row">
-                <h4>Oneworkspace Addons</h4>
-                @if (!empty(ActivatedModule()))
-                    @php
-                        $exceptions = ['ProductService','Stripe','Paypal'];
-                    @endphp
-                    <div class="col-12">
-                        {{-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                        </div> --}}
-                        <div class="row">
-                            @foreach (ActivatedModule() as $i => $module)
-                                @php
-                                    $module = Module::find($module);
-                                @endphp
-                                @if (!in_array($module, $exceptions))
-                                <div class="col-2 {{ $i == '0' ? 'active': '' }} product-card">
-                                    <a href="{{ route('software.details',Module_Alias_Name($module->getName())) }}" target="_new">
-                                        <div class="card manager-card roundedf">
-                                            <div class="theme-avtar justify-content-center">
-                                                <img src="{{ get_module_img($module->getName()) }}"
-                                                    alt="{{ $module->getName() }}" class="img-user"
-                                                    style="max-width: 100%">
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                @endif
-                                @endforeach
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <h3>Pinned Apps</h3>
-                        <x-pin-apps />
-                    </div>
-
-                @endif
+                <x-dashboard.addons />
             </div>
             <div class="row">
                 @php
