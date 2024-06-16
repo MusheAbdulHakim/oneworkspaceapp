@@ -38,6 +38,7 @@
             loop:true,
             margin: 5,
             items:6,
+            responsiveClass:true,
             autoplayHoverPause:true,
         });
     </script>
