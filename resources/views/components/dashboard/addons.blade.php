@@ -15,7 +15,7 @@
                         <div class="d-flex align-items-center justify-content-center">
                             <div class="theme-avtar">
                                 <img src="{{ get_module_img($module->getName()) }}"
-                                    alt="{{ $module->getName() }}" class="img-user">
+                                    alt="{{ $module->getName() }}" style="max-width: 100%;" class="img-user">
                             </div>
                         </div>
                     </div>
