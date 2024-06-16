@@ -192,16 +192,34 @@
         </div>
     </div>
     <div class="col-md-4 col-12" style="background-color: #ebebeb; border-top-left-radius: 15px;">
+        @php
+            $events = App\Models\CalendarEvent::get()->map(function (App\Models\CalendarEvent $model) {
+                return [
+                    'id' => $model->id,
+                    'title' => $model->title,
+                    'description' => $model->description,
+                    'start' => $model->startDate,
+                    'end' => $model->endDate,
+                    'url' => $model->url,
+                ];
+            })->all();
+        @endphp
         <div class="row">
             <div class="card shadow rounded ps-3 pe-3 m-3">
-                <x-dashboard.calendar />
+                <x-dashboard.calendar :events="$events" />
             </div>
         </div>
         <div class="row">
-            <div class="card shadow rounded p-3 mx-3" style="background-color: #888686;">
-                <h5>Virtual Office Activity</h5>
-                <a href="#"><h5 class="link">June 15, 2024</h5></a>
-                <p>Your solo plan subscribtion was automatically renewed using your payment method.</p>
+            <div style="height: 90vh; overflow-y: auto;">
+                @foreach ($events as $event)
+                    <div class="card shadow rounded p-3 mx-3" style="background-color: #888686;">
+                        <h5>{{ $event['title'] }}</h5>
+                        <a href="{{ $event['url'] ?? '#' }}" {{ !empty($event['url']) ? 'target="_blank"': '' }}><h5 class="link">{{ $event['start'] }} - {{ $event['end'] }}</h5></a>
+                        <p>
+                            {{ $event['description'] }}
+                        </p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

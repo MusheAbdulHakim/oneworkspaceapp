@@ -20,6 +20,7 @@ use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\WorkSpaceController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PinAppsController;
+use App\Http\Controllers\CalendarEventsController;
 use App\Http\Controllers\BanktransferController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\EmailTemplateController;
@@ -212,6 +213,10 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('modules-enable', [ModuleController::class, 'enable'])->name('module.enable');
     Route::get('cancel/add-on/{name}', [ModuleController::class, 'CancelAddOn'])->name('cancel.add.on');
     // End Module Install
+
+    //CalendarEvents
+    Route::resource('mycalendar', CalendarEventsController::class);
+    Route::get('mycalendar-view', [CalendarEventsController::class, 'calendar'])->name('mycalendar.calendar');
 
     //Pin Apps(modules)
     Route::resource('pin-apps', PinAppsController::class);

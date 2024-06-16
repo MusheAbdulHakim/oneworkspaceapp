@@ -26,6 +26,20 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
+
+        $menu->add([
+            'category' => 'General',
+            'title' => __('My Calendar'),
+            'icon' => '',
+            'name' => 'mycalendar',
+            'parent' => 'dashboard',
+            'order' => 20,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'mycalendar.index',
+            'module' => $module,
+            'permission' => ''
+        ]);
         $menu->add([
             'category' => 'General',
             'title' => __('Onboarding'),
