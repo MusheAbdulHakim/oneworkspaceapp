@@ -14,7 +14,7 @@ class CompanyMenuListener
         $module = 'Lead';
         $menu = $event->menu;
         $menu->add([
-            'category' => 'Dashboard',
+            'category' => 'General',
             'title' => __('CRM Dashboard'),
             'icon' => '',
             'name' => 'crm-dashboard',
@@ -27,11 +27,11 @@ class CompanyMenuListener
             'permission' => 'crm dashboard manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('CRM'),
             'icon' => 'layers-difference',
             'name' => 'crm',
-            'parent' => 'erp-operations',
+            'parent' => 'operations',
             'order' => 500,
             'ignore_if' => [],
             'depend_on' => [],
@@ -40,7 +40,7 @@ class CompanyMenuListener
             'permission' => 'crm manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Lead'),
             'icon' => '',
             'name' => 'lead',
@@ -53,7 +53,7 @@ class CompanyMenuListener
             'permission' => 'lead manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Deal'),
             'icon' => '',
             'name' => 'deal',
@@ -66,7 +66,7 @@ class CompanyMenuListener
             'permission' => 'deal manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('System Setup'),
             'icon' => '',
             'name' => 'system-setup',
@@ -79,7 +79,7 @@ class CompanyMenuListener
             'permission' => 'crm setup manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Report'),
             'icon' => '',
             'name' => 'crm-report',
@@ -92,7 +92,7 @@ class CompanyMenuListener
             'permission' =>'crm report manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Lead'),
             'icon' => '',
             'name' => 'lead-report',
@@ -105,7 +105,7 @@ class CompanyMenuListener
             'permission' => 'lead report'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Deal'),
             'icon' => '',
             'name' => 'deal-report',

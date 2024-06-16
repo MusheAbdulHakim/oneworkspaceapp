@@ -14,7 +14,7 @@ class CompanyMenuListener
         $module = 'Taskly';
         $menu = $event->menu;
         $menu->add([
-            'category' => 'Dashboard',
+            'category' => 'General',
             'title' => __('Project Dashboard'),
             'icon' => '',
             'name' => 'taskly-dashboards',
@@ -27,11 +27,11 @@ class CompanyMenuListener
             'permission' => 'taskly dashboard manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Projects'),
             'icon' => 'square-check',
             'name' => 'projects',
-            'parent' => 'erp-operations',
+            'parent' => 'operations',
             'order' => 300,
             'ignore_if' => [],
             'depend_on' => [],
@@ -40,7 +40,7 @@ class CompanyMenuListener
             'permission' => 'project manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Project'),
             'icon' => '',
             'name' => 'project',
@@ -53,7 +53,7 @@ class CompanyMenuListener
             'permission' => 'project manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Project Report'),
             'icon' => '',
             'name' => 'project-report',
@@ -66,7 +66,7 @@ class CompanyMenuListener
             'permission' => 'project report manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('System Setup'),
             'icon' => '',
             'name' => 'system-setup',

@@ -18,7 +18,7 @@ class CompanyMenuListener
             'title' => __('Items'),
             'icon' => 'shopping-cart',
             'name' => 'product-service',
-            'parent' => 'erp-operations',
+            'parent' => 'operations',
             'order' => 100,
             'ignore_if' => [],
             'depend_on' => [],

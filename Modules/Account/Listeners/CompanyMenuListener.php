@@ -27,11 +27,11 @@ class CompanyMenuListener
             'permission' => 'account dashboard manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Accounting'),
             'icon' => 'layout-grid-add',
             'name' => 'accounting',
-            'parent' => 'erp-operations',
+            'parent' => 'operations',
             'order' => 400,
             'ignore_if' => [],
             'depend_on' => [],
@@ -40,7 +40,7 @@ class CompanyMenuListener
             'permission' => 'account manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Customer'),
             'icon' => '',
             'name' => 'customer',
@@ -53,7 +53,7 @@ class CompanyMenuListener
             'permission' => 'customer manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Vendor'),
             'icon' => '',
             'name' => 'vendor',
@@ -66,7 +66,7 @@ class CompanyMenuListener
             'permission' => 'vendor manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Banking'),
             'icon' => '',
             'name' => 'banking',
@@ -79,7 +79,7 @@ class CompanyMenuListener
             'permission' => 'sidebar banking manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Account'),
             'icon' => '',
             'name' => 'bank-account',
@@ -92,7 +92,7 @@ class CompanyMenuListener
             'permission' => 'bank account manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Chart Of Accounts'),
             'icon' => '',
             'name' => 'chart-of-account',
@@ -105,7 +105,7 @@ class CompanyMenuListener
             'permission' => 'chartofaccount manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Transfer'),
             'icon' => '',
             'name' => 'bank-transfer',
@@ -118,7 +118,7 @@ class CompanyMenuListener
             'permission' => 'bank transfer manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Income'),
             'icon' => '',
             'name' => 'income',
@@ -131,7 +131,7 @@ class CompanyMenuListener
             'permission' => 'sidebar income manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Revenue'),
             'icon' => '',
             'name' => 'revenue',
@@ -146,7 +146,7 @@ class CompanyMenuListener
 
 
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Credit Notes'),
             'icon' => '',
             'name' => 'credit-notes',
@@ -161,7 +161,7 @@ class CompanyMenuListener
 
 
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Expense'),
             'icon' => '',
             'name' => 'expense',
@@ -174,7 +174,7 @@ class CompanyMenuListener
             'permission' => 'sidebar expanse manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Bill'),
             'icon' => '',
             'name' => 'bill',
@@ -187,7 +187,7 @@ class CompanyMenuListener
             'permission' => 'bill manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Payment'),
             'icon' => '',
             'name' => 'payment',
@@ -201,7 +201,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Debit Notes'),
             'icon' => '',
             'name' => 'debit-notes',
@@ -215,7 +215,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Report'),
             'icon' => '',
             'name' => 'account-report',
@@ -228,7 +228,7 @@ class CompanyMenuListener
             'permission' => 'report manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Transaction'),
             'icon' => '',
             'name' => 'transaction',
@@ -241,7 +241,7 @@ class CompanyMenuListener
             'permission' => 'report transaction manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Account Statement'),
             'icon' => '',
             'name' => 'account-statement',
@@ -254,7 +254,7 @@ class CompanyMenuListener
             'permission' => 'report statement manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Income Summary'),
             'icon' => '',
             'name' => 'income-summary',
@@ -267,7 +267,7 @@ class CompanyMenuListener
             'permission' => 'report income manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Expense Summary'),
             'icon' => '',
             'name' => 'expense-summary',
@@ -280,7 +280,7 @@ class CompanyMenuListener
             'permission' => 'report expense manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Income Vs Expense'),
             'icon' => '',
             'name' => 'income&expense-summary',
@@ -293,7 +293,7 @@ class CompanyMenuListener
             'permission' => 'report income vs expense manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Tax Summary'),
             'icon' => '',
             'name' => 'tax-summary',
@@ -306,7 +306,7 @@ class CompanyMenuListener
             'permission' => 'report tax manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Profit & Loss'),
             'icon' => '',
             'name' => 'profit&loss-summary',
@@ -319,7 +319,7 @@ class CompanyMenuListener
             'permission' => 'report loss & profit  manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Invoice Summary'),
             'icon' => '',
             'name' => 'invoice-summary',
@@ -332,7 +332,7 @@ class CompanyMenuListener
             'permission' => 'report invoice manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Bill Summary'),
             'icon' => '',
             'name' => 'bill-summary',
@@ -345,7 +345,7 @@ class CompanyMenuListener
             'permission' => 'report bill manage'
         ]);
         $menu->add([
-            'category' => 'Finance',
+            'category' => 'General',
             'title' => __('Product Stock'),
             'icon' => '',
             'name' => 'product stock',
