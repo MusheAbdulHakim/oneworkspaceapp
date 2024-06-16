@@ -53,6 +53,7 @@
                     </a>
                 </div>
                 @endforeach
+                @endif
                 <div class="col-2">
                     <a data-ajax-popup="true" data-title="{{ __('Pin App') }}"
                         data-url="{{ route('apps.pin') }}" data-toggle="tooltip" href="#">
@@ -68,7 +69,6 @@
                         <h6 class="text-center">Add New Pin</h6>
                     </a>
                 </div>
-                @endif
             </div>
             <div class="row">
                 @php
