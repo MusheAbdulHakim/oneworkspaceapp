@@ -235,18 +235,19 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::delete('helpdesk-ticket-attachment/{tid}/destroy/{id}', [HelpdeskTicketController::class, 'attachmentDestroy'])->name('helpdesk-ticket.attachment.destroy');
     // End helpdesk
 
+    //page embeds
+    Route::get('DBoS', [EmbedsController::class, 'strategy'])->name('embeds.strategy');
+    Route::get('app-integrations', [EmbedsController::class, 'integrations'])->name('embeds.app-integrations');
+    Route::get('onboarding', [EmbedsController::class, 'onboarding'])->name('embeds.onboarding');
+    Route::get('marketplaces', [EmbedsController::class, 'marketplace'])->name('embeds.marketplace');
+    Route::get('marketing', [EmbedsController::class, 'marketing'])->name('embeds.marketing');
+    Route::get('community', [EmbedsController::class, 'community'])->name('embeds.community');
+    Route::get('process-automation', [EmbedsController::class, 'processAutomation'])->name('embeds.process-automation');
+    Route::get('knowledgebase', [EmbedsController::class, 'knowledgebase'])->name('embeds.knowledgebase');
+    Route::get('customer-success', [EmbedsController::class, 'customerSuccess'])->name('embeds.customer-success');
 
     Route::group(['middleware' => 'PlanModuleCheck:Account-Taskly'], function ()
     {
-        //page embeds
-        Route::get('DBoS', [EmbedsController::class, 'strategy'])->name('embeds.strategy');
-        Route::get('app-integrations', [EmbedsController::class, 'integrations'])->name('embeds.app-integrations');
-        Route::get('onboarding', [EmbedsController::class, 'onboarding'])->name('embeds.onboarding');
-        Route::get('marketplaces', [EmbedsController::class, 'marketplace'])->name('embeds.marketplace');
-        Route::get('community', [EmbedsController::class, 'community'])->name('embeds.community');
-        Route::get('process-automation', [EmbedsController::class, 'processAutomation'])->name('embeds.process-automation');
-        Route::get('knowledgebase', [EmbedsController::class, 'knowledgebase'])->name('embeds.knowledgebase');
-        Route::get('customer-success', [EmbedsController::class, 'customerSuccess'])->name('embeds.customer-success');
 
         // invoice
         Route::post('invoice/customer', [InvoiceController::class, 'customer'])->name('invoice.customer');
