@@ -65,6 +65,19 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('My Websites'),
+            'icon' => '',
+            'name' => 'my-websites',
+            'parent' => 'ghl',
+            'order' => 1,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'embeds.marketing',
+            'module' => $module,
+            'permission' => ''
+        ]);
 
         $menu->add([
             'category' => 'General',
@@ -80,7 +93,7 @@ class CompanyMenuListener
             'permission' => ''
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Proposal'),
             'icon' => 'replace',
             'name' => 'proposal',
@@ -93,7 +106,7 @@ class CompanyMenuListener
             'permission' => 'proposal manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Invoice'),
             'icon' => 'file-invoice',
             'name' => 'invoice',
@@ -107,7 +120,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Purchases'),
             'icon' => 'shopping-cart',
             'name' => 'purchases',
@@ -120,7 +133,7 @@ class CompanyMenuListener
             'permission' => 'purchase manage'
         ]);
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Purchase'),
             'icon' => '',
             'name' => 'purchase',
@@ -134,7 +147,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Warehouse'),
             'icon' => '',
             'name' => 'warehouse',
@@ -148,7 +161,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Transfer'),
             'icon' => '',
             'name' => 'transfer',
@@ -162,7 +175,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Report'),
             'icon' => '',
             'name' => 'reports',
@@ -176,7 +189,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Purchase Daily/Monthly Report'),
             'icon' => '',
             'name' => 'purchase-monthly',
@@ -190,7 +203,7 @@ class CompanyMenuListener
         ]);
 
         $menu->add([
-            'category' => 'Erp-operation',
+            'category' => 'General',
             'title' => __('Warehouse Report'),
             'icon' => '',
             'name' => 'warehouse-report',

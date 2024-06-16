@@ -22,6 +22,10 @@ class EmbedsController extends Controller
     public function marketplace(){
         return view("embed.marketplace");
     }
+    
+    public function marketing(){
+        return view("embed.marketing");
+    }
 
     public function community(){
         return view('embed.community');
