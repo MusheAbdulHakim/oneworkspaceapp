@@ -14,13 +14,13 @@ class CompanySettingMenuListener
         $module = 'GHL';
         $menu = $event->menu;
         $menu->add([
-            'title' => 'GoHighLevel',
-            'name' => 'ghl',
+            'title' => 'Marketing',
+            'name' => 'ghlsettings',
             'order' => 100,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => '',
-            'navigation' => 'ghl-sidenav',
+            'navigation' => 'marketing-sidenav',
             'module' => $module,
             // 'permission' => 'ghl manage'
         ]);
