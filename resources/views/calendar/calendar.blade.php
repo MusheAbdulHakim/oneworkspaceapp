@@ -49,17 +49,38 @@
       var calendarEl = document.getElementById('multi_month_calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
         initialDate: "{{ now()->format('Y-m-d') }}",
         editable: true,
         selectable: true,
         dayMaxEvents: true, // allow "more" link when too many events
         events: @json($events->all()),
+        selectable: true,
+        selectMirror: true,
         eventClick: function(info) {
-            info.jsEvent.preventDefault(); // don't let the browser navigate
-            if (info.event.url) {
+            if (info.event && info.event.url) {
+                info.jsEvent.preventDefault(); // don't let the browser navigate
                 window.open(info.event.url);
             }
-        }
+        },
+        dayCellContent: function(arg) {
+            return {
+                html: `<a data-ajax-popup="true" class="btn float-start text-center" data-url="{{ route('mycalendar.create') }}" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-original-title="{{ __('Add Event') }}">${arg.dayNumberText}</a>`
+            }
+        },
+        eventDidMount: function(data) {
+            let url = "{{ route('mycalendar.create') }}"
+            if (data.event.id) {
+                url = `http://oneworkspaceapp.test/mycalendar/${data.event.id}/edit`
+            }
+            data.el.setAttribute("data-ajax-popup", true);
+            data.el.setAttribute("data-title", "Event");
+            data.el.setAttribute("data-url", url);
+        },
 
       });
 
