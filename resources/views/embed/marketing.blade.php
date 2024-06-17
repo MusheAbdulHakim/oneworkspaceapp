@@ -1,25 +1,22 @@
 @extends('layouts.main')
 
-@section('page-title')
+@section('page-breadcrumb')
 {{ __('Marketing')}}
 @endsection
 
-@push('css')
-    <style>
-        iframe {
-            display: block;
-            border: none;
-            height: calc(100vh - 30px);
-            width: 100%;
-        }
-    </style>
-@endpush
 @section('content')
-<div class="row">
-    <iframe class="h-vh w-100" src="https://hosting.oneworkspace.io/cart.php?a=add&domain=register"
+<div class="row" id="iframe_container">
+    <iframe id="page_iframe" src="https://hosting.oneworkspace.io/cart.php?a=add&domain=register"
     seamless="seamless" frameborder="0"></iframe>
 </div>
 @endsection
 
-
-
+@push('scripts')
+    <script>
+        $(document).ready(function(){
+            var parent = document.getElementById('iframe_container');
+            var child = document.getElementById('page_iframe');
+            child.style.right = child.clientWidth - child.offsetWidth + "px";
+        })
+    </script>
+@endpush
