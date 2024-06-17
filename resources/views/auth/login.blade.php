@@ -27,8 +27,12 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <div class="">
-                <h2 class="mb-3 f-w-600">{{ __('Login') }}</h2>
+            <div class="d-flex align-items-center justify-content-center my-1">
+                <div class="navbar-brand">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ get_file(sidebar_logo()) }}{{'?'.time()}}" alt="{{ config('app.name', 'WorkDo') }}" class="navbar-brand-img auth-navbar-brand">
+                    </a>
+                </div>
             </div>
             <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="" id="form_data">
                 @csrf

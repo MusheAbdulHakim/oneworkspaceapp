@@ -23,8 +23,15 @@
 @section('content')
     <div class="card">
         <div class="card-body">
+            <div class="d-flex align-items-center justify-content-center my-1">
+                <div class="navbar-brand">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ get_file(sidebar_logo()) }}{{'?'.time()}}" alt="{{ config('app.name', 'WorkDo') }}" class="navbar-brand-img auth-navbar-brand">
+                    </a>
+                </div>
+            </div>
             <div class="">
-                <h2 class="mb-3 f-w-600">{{ __('Verify Email') }}</h2>
+                <h5 class="mb-3 f-w-600">{{ __('Verify Email') }}</h5>
                 <h6>{{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
                 </h6>
             </div>
