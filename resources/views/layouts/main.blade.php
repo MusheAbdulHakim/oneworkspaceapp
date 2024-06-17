@@ -34,9 +34,9 @@
                 <div class="page-block">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
-                            <div class="page-header-title">
+                            {{-- <div class="page-header-title">
                                 <h4 class="m-b-10">@yield('page-title')</h4>
-                            </div>
+                            </div> --}}
                             <ul class="breadcrumb">
                                 @php
                                     if (isset(app()->view->getSections()['page-breadcrumb'])) {
