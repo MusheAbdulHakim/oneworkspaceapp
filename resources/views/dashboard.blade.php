@@ -182,18 +182,13 @@
                             @endif
                         </div>
                     </div>
-                    @if (in_array('Hrm',$activeModules))
-                    @if (Auth::user()->isAbleTo('hrm dashboard manage'))
-                        @include('hrm::components.calendar')
-                    @endif
-                    @endif
                 @endif
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-12" style="background-color: #ebebeb; border-top-left-radius: 15px;">
+    <div class="col-md-4 col-12" style="">
         @php
-            $events = App\Models\CalendarEvent::get()->map(function (App\Models\CalendarEvent $model) {
+            $events = App\Models\CalendarEvent::latest()->get()->map(function (App\Models\CalendarEvent $model) {
                 return [
                     'id' => $model->id,
                     'title' => $model->title,
@@ -211,7 +206,14 @@
         </div>
         <div class="row">
             <div style="height: 90vh; overflow-y: auto;">
+                @php
+                    $count = 0;
+                @endphp
                 @foreach ($events as $event)
+                    @php
+                        $count++;
+                    @endphp
+                    @if ($count <= 5)
                     <div class="card shadow rounded p-3 mx-3" style="background-color: #888686;">
                         <h5>{{ $event['title'] }}</h5>
                         <a href="{{ $event['url'] ?? '#' }}" {{ !empty($event['url']) ? 'target="_blank"': '' }}><h5 class="link">{{ $event['start'] }} - {{ $event['end'] }}</h5></a>
@@ -219,6 +221,9 @@
                             {{ $event['description'] }}
                         </p>
                     </div>
+                    @else
+                     @break
+                    @endif
                 @endforeach
             </div>
         </div>

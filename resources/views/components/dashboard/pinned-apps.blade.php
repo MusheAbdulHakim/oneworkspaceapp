@@ -11,7 +11,7 @@
         $module = Module::find($app->module);
     @endphp
     @if (!in_array($module, $exceptions))
-        <div class="col-2">
+        <div class="col-2" data-bs-toggle="tooltip" data-bs-original-title="{{ $module->getName() }}">
             <a data-ajax-popup="true" data-title="Delete {{ $app->name }}" title="Delete {{ $app->module }}"
                 data-url="{{ route('apps.pin') }}" data-toggle="tooltip" href="#">
                 <div class="card rounded">

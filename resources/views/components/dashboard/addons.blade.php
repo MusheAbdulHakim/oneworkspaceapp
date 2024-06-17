@@ -8,7 +8,7 @@
         $module = Module::find($module);
     @endphp
     @if (!in_array($module, $exceptions))
-        <div class="item">
+        <div class="item" data-bs-toggle="tooltip" data-bs-original-title="{{ $module->getName() }}">
             <a href="{{ route('software.details',Module_Alias_Name($module->getName())) }}" target="_new">
                 <div class="card rounded">
                     <div class="card-body">

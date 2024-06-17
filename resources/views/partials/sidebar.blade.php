@@ -1,6 +1,6 @@
 <nav class="dash-sidebar light-sidebar shadow-lg {{ empty($admin_settings['site_transparent']) || $admin_settings['site_transparent'] == 'on' ? 'transprent-bg' : '' }}">
     <div class="navbar-wrapper">
-        <div class="m-header main-logo">
+        <div class="m-header justify-content-start main-logo">
             <a href="{{ route('home') }}" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
                 <img src="{{ get_file(sidebar_logo()) }}{{ '?' . time() }}" alt="" class="logo logo-lg" />

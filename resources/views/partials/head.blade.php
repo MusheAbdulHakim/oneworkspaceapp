@@ -58,6 +58,19 @@
         :root {
             --color-customColor: <?= $color ?>;
         }
+        #iframe_container{
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #page_iframe{
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+        box-sizing: content-box; /* So the width will be 100% + 17px */
+    }
     </style>
 
     <link rel="stylesheet" href="{{ asset('css/custom-color.css') }}">

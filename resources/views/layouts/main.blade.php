@@ -27,16 +27,13 @@
     <!-- [ auth-signup ] end -->
     @include('partials.sidebar')
     @include('partials.header')
-    <section class="dash-container">
+    <section class="dash-container dash-container shadow-0 shadow-none bg-white">
         <div class="dash-content">
             <!-- [ breadcrumb ] start -->
             <div class="page-header">
                 <div class="page-block">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
-                            {{-- <div class="page-header-title">
-                                <h4 class="m-b-10">@yield('page-title')</h4>
-                            </div> --}}
                             <ul class="breadcrumb">
                                 @php
                                     if (isset(app()->view->getSections()['page-breadcrumb'])) {
