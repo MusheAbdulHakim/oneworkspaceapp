@@ -92,35 +92,7 @@
 </head>
 <body class="{{ $themeColor }}">
     <div class="custom-login">
-        <div class="login-bg-img">
-            {{-- <img src="{{ asset('images/'.$themeColor.'.svg') }}" class="login-bg-1"> --}}
-            <img src="{{ isset($admin_settings['color_flag']) && $admin_settings['color_flag'] == 'false' ? asset('images/' . $color . '.svg') : asset('images/theme-1.svg')  }}" class="login-bg-1">
-            <img src="{{ asset('images/common.svg') }}" class="login-bg-2">
-        </div>
-        <div class="bg-login bg-primary"></div>
         <div class="custom-login-inner">
-            <header class="dash-header">
-                <nav class="navbar navbar-expand-md default">
-                    <div class="container">
-                        <div class="navbar-brand">
-                            <a class="navbar-brand" href="{{ url('/') }}">
-                                <img src="{{ get_file(sidebar_logo()) }}{{'?'.time()}}" alt="{{ config('app.name', 'WorkDo') }}" class="navbar-brand-img auth-navbar-brand">
-                            </a>
-                        </div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarlogin">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarlogin">
-                            <ul class="navbar-nav align-items-center ms-auto mb-lg-0">
-
-                                @stack('custom_page_links')
-                                @yield('language-bar')
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </header>
             <main class="custom-wrapper">
                 <div class="custom-row">
                     <div class="card">

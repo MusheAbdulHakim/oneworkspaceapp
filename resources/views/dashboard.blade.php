@@ -130,6 +130,32 @@
                                 </a>
                             </div>
                             @endif
+                            @if (Route::has('purchases.index'))    
+                            <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
+                                <a href="{{ route('purchases.index') }}">
+                                    <div class="card manager-card rounded-0">
+                                        <div class="product-img bg-secondary justify-content-center my-3">
+                                            <h5 class="text-capitalize text-center text-white">Procurement</h5>
+                                        </div>
+                                        <div class="card-body">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            @endif
+                            @if (Route::has('ghl.dashboard'))    
+                            <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
+                                <a href="{{ route('ghl.dashboard') }}">
+                                    <div class="card manager-card rounded-0">
+                                        <div class="product-img bg-secondary justify-content-center my-3">
+                                            <h5 class="text-capitalize text-center text-white">Expert Marketplace</h5>
+                                        </div>
+                                        <div class="card-body">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 @endif

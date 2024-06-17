@@ -29,19 +29,21 @@
     @include('partials.header')
     <section class="dash-container dash-container shadow-0 shadow-none bg-white">
         <div class="dash-content">
+            @php
+                if (isset(app()->view->getSections()['page-breadcrumb'])) {
+                    $breadcrumb = explode(',', app()->view->getSections()['page-breadcrumb']);
+                } else {
+                    $breadcrumb = [];
+                }
+            @endphp
+            @if(!empty($breadcrumb))
             <!-- [ breadcrumb ] start -->
             <div class="page-header">
                 <div class="page-block">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                             <ul class="breadcrumb">
-                                @php
-                                    if (isset(app()->view->getSections()['page-breadcrumb'])) {
-                                        $breadcrumb = explode(',', app()->view->getSections()['page-breadcrumb']);
-                                    } else {
-                                        $breadcrumb = [];
-                                    }
-                                @endphp
+                                
                                 @if (!empty($breadcrumb))
                                     <li class="breadcrumb-item"><a
                                             href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a></li>
@@ -59,6 +61,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @yield('content')
         </div>
     </section>
