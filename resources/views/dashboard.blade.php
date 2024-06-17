@@ -83,7 +83,7 @@
                                 <a href="{{ route('pos.dashboard') }}">
                                     <div class="card manager-card rounded-0">
                                         <div class="product-img bg-secondary justify-content-center my-3">
-                                            <h5 class="text-capitalize text-center text-white">Sales Monitoring</h5>
+                                            <h5 class="text-capitalize text-center text-white">POS & Revenue</h5>
                                         </div>
                                         <div class="card-body">
                                         </div>
@@ -96,7 +96,7 @@
                                 <a href="{{ route('dashboard.account') }}">
                                     <div class="card manager-card rounded-0">
                                         <div class="product-img bg-secondary justify-content-center my-3">
-                                            <h5 class="text-capitalize text-center text-white">Accounting</h5>
+                                            <h5 class="text-capitalize text-center text-white">Accounts & Invoices</h5>
                                         </div>
                                         <div class="card-body">
                                         </div>
