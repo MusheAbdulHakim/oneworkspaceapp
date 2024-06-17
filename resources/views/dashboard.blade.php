@@ -205,7 +205,7 @@
             </div>
         </div>
         <div class="row">
-            <div style="height: 90vh; overflow-y: auto;">
+            <div>
                 @php
                     $count = 0;
                 @endphp
