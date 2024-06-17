@@ -249,6 +249,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('onboarding', [EmbedsController::class, 'onboarding'])->name('embeds.onboarding');
     Route::get('marketplaces', [EmbedsController::class, 'marketplace'])->name('embeds.marketplace');
     Route::get('marketing', [EmbedsController::class, 'marketing'])->name('embeds.marketing');
+    Route::get('marketing-hub', [EmbedsController::class, 'marketingHub'])->name('embeds.marketing-hub');
     Route::get('community', [EmbedsController::class, 'community'])->name('embeds.community');
     Route::get('process-automation', [EmbedsController::class, 'processAutomation'])->name('embeds.process-automation');
     Route::get('knowledgebase', [EmbedsController::class, 'knowledgebase'])->name('embeds.knowledgebase');

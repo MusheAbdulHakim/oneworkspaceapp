@@ -75,7 +75,7 @@ class CompanyMenuListener
             'order' => 4,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'embeds.marketing-hub',
             'module' => $module,
             'permission' => ''
         ]);
@@ -135,7 +135,7 @@ class CompanyMenuListener
 
         $menu->add([
             'category' => 'General',
-            'title' => __('Purchases'),
+            'title' => __('Procurement'),
             'icon' => 'shopping-cart',
             'name' => 'purchases',
             'parent' => 'operations',
