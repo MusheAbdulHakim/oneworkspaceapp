@@ -130,7 +130,7 @@
                                 </a>
                             </div>
                             @endif
-                            @if (Route::has('purchases.index'))    
+                            @if (Route::has('purchases.index'))
                             <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                 <a href="{{ route('purchases.index') }}">
                                     <div class="card manager-card rounded-0">
@@ -143,7 +143,7 @@
                                 </a>
                             </div>
                             @endif
-                            @if (Route::has('ghl.dashboard'))    
+                            @if (Route::has('ghl.dashboard'))
                             <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                 <a href="{{ route('ghl.dashboard') }}">
                                     <div class="card manager-card rounded-0">
@@ -229,29 +229,23 @@
         <div class="row">
             <div class="card shadow rounded ps-3 pe-3 m-3">
                 <x-dashboard.calendar :events="$events" />
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                @php
-                    $count = 0;
-                @endphp
-                @foreach ($events as $event)
+                <div class="col-12 mt-4">
                     @php
-                        $count++;
+                        $count = 0;
                     @endphp
-                    @if ($count <= 5)
-                    <div class="card shadow rounded p-3 mx-3">
-                        <h5>{{ $event['title'] }}</h5>
-                        <a href="{{ $event['url'] ?? '#' }}" {{ !empty($event['url']) ? 'target="_blank"': '' }}><h5 class="link">{{ $event['start'] }} - {{ $event['end'] }}</h5></a>
-                        <p>
-                            {{ $event['description'] }}
-                        </p>
-                    </div>
-                    @else
-                     @break
-                    @endif
-                @endforeach
+                    @foreach ($events as $event)
+                        <hr>
+                        @if (++$count <= 5)
+                            <h5>{{ $event['title'] }}</h5>
+                            <a href="{{ $event['url'] ?? '#' }}" {{ !empty($event['url']) ? 'target="_blank"': '' }}><h5 class="link">{{ $event['start'] }} - {{ $event['end'] }}</h5></a>
+                            <p>
+                                {{ $event['description'] }}
+                            </p>
+                        @else
+                         @break
+                        @endif
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
