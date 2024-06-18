@@ -18,7 +18,7 @@ class CompanyMenuListener
             'title' => __('Marketing'),
             'icon' => 'location',
             'name' => 'ghl',
-            'parent' => 'operations',
+            'parent' => 'marketing',
             'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],

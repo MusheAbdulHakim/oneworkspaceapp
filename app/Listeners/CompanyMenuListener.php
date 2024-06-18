@@ -42,6 +42,19 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
+            'title' => __('Url Bookmarks'),
+            'icon' => '',
+            'name' => 'urlbookmark',
+            'parent' => null,
+            'order' => 1,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'bookmark.index',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
             'title' => __('Onboarding'),
             'icon' => 'shopping-cart',
             'name' => 'onboarding',
@@ -68,10 +81,23 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('Marketing Hub'),
+            'title' => __('Marketing'),
             'icon' => 'map',
             'name' => 'marketing',
             'parent' => null,
+            'order' => 4,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => '',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('Marketing Hub'),
+            'icon' => '',
+            'name' => 'marketinghub',
+            'parent' => 'marketing',
             'order' => 4,
             'ignore_if' => [],
             'depend_on' => [],

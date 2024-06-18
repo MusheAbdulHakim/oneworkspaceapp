@@ -21,6 +21,7 @@ use App\Http\Controllers\WorkSpaceController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PinAppsController;
 use App\Http\Controllers\CalendarEventsController;
+use App\Http\Controllers\UrlBookmarkController;
 use App\Http\Controllers\BanktransferController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\EmailTemplateController;
@@ -214,6 +215,11 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('cancel/add-on/{name}', [ModuleController::class, 'CancelAddOn'])->name('cancel.add.on');
     // End Module Install
 
+    //url bookmarks
+    Route::resource('bookmark', UrlBookmarkController::class);
+    Route::get("bookmark-iframe/{urlBookmark}", [UrlBookmarkController::class, 'iframeView'])->name('bookmark.iframe');
+    Route::get('bookmark-cards', [UrlBookmarkController::class, 'cardView'])->name('bookmark.cardview');
+    Route::get('bookmark-metadata', [UrlBookmarkController::class, 'getMeta'])->name('bookmark.getmeta');
     //CalendarEvents
     Route::resource('mycalendar', CalendarEventsController::class);
     Route::get('mycalendar-view', [CalendarEventsController::class, 'calendar'])->name('mycalendar.calendar');

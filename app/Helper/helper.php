@@ -21,6 +21,23 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 
+if(!function_exists('getPageTitle')){
+
+    function getPageTitle($url) {
+        $title = false;
+        if ($handle = fopen($url, "r"))  {
+          $string = stream_get_line($handle, 0, "</title>");
+          fclose($handle);
+          $string = (explode("<title", $string))[1];
+          if (!empty($string)) {
+            $title = trim((explode(">", $string))[1]);
+          }
+        }
+        return $title;
+    }
+}
+
+
 if (!function_exists('getMenu')) {
     function getMenu()
     {
