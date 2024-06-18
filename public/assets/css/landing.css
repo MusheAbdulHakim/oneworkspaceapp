@@ -63,7 +63,7 @@ section {
 }
 
 .title h2 span {
-    font-weight: 600;
+    font-weight: 400;
     color: #060606;
 }
 
@@ -207,7 +207,7 @@ header.price-header {
 }
 
 .faq .accordion .accordion-item .accordion-button {
-    font-weight: 700;
+    font-weight: 400;
     padding: 1.3rem 1.25rem;
 }
 

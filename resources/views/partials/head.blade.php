@@ -43,6 +43,8 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/material.css')}}">
+    <link rel="preconnect" href="{{ env('APP_URL') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/Inter/web/inter.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 
 
@@ -55,8 +57,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/customizer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custome.css') }}">
     <style>
+
         :root {
             --color-customColor: <?= $color ?>;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 400 !important;
+        }
+        @supports (font-variation-settings: normal) {
+            :root { font-family: 'Inter var', sans-serif; }
         }
         #iframe_container{
         width: 100%;

@@ -306,7 +306,7 @@ File: style.css
 
 .dash-sidebar.light-sidebar .dash-link {
     color: #000000;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .dash-sidebar.light-sidebar .dash-link .dash-micon {
@@ -356,7 +356,7 @@ File: style.css
 }
 
 .dash-sidebar.light-sidebar .dash-navbar > .dash-item.active > .dash-link {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .dash-sidebar.light-sidebar .dash-navbar > .dash-item.active > .dash-link, .dash-sidebar.light-sidebar .dash-navbar > .dash-item:focus > .dash-link, .dash-sidebar.light-sidebar .dash-navbar > .dash-item:hover > .dash-link {

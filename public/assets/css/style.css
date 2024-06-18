@@ -13,11 +13,7 @@ File: style.css
    * Copyright 2011-2022 Twitter, Inc.
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    */
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&display=swap");
-@supports (font-variation-settings: normal) {
-    :root { font-family: 'Inter var', sans-serif; }
-}
 :root {
     --bs-blue: #51459d;
     --bs-indigo: #6610f2;
@@ -122,7 +118,7 @@ hr {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.2;
     color: #060606;
 }
@@ -3226,7 +3222,7 @@ textarea.is-invalid.dataTable-input {
     --bs-btn-padding-y: 0.575rem;
     --bs-btn-font-family: ;
   --bs-btn-font-size: 0.875rem;
-    --bs-btn-font-weight: 500;
+    --bs-btn-font-weight: 400;
     --bs-btn-line-height: 1.5;
     --bs-btn-color: #293240;
     --bs-btn-bg: transparent;
@@ -5249,7 +5245,7 @@ textarea.is-invalid.dataTable-input {
     --bs-badge-padding-x: 0.5em;
     --bs-badge-padding-y: 0.35em;
     --bs-badge-font-size: 0.75em;
-    --bs-badge-font-weight: 500;
+    --bs-badge-font-weight: 400;
     --bs-badge-color: #ffffff;
     --bs-badge-border-radius: 2px;
     display: inline-block;
@@ -13981,11 +13977,11 @@ textarea.is-invalid.dataTable-input {
 }
 
 .f-w-500 {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .f-w-600 {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .f-w-700 {
@@ -15315,7 +15311,7 @@ p {
 
 b,
 strong {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .ie-warning {
@@ -18078,7 +18074,7 @@ body.theme-10 .card .card-header h5:after, body.theme-10 .card .card-header .h5:
     letter-spacing: 0.07em;
     text-transform: uppercase;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .dash-sidebar .dash-caption label {
@@ -18089,7 +18085,7 @@ body.theme-10 .card .card-header h5:after, body.theme-10 .card .card-header .h5:
     display: block;
     color: #67758a;
     font-size: 10px;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: capitalize;
 }
 
@@ -18128,7 +18124,7 @@ body.theme-10 .card .card-header h5:after, body.theme-10 .card .card-header .h5:
     color: #ced4dc;
     position: relative;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .dash-sidebar .dash-link .dash-mtext::after {
@@ -18195,7 +18191,7 @@ body.theme-10 .card .card-header h5:after, body.theme-10 .card .card-header .h5:
 }
 
 .dash-sidebar .dash-submenu .dash-link {
-    font-weight: 500;
+    font-weight: 400;
     padding: 10px 30px 10px 65px;
 }
 
@@ -18230,7 +18226,7 @@ body.theme-10 .card .card-header h5:after, body.theme-10 .card .card-header .h5:
 }
 
 .dash-sidebar .dash-item > .dash-submenu .dash-item.active > .dash-link, .dash-sidebar .dash-item > .dash-submenu .dash-item:focus > .dash-link, .dash-sidebar .dash-item > .dash-submenu .dash-item:hover > .dash-link {
-    font-weight: 700;
+    font-weight: 400;
     color: #51459d;
 }
 
@@ -18542,7 +18538,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
     margin: 0 7.5px;
     border-radius: 4px;
     position: relative;
-    font-weight: 500;
+    font-weight: 400;
     border-radius: 12px;
     border: 1px solid rgba(206, 206, 206, 0.2);
 }
@@ -18612,7 +18608,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
 .dash-header .dash-head-link .user-name {
     margin-bottom: 5px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .dash-header .dash-head-link .user-desc {
@@ -18954,7 +18950,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
     margin-bottom: 0;
     margin-right: 8px;
     padding-right: 8px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .page-header .breadcrumb {
@@ -19474,7 +19470,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
 .client-map .client-contain h5, .client-map .client-contain .h5 {
     display: block;
     text-transform: capitalize;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 18px;
     padding-bottom: 10px;
 }
@@ -19520,13 +19516,13 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
 }
 
 .marketing-card .table tbody td span {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .marketing-card .table tbody td h6, .marketing-card .table tbody td .h6 {
     margin-bottom: 0;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.5;
 }
 
@@ -19601,7 +19597,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
     display: inline-block;
     vertical-align: middle;
     margin-left: 10px;
-    font-weight: 600;
+    font-weight: 400;
     margin-top: -8px;
 }
 
@@ -20322,7 +20318,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
 }
 
 .widget-statstic-card h2, .widget-statstic-card .h2 {
-    font-weight: 600;
+    font-weight: 400;
     display: inline-block;
 }
 
@@ -20330,7 +20326,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
     border-radius: 30px;
     padding: 5px 20px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .widget-statstic-card:hover .st-icon > svg {
@@ -20516,7 +20512,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
 .app-design .btn {
     padding: 5px 8px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
     border-radius: 5px;
 }
 
@@ -20548,7 +20544,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
     position: absolute;
     top: -24px;
     right: 0;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 13px;
 }
 
@@ -21190,8 +21186,8 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 400;
     width: 48px;
     height: 48px;
 }
@@ -21821,7 +21817,7 @@ body:not(.minimenu) .dash-sidebar .dash-submenu .dash-submenu .dash-submenu > .d
     margin-bottom: 0;
     color: #060606;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .card .card-header h5 + p, .card .card-header .h5 + p,
@@ -22173,7 +22169,7 @@ body .table thead th {
 }
 
 .form-group label {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .form-control.flatpickr-input[readonly], .flatpickr-input.custom-select[readonly],
@@ -22522,7 +22518,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 }
 
 .datepicker thead th.datepicker-switch, .datepicker thead th.next, .datepicker thead th.prev {
-    font-weight: 500;
+    font-weight: 400;
     color: #293240;
 }
 
@@ -22542,7 +22538,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 
 .datepicker thead th.dow {
     color: #293240;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .datepicker tbody tr > td.day {
@@ -22624,7 +22620,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 }
 
 .datepicker tfoot tr > th.clear, .datepicker tfoot tr > th.today {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .datepicker tfoot tr > th.clear:hover, .datepicker tfoot tr > th.today:hover {
@@ -22862,7 +22858,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
     color: #293240;
     margin: 0 0 5px;
     padding: 0;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.2rem;
 }
 
@@ -22947,7 +22943,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 
 .dropzone-multi .dropzone-item .dropzone-file .dropzone-filename {
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 400;
     color: #293240;
     text-overflow: ellipsis;
     margin-right: 0.5rem;
@@ -22955,7 +22951,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 
 .dropzone-multi .dropzone-item .dropzone-file .dropzone-filename b {
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 400;
     color: #293240;
 }
 
@@ -23062,7 +23058,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 #cke5-inline-demo header.ck-content h2 + h3, #cke5-inline-demo header.ck-content .h2 + h3, #cke5-inline-demo header.ck-content h2 + .h3, #cke5-inline-demo header.ck-content .h2 + .h3 {
     margin-top: 0;
     color: #293240;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 #cke5-inline-demo .demo-row {
@@ -23088,7 +23084,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 
 #cke5-inline-demo .demo-row h3, #cke5-inline-demo .demo-row .h3 {
     margin: 0;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .switch-demo .custom-switch-v1 {
@@ -23410,7 +23406,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
     border-radius: 6px;
     padding: 4px 10px;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     margin-right: 3.75px;
     margin-bottom: 3.75px;
     background-color: #51459d;
@@ -23541,7 +23537,7 @@ select.form-control[data-multiselectsplitter-firstselect-selector], select.custo
 }
 
 .choices__heading {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 12px;
     padding: 10px;
     border-bottom: 1px solid #ebeef0;
@@ -24896,13 +24892,13 @@ body.theme-10 .team-lists img {
 }
 
 .ticket-block .ticket-type-icon {
-    font-weight: 500;
+    font-weight: 400;
     color: #111;
 }
 
 .ticket-block .excerpt h6, .ticket-block .excerpt .h6 {
     color: #686c71;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .ticket-block .excerpt h6 a, .ticket-block .excerpt .h6 a {
@@ -24923,7 +24919,7 @@ body.theme-10 .team-lists img {
 }
 
 .right-col .card-footer label {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .hdd-right-inner .select2-container--default {
@@ -25068,7 +25064,7 @@ body.theme-10 .team-lists img {
 }
 
 .fc-day-grid-event .fc-time {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .fc-day {
@@ -25984,7 +25980,7 @@ body.theme-10 .team-lists img {
 }
 
 .profile-card .card-body h3, .profile-card .card-body .h3 {
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .profile-card ~ .card-footer [class*="col-"] {
@@ -25994,7 +25990,7 @@ body.theme-10 .team-lists img {
 
 .profile-card ~ .card-footer [class*="col-"] h4, .profile-card ~ .card-footer [class*="col-"] .h4 {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .profile-card ~ .card-footer [class*="col-"]:last-child {
@@ -26022,7 +26018,7 @@ body.theme-10 .team-lists img {
 .blur-user-card h3, .blur-user-card .h3 {
     margin-top: 10px;
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .blur-user-card p {
@@ -26676,7 +26672,7 @@ body.theme-10 .team-lists img {
 
 .notifier .notifier-title {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 2px;
 }
 
@@ -27780,7 +27776,7 @@ body.anim-slip-from-top.modal-open .dash-header {
     border: 1px solid #6c757d;
     padding: 0.575rem 1.3rem;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .sw-theme-default > .nav {
@@ -27860,7 +27856,7 @@ body.anim-slip-from-top.modal-open .dash-header {
     border: 1px solid #6c757d;
     padding: 0.575rem 1.3rem;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .sw-theme-arrows > .nav {
@@ -27985,7 +27981,7 @@ body.anim-slip-from-top.modal-open .dash-header {
     border: 1px solid #6c757d;
     padding: 0.575rem 1.3rem;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .sw-theme-dots > .nav {
@@ -28087,7 +28083,7 @@ body.anim-slip-from-top.modal-open .dash-header {
     border: 1px solid #6c757d;
     padding: 0.575rem 1.3rem;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .sw-theme-progress > .nav {
@@ -29509,7 +29505,7 @@ table.dataTable tbody > tr.selected th.select-checkbox:after {
     margin: 0 7.5px;
     border-radius: 4px;
     position: relative;
-    font-weight: 500;
+    font-weight: 400;
     border-radius: 12px;
     border: 1px solid rgba(206, 206, 206, 0.2);
   }
@@ -29540,8 +29536,8 @@ table.dataTable tbody > tr.selected th.select-checkbox:after {
     justify-content: center;
     color: var(--dash-sidebar-color);
     cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 400;
   }
   [data-dash-layout=tab] .dash-sidebar .tab-container .tab-sidemenu .nav-link i.material-icons-two-tone {
     background-color: var(--dash-sidebar-color);
