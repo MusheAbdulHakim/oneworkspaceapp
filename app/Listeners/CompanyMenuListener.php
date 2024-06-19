@@ -107,10 +107,10 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('My Websites'),
+            'title' => __('Website Manager'),
             'icon' => '',
-            'name' => 'my-websites',
-            'parent' => 'ghl',
+            'name' => 'websitemanager',
+            'parent' => null,
             'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],
