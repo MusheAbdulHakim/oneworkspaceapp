@@ -211,6 +211,27 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-12 my-3">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <h4>URL Bookmarks</h4>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <a
+                                href="{{ route('bookmark.create') }}"
+                                data-bs-toggle="tooltip"
+                                data-title="{{ __('Add Bookmark') }}"
+                                data-bs-original-title="{{ __('Add Bookmark') }}"
+                                class="btn btn-sm btn-primary btn-icon ">
+                                <i class="ti ti-plus"></i> Add Bookmark
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <x-dashboard.bookmarks :bookmarks="\App\Models\UrlBookmark::get()" />
+            </div>
+
         </div>
     </div>
     <div class="col-md-4 col-12" style="">

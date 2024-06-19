@@ -92,7 +92,7 @@ class UrlBookmarkController extends Controller
             'order' => $request->order
         ]);
         GenerateBookmarkImage::dispatch($bookmark);
-        return redirect()->route('bookmark.index')->with('success', 'Url has been bookmarked');
+        return back()->with('success', 'Url has been bookmarked');
     }
 
     /**
@@ -139,7 +139,7 @@ class UrlBookmarkController extends Controller
             'user_id' => auth()->user()->id,
             'order' => $request->order
         ]);
-        return redirect()->route('bookmark.index')->with('success', 'Bookmark has been updated');
+        return back()->with('success', 'Bookmark has been updated');
     }
 
     /**
@@ -148,7 +148,7 @@ class UrlBookmarkController extends Controller
     public function destroy(string $id)
     {
         UrlBookmark::findOrFail($id);
-        return redirect()->route('bookmark.index')->with('success', 'Bookmark has been deleted');
+        return back()->with('success', 'Bookmark has been deleted');
     }
 
 
