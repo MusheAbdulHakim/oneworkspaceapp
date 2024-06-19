@@ -40,19 +40,7 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
-        $menu->add([
-            'category' => 'General',
-            'title' => __('Url Bookmarks'),
-            'icon' => '',
-            'name' => 'urlbookmark',
-            'parent' => null,
-            'order' => 1,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => 'bookmark.index',
-            'module' => $module,
-            'permission' => ''
-        ]);
+
         $menu->add([
             'category' => 'General',
             'title' => __('Onboarding'),
