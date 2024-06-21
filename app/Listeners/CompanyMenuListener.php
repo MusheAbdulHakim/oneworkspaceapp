@@ -93,19 +93,6 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
-        $menu->add([
-            'category' => 'General',
-            'title' => __('Website Manager'),
-            'icon' => '',
-            'name' => 'websitemanager',
-            'parent' => null,
-            'order' => 1,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => 'embeds.marketing',
-            'module' => $module,
-            'permission' => ''
-        ]);
 
         $menu->add([
             'category' => 'General',
@@ -128,7 +115,7 @@ class CompanyMenuListener
             'parent' => 'operations',
             'order' => 1,
             'ignore_if' => [],
-            'depend_on' => ['Account','Taskly'],
+            'depend_on' => ['Account', 'Taskly'],
             'route' => 'proposal.index',
             'module' => $module,
             'permission' => 'proposal manage'
@@ -141,7 +128,7 @@ class CompanyMenuListener
             'parent' => 'operations',
             'order' => 2,
             'ignore_if' => [],
-            'depend_on' => ['Account','Taskly'],
+            'depend_on' => ['Account', 'Taskly'],
             'route' => 'invoice.index',
             'module' => $module,
             'permission' => 'invoice manage'
@@ -155,7 +142,7 @@ class CompanyMenuListener
             'parent' => 'operations',
             'order' => 3,
             'ignore_if' => [],
-            'depend_on' => ['Account','Taskly'],
+            'depend_on' => ['Account', 'Taskly'],
             'route' => '',
             'module' => $module,
             'permission' => 'purchase manage'
@@ -168,7 +155,7 @@ class CompanyMenuListener
             'parent' => 'purchases',
             'order' => 1,
             'ignore_if' => [],
-            'depend_on' => ['Account','Taskly'],
+            'depend_on' => ['Account', 'Taskly'],
             'route' => 'purchases.index',
             'module' => $module,
             'permission' => 'purchase manage'
@@ -182,7 +169,7 @@ class CompanyMenuListener
             'parent' => 'purchases',
             'order' => 2,
             'ignore_if' => [],
-            'depend_on' => ['Account','Taskly'],
+            'depend_on' => ['Account', 'Taskly'],
             'route' => 'warehouses.index',
             'module' => $module,
             'permission' => 'warehouse manage'
@@ -210,7 +197,7 @@ class CompanyMenuListener
             'parent' => 'purchases',
             'order' => 4,
             'ignore_if' => [],
-            'depend_on' => ['Account','Taskly'],
+            'depend_on' => ['Account', 'Taskly'],
             'route' => '',
             'module' => $module,
             'permission' => 'report purchase'
@@ -266,6 +253,19 @@ class CompanyMenuListener
             'ignore_if' => [],
             'depend_on' => [],
             'route' => 'embeds.process-automation',
+            'module' => $module,
+            'permission' => ''
+        ]);
+        $menu->add([
+            'category' => 'General',
+            'title' => __('Website Manager'),
+            'icon' => '',
+            'name' => 'websitemanager',
+            'parent' => null,
+            'order' => 8,
+            'ignore_if' => [],
+            'depend_on' => [],
+            'route' => 'embeds.marketing',
             'module' => $module,
             'permission' => ''
         ]);
