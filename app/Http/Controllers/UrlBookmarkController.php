@@ -22,16 +22,18 @@ class UrlBookmarkController extends Controller
         ));
     }
 
-    public function cardView(){
+    public function cardView()
+    {
         $bookmarks = UrlBookmark::latest()->get();
-        return view('bookmarks.card',compact(
+        return view('bookmarks.card', compact(
             'bookmarks'
         ));
     }
 
-    public function iframeView($urlBookmark){
+    public function iframeView($urlBookmark)
+    {
         $bookmark = Crypt::decrypt($urlBookmark);
-        return view('bookmarks.iframe',compact(
+        return view('bookmarks.iframe', compact(
             'bookmark'
         ));
     }
@@ -44,8 +46,9 @@ class UrlBookmarkController extends Controller
         return view('bookmarks.create');
     }
 
-    public function getMeta(Request $request){
-        try{
+    public function getMeta(Request $request)
+    {
+        try {
             $url  = $request->url;
             $meta = get_meta_tags($url);
             $title = $meta['title'] ?? getPageTitle($url);
@@ -54,14 +57,13 @@ class UrlBookmarkController extends Controller
                 'title' => $title,
                 'description' => $description
             ]);
-        }catch(\ErrorException $e){
+        } catch (\ErrorException $e) {
             return response()->json([
                 'error' => 1,
                 'title' => getPageTitle($url),
                 'message' => "Meta data could not be obtained."
             ]);
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             return response()->json([
                 'error' => 1,
                 'title' => getPageTitle($url),
@@ -92,7 +94,7 @@ class UrlBookmarkController extends Controller
             'order' => $request->order
         ]);
         GenerateBookmarkImage::dispatch($bookmark);
-        return back()->with('success', 'Url has been bookmarked');
+        return redirect()->route('home')->with('success', 'Url has been bookmarked');
     }
 
     /**
@@ -101,7 +103,7 @@ class UrlBookmarkController extends Controller
     public function show(string $id)
     {
         $bookmark = UrlBookmark::findOrFail($id);
-        return view('bookmarks.show',compact(
+        return view('bookmarks.show', compact(
             'bookmark'
         ));
     }
@@ -125,7 +127,7 @@ class UrlBookmarkController extends Controller
     public function update(Request $request, string $id)
     {
         $bookmark = UrlBookmark::findOrFail($id);
-        if($bookmark->url != $request->url){
+        if ($bookmark->url != $request->url) {
             GenerateBookmarkImage::dispatch($bookmark);
         }
         $bookmark->update([
@@ -139,7 +141,7 @@ class UrlBookmarkController extends Controller
             'user_id' => auth()->user()->id,
             'order' => $request->order
         ]);
-        return back()->with('success', 'Bookmark has been updated');
+        return redirect()->route('home')->with('success', 'Bookmark has been updated');
     }
 
     /**
@@ -148,9 +150,6 @@ class UrlBookmarkController extends Controller
     public function destroy(string $id)
     {
         UrlBookmark::findOrFail($id);
-        return back()->with('success', 'Bookmark has been deleted');
+        return redirect()->route('home')->with('success', 'Bookmark has been deleted');
     }
-
-
-
 }
