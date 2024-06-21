@@ -1,6 +1,6 @@
 @props(['bookmarks' => $bookmarks])
 @foreach ($bookmarks as $i => $bookmark)
-    <div class="col-md-4 col-12 product-card">
+    <div class="col-md-4 col-sm-12 col-12 product-card">
         @if ($bookmark->type == '1')
             <a href="{{ route('bookmark.iframe', ['urlBookmark' => \Crypt::encrypt($bookmark)]) }}">
             @else
