@@ -2,17 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\AddOn;
 use App\Models\Plan;
+use App\Models\User;
+use App\Models\AddOn;
+use App\Models\Order;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Modules\Lead\Entities\Deal;
 use Illuminate\Support\Facades\DB;
+use Modules\Taskly\Entities\Stage;
+use Modules\Lead\Entities\Pipeline;
 use Nwidart\Modules\Facades\Module;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Modules\Hrm\Entities\Attendance;
+use Modules\Hrm\Entities\Resignation;
+use Modules\Taskly\Entities\UserProject;
 
 class HomeController extends Controller
 {
+    use \Modules\GHL\Traits\UserGHL;
+
     /**
      * Show the application dashboard.
      *
@@ -20,32 +30,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             return redirect('dashboard');
-        }
-        else
-        {
-            if(!file_exists(storage_path() . "/installed"))
-            {
+        } else {
+            if (!file_exists(storage_path() . "/installed")) {
                 header('location:install');
                 die;
-            }
-            else
-            {
-                if(admin_setting('landing_page') == 'on')
-                {
-                    if(module_is_active('LandingPage'))
-                    {
+            } else {
+                if (admin_setting('landing_page') == 'on') {
+                    if (module_is_active('LandingPage')) {
                         return view('landingpage::layouts.landingpage');
-                    }
-                    else
-                    {
+                    } else {
                         return view('marketplace.landing');
                     }
-                }
-                else
-                {
+                } else {
                     return redirect('login');
                 }
             }
@@ -54,10 +52,8 @@ class HomeController extends Controller
 
     public function Dashboard()
     {
-        if(Auth::check())
-        {
-            if(Auth::user()->type == 'super admin')
-            {
+        if (Auth::check()) {
+            if (Auth::user()->type == 'super admin') {
                 $user                       = Auth::user();
                 $user['total_user']         = $user->countCompany();
                 $user['total_paid_user']    = $user->countPaidCompany();
@@ -67,18 +63,16 @@ class HomeController extends Controller
                 $user['total_plans'] = Plan::all()->count();
 
                 $popular_plan = DB::table('orders')
-                ->select('orders.plan_id', 'plans.*', DB::raw('count(*) as count'))
-                ->join('plans', 'orders.plan_id', '=', 'plans.id')
-                ->groupBy('orders.plan_id')
-                ->orderByDesc('count')
-                ->first();
+                    ->select('orders.plan_id', 'plans.*', DB::raw('count(*) as count'))
+                    ->join('plans', 'orders.plan_id', '=', 'plans.id')
+                    ->groupBy('orders.plan_id')
+                    ->orderByDesc('count')
+                    ->first();
 
                 $user['popular_plan'] = $popular_plan;
 
                 return view('dashboard.dashboard', compact('user', 'chartData'));
-            }
-            else
-            {
+            } else {
                 $user = auth()->user();
 
                 $menu = new \App\Classes\Menu($user);
@@ -88,19 +82,114 @@ class HomeController extends Controller
                     return $item['parent'] === 'dashboard';
                 });
 
-                // if ($dashboardItem) {
-                //     $route = isset($dashboardItem['route']) ? $dashboardItem['route'] : null;
-                //     if($route)
-                //     {
-                //         return redirect()->route($route);
-                //     }
-                // }
-                // dd(ActivatedModule());
-                return view('dashboard');
+                $creatorId = creatorId();
+                $getActiveWorkSpace = getActiveWorkSpace();
+                if ($user->default_pipeline) {
+                    $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
+                        ->where('workspace_id', $getActiveWorkSpace)
+                        ->where('id', '=', $user->default_pipeline)
+                        ->first();
+                    if (!$LeadPipeline) {
+                        $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
+                            ->where('workspace_id', $getActiveWorkSpace)
+                            ->first();
+                    }
+                } else {
+                    $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
+                        ->where('workspace_id', $getActiveWorkSpace)
+                        ->first();
+                }
+                $totalLeadDeals = Deal::where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
+                $totalLeadClients = User::where('type', '=', 'client')->where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
+
+
+                //GHL DATA
+                $ghl = $this->initGHL();
+                $locationId = $this->userGHL()->locationId;
+                $contacts = $ghl->withVersion('2021-07-28')
+                    ->make()
+                    ->contacts()->list($locationId) ?? 0;
+                $invoices = $ghl->withVersion('2021-07-28')
+                    ->make()->invoices()
+                    ->list($locationId, 'location', 100, 0) ?? 0;
+                $funnels = $ghl->withVersion('2021-07-28')
+                    ->make()->funnels()->list($locationId, [
+                        'locationId' => $locationId
+                    ]) ?? 0;
+
+                $ghl = [
+                    'contacts' => count($contacts),
+                    'invoices' => count($invoices),
+                    'funnels' => count($funnels)
+                ];
+
+                //Projects
+                $completeTask = 0;
+                $doneStage    = Stage::where('workspace_id', '=', $getActiveWorkSpace)->where('complete', '=', '1')->first();
+                if (!empty($doneStage)) {
+                    $completeTask = UserProject::join("tasks", "tasks.project_id", "=", "user_projects.project_id")->join("projects", "projects.id", "=", "user_projects.project_id")->where("user_id", "=", $user->id)->where('projects.workspace', '=', $getActiveWorkSpace)->where('tasks.status', '=', $doneStage->id)->where('projects.type', 'project')->count();
+                }
+                $totalTask    = UserProject::join("tasks", "tasks.project_id", "=", "user_projects.project_id")->join("projects", "projects.id", "=", "user_projects.project_id")->where("user_id", "=", $user->id)->where('projects.workspace', '=', $getActiveWorkSpace)->where('projects.type', 'project')->count();
+                $totalProjects = UserProject::join("projects", "projects.id", "=", "user_projects.project_id")->where("user_id", "=", $user->id)->where('projects.workspace', '=', $getActiveWorkSpace)->where('projects.type', 'project')->count();
+                $projects = [
+                    'completedTasks' => $completeTask,
+                    'tasks' => $totalTask,
+                    'total' => $totalProjects,
+                ];
+                $totalPurchases = Purchase::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->with('vender', 'category', 'user')->count() ?? 0;
+                $procurement = [
+                    'purchases' => $totalPurchases,
+                ];
+
+                //HRM
+                $totalResignation = 0;
+                $totalEmployees = 0;
+                $attendances = 0;
+                if (!in_array($user->type, $user->not_emp_type)) {
+                    $totalEmployees = User::where('workspace_id', getActiveWorkSpace())
+                        ->leftJoin('employees', 'users.id', '=', 'employees.user_id')
+                        ->leftJoin('branches', 'employees.branch_id', '=', 'branches.id')
+                        ->leftJoin('departments', 'employees.department_id', '=', 'departments.id')
+                        ->leftJoin('designations', 'employees.designation_id', '=', 'designations.id')
+                        ->where('users.id', Auth::user()->id)
+                        ->select('users.*', 'users.id as ID', 'employees.*', 'users.name as name', 'users.email as email', 'users.id as id', 'branches.name as branches_name', 'departments.name as departments_name', 'designations.name as designations_name')
+                        ->count();
+                    $employee = User::where('workspace_id', getActiveWorkSpace())
+                        ->leftjoin('employees', 'users.id', '=', 'employees.user_id')
+                        ->where('users.created_by', creatorId())->emp()
+                        ->select('users.id');
+                    $attendances = Attendance::whereIn('employee_id', $employee)->where('workspace', getActiveWorkSpace())->count() ?? 0;
+                    $totalResignation     = Resignation::where('user_id', $user->id)->where('workspace', getActiveWorkSpace())->count();
+                } else {
+                    $totalEmployees = User::where('workspace_id', getActiveWorkSpace())
+                        ->leftJoin('employees', 'users.id', '=', 'employees.user_id')
+                        ->leftJoin('branches', 'employees.branch_id', '=', 'branches.id')
+                        ->leftJoin('departments', 'employees.department_id', '=', 'departments.id')
+                        ->leftJoin('designations', 'employees.designation_id', '=', 'designations.id')
+                        ->where('users.created_by', creatorId())->emp()
+                        ->select('users.*', 'users.id as ID', 'employees.*', 'users.name as name', 'users.email as email', 'users.id as id', 'branches.name as branches_name', 'departments.name as departments_name', 'designations.name as designations_name')
+                        ->count();
+
+                    $attendances = Attendance::where('employee_id', Auth::user()->id)->where('workspace', getActiveWorkSpace())->count() ?? 0;
+
+                    $totalResignation     = Resignation::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->count() ?? 0;
+                }
+                $hrm = [
+                    'employees' => $totalEmployees,
+                    'attendances' => $attendances,
+                    'resignations' => $totalResignation
+                ];
+                return view('dashboard', compact(
+                    'LeadPipeline',
+                    'totalLeadDeals',
+                    'totalLeadClients',
+                    'ghl',
+                    'projects',
+                    'procurement',
+                    'hrm'
+                ));
             }
-        }
-        else
-        {
+        } else {
             return redirect()->route('start');
         }
     }
@@ -108,13 +197,10 @@ class HomeController extends Controller
     public function getOrderChart($arrParam)
     {
         $arrDuration = [];
-        if($arrParam['duration'])
-        {
-            if($arrParam['duration'] == 'week')
-            {
+        if ($arrParam['duration']) {
+            if ($arrParam['duration'] == 'week') {
                 $previous_week = strtotime("-2 week +1 day");
-                for($i = 0; $i < 14; $i++)
-                {
+                for ($i = 0; $i < 14; $i++) {
                     $arrDuration[date('Y-m-d', $previous_week)] = date('d-M', $previous_week);
                     $previous_week                              = strtotime(date('Y-m-d', $previous_week) . " +1 day");
                 }
@@ -135,9 +221,9 @@ class HomeController extends Controller
         $dates = array_keys($arrDuration);
 
         $orders = Order::select(
-                DB::raw('DATE(created_at) as date'),
-                DB::raw('count(*) as total')
-            )
+            DB::raw('DATE(created_at) as date'),
+            DB::raw('count(*) as total')
+        )
             ->whereIn(DB::raw('DATE(created_at)'), $dates)
             ->groupBy(DB::raw('DATE(created_at)'))
             ->get();
@@ -164,30 +250,24 @@ class HomeController extends Controller
     {
         $modules_all = Module::getByStatus(1);
         $modules = [];
-        if(count($modules_all) > 0)
-        {
+        if (count($modules_all) > 0) {
             $modules = array_intersect_key(
                 $modules_all,  // the array with all keys
-                array_flip(array_rand($modules_all,(count($modules_all) <  6) ? count($modules_all) : 6 )) // keys to be extracted
+                array_flip(array_rand($modules_all, (count($modules_all) <  6) ? count($modules_all) : 6)) // keys to be extracted
             );
         }
         $plan = Plan::first();
-        $addon = AddOn::where('name',$slug)->first();
-        if(!empty($addon) && !empty($addon->module))
-        {
+        $addon = AddOn::where('name', $slug)->first();
+        if (!empty($addon) && !empty($addon->module)) {
             $module = Module::find($addon->module);
-            if(!empty($module))
-            {
+            if (!empty($module)) {
                 try {
-                    if(module_is_active('LandingPage'))
-                    {
-                        return view('landingpage::marketplace.index',compact('modules','module','plan'));
-                    }
-                    else{
-                        return view($module->getLowerName().'::marketplace.index',compact('modules','module','plan'));
+                    if (module_is_active('LandingPage')) {
+                        return view('landingpage::marketplace.index', compact('modules', 'module', 'plan'));
+                    } else {
+                        return view($module->getLowerName() . '::marketplace.index', compact('modules', 'module', 'plan'));
                     }
                 } catch (\Throwable $th) {
-
                 }
             }
         }
@@ -198,8 +278,7 @@ class HomeController extends Controller
             $layout = 'marketplace.marketplace';
         }
 
-        return view('marketplace.detail_not_found',compact('modules','layout'));
-
+        return view('marketplace.detail_not_found', compact('modules', 'layout'));
     }
 
     public function Software(Request $request)
@@ -229,36 +308,28 @@ class HomeController extends Controller
     public function Pricing()
     {
         $admin_settings = getAdminAllSetting();
-        if(module_is_active('GoogleCaptcha') && (isset($admin_settings['google_recaptcha_is_on']) ? $admin_settings['google_recaptcha_is_on'] : 'off') == 'on' )
-        {
+        if (module_is_active('GoogleCaptcha') && (isset($admin_settings['google_recaptcha_is_on']) ? $admin_settings['google_recaptcha_is_on'] : 'off') == 'on') {
             config(['captcha.secret' => isset($admin_settings['google_recaptcha_secret']) ? $admin_settings['google_recaptcha_secret'] : '']);
             config(['captcha.sitekey' => isset($admin_settings['google_recaptcha_key']) ? $admin_settings['google_recaptcha_key'] : '']);
         }
-        if(Auth::check())
-        {
-            if(Auth::user()->type == 'company')
-            {
+        if (Auth::check()) {
+            if (Auth::user()->type == 'company') {
                 return redirect('plans');
-            }
-            else
-            {
+            } else {
                 return redirect('dashboard');
             }
-        }
-        else
-        {
+        } else {
             $plan = Plan::first();
             $modules = Module::getByStatus(1);
 
             if (module_is_active('LandingPage')) {
                 $layout = 'landingpage::layouts.marketplace';
-                return view('landingpage::layouts.pricing',compact('modules','plan','layout'));
-
+                return view('landingpage::layouts.pricing', compact('modules', 'plan', 'layout'));
             } else {
                 $layout = 'marketplace.marketplace';
             }
 
-            return view('marketplace.pricing',compact('modules','plan','layout'));
+            return view('marketplace.pricing', compact('modules', 'plan', 'layout'));
         }
     }
 
@@ -271,15 +342,10 @@ class HomeController extends Controller
         } else {
             $layout = 'marketplace.marketplace';
         }
-        if($request['page'] == 'terms_and_conditions' || $request['page'] == 'privacy_policy')
-        {
-            return view('custompage.'.$request['page'],compact('modules','layout'));
+        if ($request['page'] == 'terms_and_conditions' || $request['page'] == 'privacy_policy') {
+            return view('custompage.' . $request['page'], compact('modules', 'layout'));
+        } else {
+            return view('marketplace.detail_not_found', compact('modules', 'layout'));
         }
-        else
-        {
-            return view('marketplace.detail_not_found',compact('modules','layout'));
-        }
-
     }
-
 }

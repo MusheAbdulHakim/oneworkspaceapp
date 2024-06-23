@@ -31,6 +31,7 @@ class CalendarEventsController extends Controller
                 'description' => $model->description,
                 'start' => $model->startDate,
                 'end' => $model->endDate,
+                'color' => $model->color,
                 'url' => $model->url,
             ];
         });

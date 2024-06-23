@@ -21,17 +21,18 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 
-if(!function_exists('getPageTitle')){
+if (!function_exists('getPageTitle')) {
 
-    function getPageTitle($url) {
+    function getPageTitle($url)
+    {
         $title = false;
-        if ($handle = fopen($url, "r"))  {
-          $string = stream_get_line($handle, 0, "</title>");
-          fclose($handle);
-          $string = (explode("<title", $string))[1];
-          if (!empty($string)) {
-            $title = trim((explode(">", $string))[1]);
-          }
+        if ($handle = fopen($url, "r")) {
+            $string = stream_get_line($handle, 0, "</title>");
+            fclose($handle);
+            $string = (explode("<title", $string))[1];
+            if (!empty($string)) {
+                $title = trim((explode(">", $string))[1]);
+            }
         }
         return $title;
     }
@@ -105,21 +106,19 @@ if (!function_exists('getMenu')) {
 if (!function_exists('generateMenu')) {
     function generateMenu($grouped, $parent = null)
     {
-         $html = '';
+        $html = '';
 
-        foreach ($grouped as $category => $menuItems)
-        {
+        foreach ($grouped as $category => $menuItems) {
             $company_settings = getAdminAllSetting();
-            if(!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on'){
-                $icon = isset(categoryIcon()[$category]) ? categoryIcon()[$category] : 'home';
+            if (!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on') {
+                $icon = isset(categoryIcon()[$category]) ? categoryIcon()[$category] : 'storefront';
                 $html .= '<li class="dash-item dash-caption">
-                        <label>'.$category.'</label>
-                        <span class="material-icons text-black">storefront</span>
+                        <label>' . $category . '</label>
+                        <span class="material-symbols-outlined text-dark">' . $icon . '</span>
                       </li>';
             }
 
-            $html .= generateSubMenu($menuItems,$parent);
-
+            $html .= generateSubMenu($menuItems, $parent);
         }
 
         return $html;
@@ -150,7 +149,7 @@ if (!function_exists('generateSubMenu')) {
 
             if ($item['parent'] == null) {
                 $html .= ' <span class="dash-micon">
-                <span class="material-icons text-black">storefront</span>
+                    <span class="material-symbols-outlined text-dark">' . $item['icon'] . '</span>
                 </span>
                 <span class="dash-mtext">';
             }
@@ -175,33 +174,33 @@ if (!function_exists('categoryIcon')) {
     function categoryIcon()
     {
         $categoryIcon = [
-        'Start-here' => 'school',
-        'Dashboards' => 'home',
-        'Dashboard' => 'home',
-        'ERP & Operations' => 'shopping-cart',
-        'Automation' => 'brand-gitlab',
-        'General' => 'indent-increase',
-        'Erp-operation' => 'apps',
-        'Addon Manager' => 'apps',
-        'Finance' => 'chart-dots',
-        'HR' => 'users',
-        'Sales' => 'businessplan',
-        'Marketing' => 'businessplan',
-        'eCommerce' => 'shopping-cart',
-        'Marketplace' => 'shopping-cart',
-        'Education' => 'school',
-        'Operations' => 'stack-2',
-        'Productivity' => 'list-check',
-        'App-integration' => 'list-check',
-        'Knowledgebase' => 'messages',
-        'Communication' => 'messages',
-        'Medical' => 'ambulance',
-        'Vehicle' => 'bike',
-        'AI' => 'brand-gitlab',
-        'Settings' => 'adjustments-horizontal',
-       ];
+            'Start-here' => 'school',
+            'Dashboards' => 'home',
+            'Dashboard' => 'home',
+            'ERP & Operations' => 'shopping-cart',
+            'Automation' => 'brand-gitlab',
+            'General' => 'indent-increase',
+            'Erp-operation' => 'apps',
+            'Addon Manager' => 'apps',
+            'Finance' => 'chart-dots',
+            'HR' => 'users',
+            'Sales' => 'businessplan',
+            'Marketing' => 'businessplan',
+            'eCommerce' => 'shopping-cart',
+            'Marketplace' => 'shopping-cart',
+            'Education' => 'school',
+            'Operations' => 'stack-2',
+            'Productivity' => 'list-check',
+            'App-integration' => 'list-check',
+            'Knowledgebase' => 'messages',
+            'Communication' => 'messages',
+            'Medical' => 'ambulance',
+            'Vehicle' => 'bike',
+            'AI' => 'brand-gitlab',
+            'Settings' => 'adjustments-horizontal',
+        ];
 
-       return $categoryIcon;
+        return $categoryIcon;
     }
 }
 
@@ -244,7 +243,7 @@ if (!function_exists('generateSettingMenu')) {
         $html = '';
         foreach ($menuItems as $menu) {
             $method = isset($menu['method']) ? $menu['method'] : null;
-            $html .= '<a href="#' . (!empty($menu['navigation']) ? $menu['navigation']: '') . '" data-module="' . $menu['module'] . '" data-method="' . $method . '"  class="list-group-item list-group-item-action setting-menu-nav">' . $menu['title'] . '<div class="float-end"><i class="ti ti-chevron-right"></i></div></a>';
+            $html .= '<a href="#' . (!empty($menu['navigation']) ? $menu['navigation'] : '') . '" data-module="' . $menu['module'] . '" data-method="' . $method . '"  class="list-group-item list-group-item-action setting-menu-nav">' . $menu['title'] . '<div class="float-end"><i class="ti ti-chevron-right"></i></div></a>';
         }
         return $html;
     }
@@ -905,7 +904,7 @@ if (!function_exists('check_file')) {
 
         if (!empty($path)) {
             $storage_settings = getAdminAllSetting();
-            if(!empty($storage_settings) && !empty($storage_settings['storage_setting'])){
+            if (!empty($storage_settings) && !empty($storage_settings['storage_setting'])) {
                 if ($storage_settings['storage_setting'] == null || $storage_settings['storage_setting'] == 'local') {
 
                     return file_exists(base_path($path));
@@ -1236,15 +1235,15 @@ if (!function_exists('PlanCheck')) {
     }
 }
 if (!function_exists('CheckCoupon')) {
-    function CheckCoupon($code, $price = 0, $plan_id=null)
+    function CheckCoupon($code, $price = 0, $plan_id = null)
     {
         if (empty($code) || intval($price) <= 0) {
             return $price;
         }
 
         $coupon = Coupon::where('code', strtoupper($code))
-                        ->where('is_active', '1')
-                        ->first();
+            ->where('is_active', '1')
+            ->first();
 
         if (empty($coupon)) {
             return $price;
@@ -1253,11 +1252,13 @@ if (!function_exists('CheckCoupon')) {
         $usedCoupon = $coupon->used_coupon();
         $userUsedCoupon = \Auth::user()->user_coupon_user($coupon);
 
-        if ($usedCoupon >= $coupon->limit ||
+        if (
+            $usedCoupon >= $coupon->limit ||
             $userUsedCoupon >= $coupon->limit_per_user ||
             $coupon->minimum_spend > $price ||
             $coupon->maximum_spend < $price ||
-            $coupon->expiry_date < date('Y-m-d')) {
+            $coupon->expiry_date < date('Y-m-d')
+        ) {
             return $price;
         }
 
@@ -1271,7 +1272,8 @@ if (!function_exists('CheckCoupon')) {
                 break;
             case 'fixed':
                 if ((!empty($coupon->included_module) && in_array($plan_id, explode(',', $coupon->included_module))) ||
-                    (empty($coupon->included_module) && !in_array($plan_id, explode(',', $coupon->excluded_module)))) {
+                    (empty($coupon->included_module) && !in_array($plan_id, explode(',', $coupon->excluded_module)))
+                ) {
                     $finalPrice = $price - $coupon->discount;
                 } else {
                     return $price;
@@ -1439,6 +1441,14 @@ if (!function_exists('get_module_img')) {
         return $url;
     }
 }
+if (!function_exists('get_module_logo')) {
+    function get_module_logo($module)
+    {
+        $url = url("/Modules/" . $module);
+        return $url;
+    }
+}
+
 
 if (!function_exists('sidebar_logo')) {
     function sidebar_logo()

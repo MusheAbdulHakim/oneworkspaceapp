@@ -16,7 +16,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Dashboards'),
-            'icon' => 'dashboard',
+            'icon' => 'grid_view',
             'name' => 'dashboard',
             'parent' => null,
             'order' => 1,
@@ -44,7 +44,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Onboarding'),
-            'icon' => 'shopping-cart',
+            'icon' => 'settings_account_box',
             'name' => 'onboarding',
             'parent' => null,
             'order' => 2,
@@ -57,7 +57,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('DBoS Strategy'),
-            'icon' => 'shopping-cart',
+            'icon' => 'chess',
             'name' => 'strategy',
             'parent' => null,
             'order' => 3,
@@ -70,7 +70,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Marketing'),
-            'icon' => 'map',
+            'icon' => 'select_all',
             'name' => 'marketing',
             'parent' => null,
             'order' => 4,
@@ -97,7 +97,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('ERP & Operations'),
-            'icon' => 'stack-2',
+            'icon' => 'enterprise',
             'name' => 'operations',
             'parent' => null,
             'order' => 5,
@@ -233,7 +233,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Customer Success'),
-            'icon' => 'stack-2',
+            'icon' => 'support_agent',
             'name' => 'customer-success',
             'parent' => null,
             'order' => 6,
@@ -246,7 +246,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Process Automation'),
-            'icon' => 'replace',
+            'icon' => 'campaign',
             'name' => 'process-automation',
             'parent' => null,
             'order' => 7,
@@ -259,7 +259,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Website Manager'),
-            'icon' => '',
+            'icon' => 'language',
             'name' => 'websitemanager',
             'parent' => null,
             'order' => 8,
@@ -272,7 +272,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('App Integrations'),
-            'icon' => 'pin',
+            'icon' => 'support_agent',
             'name' => 'app-integrations',
             'parent' => null,
             'order' => 8,
@@ -285,7 +285,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Marketplaces'),
-            'icon' => 'cloud',
+            'icon' => 'local_convenience_store',
             'name' => 'marketplace',
             'parent' => null,
             'order' => 9,
@@ -298,7 +298,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Community'),
-            'icon' => 'users',
+            'icon' => 'communities',
             'name' => 'community',
             'parent' => null,
             'order' => 10,
@@ -312,7 +312,7 @@ class CompanyMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Helpdesk'),
-            'icon' => 'headphones',
+            'icon' => 'live_help',
             'name' => 'helpdesk',
             'parent' => null,
             'order' => 13,

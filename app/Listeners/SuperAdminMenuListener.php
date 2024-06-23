@@ -29,7 +29,7 @@ class SuperAdminMenuListener
         $menu->add([
             'category' => 'General',
             'title' => __('Customers'),
-            'icon' => 'users',
+            'icon' => 'group',
             'name' => 'customers',
             'parent' => null,
             'order' => 50,
@@ -177,7 +177,7 @@ class SuperAdminMenuListener
         $menu->add([
             'category' => 'Settings',
             'title' => __('Email Template'),
-            'icon' => 'template',
+            'icon' => 'mail',
             'name' => 'email-templates',
             'parent' => null,
             'order' => 150,
@@ -190,7 +190,7 @@ class SuperAdminMenuListener
         $menu->add([
             'category' => 'Settings',
             'title' => __('Notification Template'),
-            'icon' => 'notification',
+            'icon' => 'notifications',
             'name' => 'system-setup',
             'parent' => null,
             'order' => 170,
@@ -215,21 +215,20 @@ class SuperAdminMenuListener
             'permission' => 'setting manage'
         ]);
         $company_settings = getCompanyAllSetting();
-        if(!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on'){
-            $category_wise_add_ons = json_decode(file_get_contents("https://dash-demo.workdo.io/cronjob/dash-addon.json"),true);
-            $categories  =  array_map(function($item) {
+        if (!empty($company_settings['category_wise_sidemenu']) && $company_settings['category_wise_sidemenu'] == 'on') {
+            $category_wise_add_ons = json_decode(file_get_contents("https://dash-demo.workdo.io/cronjob/dash-addon.json"), true);
+            $categories  =  array_map(function ($item) {
                 return [
                     "name" => $item["name"],
                     "icon" => $item["icon"]
                 ];
             }, $category_wise_add_ons);
 
-            foreach ($categories as $key => $category)
-            {
+            foreach ($categories as $key => $category) {
                 $menu->add([
                     'category' => 'Addon Manager',
                     'title' =>  $category['name'],
-                    'icon' =>  $category['icon'] ,
+                    'icon' =>  $category['icon'],
                     'name' => '',
                     'parent' => null,
                     'order' => 1100,
@@ -240,12 +239,11 @@ class SuperAdminMenuListener
                     'permission' => ''
                 ]);
             }
-        }
-        else{
+        } else {
             $menu->add([
                 'category' => 'Addon Manager',
                 'title' => __('Add-on Manager'),
-                'icon' => 'layout-2',
+                'icon' => 'extension',
                 'name' => 'add-on-manager',
                 'parent' => null,
                 'order' => 1100,
@@ -256,6 +254,5 @@ class SuperAdminMenuListener
                 'permission' => 'module manage'
             ]);
         }
-
     }
 }
