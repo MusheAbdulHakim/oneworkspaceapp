@@ -18,72 +18,86 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $ghl = $this->initGHL();
-        if(!empty($ghl)){
-            $locationId = $this->userGHL()->locationId;
-            $contacts = $ghl->withVersion('2021-07-28')
-                ->make()
-                ->contacts()->list($locationId);
-            $invoices = $ghl->withVersion('2021-07-28')
-                            ->make()->invoices()
-                            ->list($locationId,'location',100,0);
-            $funnels = $ghl->withVersion('2021-07-28')
-                            ->make()->funnels()->list($locationId,[
-                                'locationId' => $locationId
-                            ]);
+        try {
+            $ghl = $this->initGHL();
+            if (!empty($ghl)) {
+                $locationId = $this->userGHL()->locationId;
+                $contacts = $ghl->withVersion('2021-07-28')
+                    ->make()
+                    ->contacts()->list($locationId);
+                $invoices = $ghl->withVersion('2021-07-28')
+                    ->make()->invoices()
+                    ->list($locationId, 'location', 100, 0);
+                $funnels = $ghl->withVersion('2021-07-28')
+                    ->make()->funnels()->list($locationId, [
+                        'locationId' => $locationId
+                    ]);
 
-            $calendars = $ghl->withVersion('2021-04-15')
-                            ->make()
-                            ->calendars()
-                            ->list($locationId);
-            $start = now()->startOfWeek(Carbon::TUESDAY)->valueOf();
-            $end = now()->endOfWeek(Carbon::MONDAY)->valueOf();
-            // $events = $ghl->withVersion('2021-04-15')
-            //                 ->make()->calendars()
-            //                 ->events()->get($end, $start,$locationId,'',[
-            //                     'userId' => $this->userGHL()->userId,
-            //                     'endTime' => $end,
-            //                 ]);
-            return view('ghl::dashboard.dashboard',compact(
-                'contacts','invoices','calendars','funnels'
-            ));
+                $calendars = $ghl->withVersion('2021-04-15')
+                    ->make()
+                    ->calendars()
+                    ->list($locationId);
+                $start = now()->startOfWeek(Carbon::TUESDAY)->valueOf();
+                $end = now()->endOfWeek(Carbon::MONDAY)->valueOf();
+                // $events = $ghl->withVersion('2021-04-15')
+                //                 ->make()->calendars()
+                //                 ->events()->get($end, $start,$locationId,'',[
+                //                     'userId' => $this->userGHL()->userId,
+                //                     'endTime' => $end,
+                //                 ]);
+                return view('ghl::dashboard.dashboard', compact(
+                    'contacts',
+                    'invoices',
+                    'calendars',
+                    'funnels'
+                ));
+            }
+            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+        } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
+            return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
-        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
 
-    public function dashboard(){
-        $ghl = $this->initGHL();
-        if(!empty($ghl)){
-            $locationId = $this->userGHL()->locationId;
-            $contacts = $ghl->withVersion('2021-07-28')
-                ->make()
-                ->contacts()->list($locationId);
-            $invoices = $ghl->withVersion('2021-07-28')
-                            ->make()->invoices()
-                            ->list($locationId,'location',100,0);
-            $funnels = $ghl->withVersion('2021-07-28')
-                            ->make()->funnels()->list($locationId,[
-                                'locationId' => $locationId
-                            ]);
+    public function dashboard()
+    {
+        try {
 
-            $calendars = $ghl->withVersion('2021-04-15')
-                            ->make()
-                            ->calendars()
-                            ->list($locationId);
-            $start = now()->startOfWeek(Carbon::TUESDAY)->valueOf();
-            $end = now()->endOfWeek(Carbon::MONDAY)->valueOf();
-            // $events = $ghl->withVersion('2021-04-15')
-            //                 ->make()->calendars()
-            //                 ->events()->get($end, $start,$locationId,'',[
-            //                     'userId' => $this->userGHL()->userId,
-            //                     'endTime' => $end,
-            //                 ]);
-            return view('ghl::dashboard.dashboard',compact(
-                'contacts','invoices','calendars','funnels'
-            ));
+            $ghl = $this->initGHL();
+            if (!empty($ghl)) {
+                $locationId = $this->userGHL()->locationId;
+                $contacts = $ghl->withVersion('2021-07-28')
+                    ->make()
+                    ->contacts()->list($locationId);
+                $invoices = $ghl->withVersion('2021-07-28')
+                    ->make()->invoices()
+                    ->list($locationId, 'location', 100, 0);
+                $funnels = $ghl->withVersion('2021-07-28')
+                    ->make()->funnels()->list($locationId, [
+                        'locationId' => $locationId
+                    ]);
+
+                $calendars = $ghl->withVersion('2021-04-15')
+                    ->make()
+                    ->calendars()
+                    ->list($locationId);
+                $start = now()->startOfWeek(Carbon::TUESDAY)->valueOf();
+                $end = now()->endOfWeek(Carbon::MONDAY)->valueOf();
+                // $events = $ghl->withVersion('2021-04-15')
+                //                 ->make()->calendars()
+                //                 ->events()->get($end, $start,$locationId,'',[
+                //                     'userId' => $this->userGHL()->userId,
+                //                     'endTime' => $end,
+                //                 ]);
+                return view('ghl::dashboard.dashboard', compact(
+                    'contacts',
+                    'invoices',
+                    'calendars',
+                    'funnels'
+                ));
+            }
+            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+        } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
+            return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
-        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
-
     }
-
 }

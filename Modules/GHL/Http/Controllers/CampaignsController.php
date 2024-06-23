@@ -18,17 +18,20 @@ class CampaignsController extends Controller
      */
     public function index()
     {
-        $ghl = $this->initGHL();
-        if(!empty($ghl)){
-            $campaigns = $ghl->withVersion('2021-04-15')
+        try {
+
+            $ghl = $this->initGHL();
+            if (!empty($ghl)) {
+                $campaigns = $ghl->withVersion('2021-04-15')
                     ->make()
                     ->campaigns()->get($this->userGHL()->locationId);
-            return view('ghl::campaigns.index',compact(
-                'campaigns'
-            ));
+                return view('ghl::campaigns.index', compact(
+                    'campaigns'
+                ));
+            }
+            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+        } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
+            return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
-        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
-
-
 }

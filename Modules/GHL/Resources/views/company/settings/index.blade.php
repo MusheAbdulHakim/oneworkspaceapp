@@ -11,24 +11,21 @@
 
     <div class="card-body">
         <div class="row">
-            @if(!empty($userGhl))
+            {{-- @if (!empty($userGhl))
             <h4>GHL is connected</h4>
             @else
-            <a href="{{ route('ghl.redirect') }}" target="_blank"><button class="btn btn-primary">Authenticate GHL</button></a>
-            @endif
+            @endif --}}
+            <a href="{{ route('ghl.redirect') }}" target="_blank"><button class="btn btn-primary">Authenticate
+                    GHL</button></a>
         </div>
     </div>
-    {{-- <div class="card-footer text-end">
-        <input class="btn btn-print-invoice btn-primary m-r-10" type="submit" value="{{ __('Save Changes') }}">
-    </div> --}}
-
 </div>
 
-    <script>
-        $(document).on('click', '#ghl_integration_is_on', function() {
-            if ($('#ghl_integration_is_on').prop('checked')) {
-                $("#company_paypal_client_id").removeAttr("disabled");
-                $("#company_paypal_secret_key").removeAttr("disabled");
-            }
-        });
-    </script>
+<script>
+    $(document).on('click', '#ghl_integration_is_on', function() {
+        if ($('#ghl_integration_is_on').prop('checked')) {
+            $("#company_paypal_client_id").removeAttr("disabled");
+            $("#company_paypal_secret_key").removeAttr("disabled");
+        }
+    });
+</script>

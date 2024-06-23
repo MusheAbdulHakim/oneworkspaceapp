@@ -4,9 +4,10 @@ namespace Modules\GHL\Traits;
 
 trait UserGHL
 {
-    public function  userGHL(){
+    public function  userGHL()
+    {
         $ghlAccess = auth()->user()->ghl;
-        if(!empty($ghlAccess)){
+        if (!empty($ghlAccess)) {
             return $ghlAccess = auth()->user()->ghl;
         }
         return null;
@@ -15,7 +16,7 @@ trait UserGHL
     public function initGHL()
     {
         $access = $this->userGHL();
-        if(!empty($access)){
+        if (!empty($access)) {
             return \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($access->access_token);
         }
         return null;

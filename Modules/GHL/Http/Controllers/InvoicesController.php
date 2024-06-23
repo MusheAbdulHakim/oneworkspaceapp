@@ -14,18 +14,20 @@ class InvoicesController extends Controller
      */
     public function index()
     {
-        $ghlAccess = auth()->user()->ghl;
-        if(!empty($ghlAccess)){
+        try {
+            $ghlAccess = auth()->user()->ghl;
+            if (!empty($ghlAccess)) {
 
-            $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
-            $invoices = $ghl->withVersion('2021-07-28')
-                            ->make()->invoices()->list($ghlAccess->locationId,'location',200,0);
-            return view('ghl::invoices.index',compact(
-                'invoices'
-            ));
+                $ghl = \MusheAbdulHakim\GoHighLevel\GoHighLevel::init($ghlAccess->access_token);
+                $invoices = $ghl->withVersion('2021-07-28')
+                    ->make()->invoices()->list($ghlAccess->locationId, 'location', 200, 0);
+                return view('ghl::invoices.index', compact(
+                    'invoices'
+                ));
+            }
+            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+        } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
+            return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
-        return redirect()->route('settings.index')->with('error','Please authenticate your ghl account to continue');
     }
-
-
 }
