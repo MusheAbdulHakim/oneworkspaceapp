@@ -9,7 +9,6 @@
                 initialDate: "{{ now()->format('Y-m-d') }}",
                 editable: true,
                 selectable: true,
-                dayMaxEvents: true, // allow "more" link when too many events
                 events: @json($events),
                 dateClick: function(info) {
                     document.getElementById("addEventbtn").click();
@@ -33,6 +32,10 @@
             box-shadow: 1rem;
         }
 
+        .fc-toolbar-title {
+            font-size: 1.25rem !important;
+        }
+
         .fc-bg-event {
             background-color: rgb(55, 55, 229) !important;
         }
@@ -40,7 +43,7 @@
 @endpush
 
 <a data-url="{{ route('mycalendar.create') }}" data-ajax-popup="true" data-bs-toggle="tooltip"
-    data-bs-original-title="{{ __('Add Event') }}" class="btn btn-sm btn-primary d-none btn-icon" id="addEventbtn"
+    data-title="{{ __('Add Event') }}" class="btn btn-sm btn-primary d-none btn-icon" id="addEventbtn"
     href="javascript:void(0)">
     <i class="ti ti-plus"></i>
 </a>

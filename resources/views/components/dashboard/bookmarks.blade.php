@@ -6,19 +6,10 @@
             @else
                 <a href="{{ $bookmark->url }}" target="_blank">
         @endif
-        <div class="card"
+        <div class="card manager-card rounded-0"
             @if (!empty($bookmark->color) && $bookmark->color != '#fff' && $bookmark->color != '#ffffff') style="background-color: {{ $bookmark->color }}; color: #fff;" @endif>
-            <div class="card-body">
-                {{-- @if (!empty($bookmark->image))
-                    <div class="theme-avtar">
-                        <img src="{{ get_file(('uploads/bookmarks/'.$bookmark->image)) }}"
-                            alt="site image" style="max-width: 100%;">
-                    </div>
-                    @endif --}}
-                <h6 class="card-header">{{ $bookmark->title }}</h6>
-                <span>{{ $bookmark->priority }}</span>
-                <span>{{ $bookmark->url }}</span>
-                <p>{{ $bookmark->description }}</p>
+            <div class="product-img justify-content-center my-3">
+                <span class="text-center text-white">{{ $bookmark->title }}</span>
             </div>
         </div>
         </a>

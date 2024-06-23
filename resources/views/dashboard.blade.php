@@ -26,16 +26,22 @@
                         $activeModules = ActivatedModule();
                     @endphp
                     @if (!empty($activeModules))
+                        <h4>Widgets</h4>
                         <div class="col-12">
                             <div class="row">
                                 @if (in_array('Lead', $activeModules))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('lead.dashboard') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">Lead Generation</h5>
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">Lead
+                                                        Generation</p>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="justify-content-centertext-center px-2">
+                                                    <p>Stages: {{ $LeadPipeline->leadStages->count() ?? 0 }}</p>
+                                                    <p>Deals: {{ $totalDeals ?? 0 }}</p>
+                                                    <p>Clients: {{ $totalLeadClients ?? 0 }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -45,10 +51,14 @@
                                 <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                     <a href="#">
                                         <div class="card manager-card rounded-0">
-                                            <div class="product-img bg-secondary justify-content-center my-3">
-                                                <h5 class="text-capitalize text-center text-white">Marketing Automation</h5>
+                                            <div class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                <p class="text-capitalize text-center text-white">Marketing
+                                                    Automation</p>
                                             </div>
-                                            <div class="card-body">
+                                            <div class="justify-content-centertext-center px-2">
+                                                <p>Contacts: {{ $ghl['contacts'] ?? 0 }}</p>
+                                                <p>Invoices: {{ $ghl['invoices'] ?? 0 }}</p>
+                                                <p>Funnels: {{ $ghl['funnels'] ?? 0 }}</p>
                                             </div>
                                         </div>
                                     </a>
@@ -57,11 +67,16 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('taskly.dashboard') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">Project Management
-                                                    </h5>
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">Project
+                                                        Management
+                                                    </p>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="justify-content-centertext-center px-2">
+                                                    <p>Projects: {{ $projects['total'] ?? 0 }}</p>
+                                                    <p>Tasks: {{ $projects['tasks'] ?? 0 }}</p>
+                                                    <p>Completed Tasks: {{ $projects['completedTasks'] ?? 0 }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -71,10 +86,15 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('hrm.dashboard') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">HR Management</h5>
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">HR
+                                                        Management</p>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="justify-content-centertext-center px-2">
+                                                    <p>Employees: {{ $hrm['employees'] ?? 0 }}</p>
+                                                    <p>Attendances: {{ $hrm['attendances'] ?? 0 }}</p>
+                                                    <p>Resignations: {{ $projects['resignations'] ?? 0 }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -84,10 +104,10 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('pos.dashboard') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">POS & Revenue</h5>
-                                                </div>
-                                                <div class="card-body">
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">POS &
+                                                        Revenue</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -97,11 +117,20 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('dashboard.account') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">Accounts & Invoices
-                                                    </h5>
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">Accounts &
+                                                        Invoices
+                                                    </p>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="justify-content-centertext-center px-2">
+                                                    <p>Income Today:
+                                                        {{ currency_format_with_sym(\Modules\Account\Entities\AccountUtility::todayIncome()) }}
+                                                    </p>
+                                                    <p>Customers:
+                                                        {{ \Modules\Account\Entities\AccountUtility::countCustomers() }}
+                                                    </p>
+                                                    <p>Clients: {{ $totalLeadClients ?? 0 }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -111,10 +140,10 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('lead.dashboard') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">AI Assistant</h5>
-                                                </div>
-                                                <div class="card-body">
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">AI
+                                                        Assistant</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -124,11 +153,13 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('pabbly.connect.index') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">Pabbly Connect</h5>
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">Pabbly
+                                                        Connect</p>
                                                 </div>
-                                                <div class="card-body">
-                                                </div>
+                                                {{-- <div class="card-body">
+                                                </div> --}}
                                             </div>
                                         </a>
                                     </div>
@@ -137,10 +168,12 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('purchases.index') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">Procurement</h5>
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">Procurement</p>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="justify-content-centertext-center px-2">
+                                                    <p>Purchases: {{ $procurement['totalPurchases'] ?? 0 }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -150,12 +183,14 @@
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('ghl.dashboard') }}">
                                             <div class="card manager-card rounded-0">
-                                                <div class="product-img bg-secondary justify-content-center my-3">
-                                                    <h5 class="text-capitalize text-center text-white">Expert Marketplace
-                                                    </h5>
+                                                <div
+                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3">
+                                                    <p class="text-capitalize text-center text-white">Expert
+                                                        Marketplace
+                                                    </p>
                                                 </div>
-                                                <div class="card-body">
-                                                </div>
+                                                {{-- <div class="card-body">
+                                                </div> --}}
                                             </div>
                                         </a>
                                     </div>
@@ -166,9 +201,6 @@
                 </div>
                 <div class="row">
                     <x-dashboard.addons />
-                </div>
-                <div class="row">
-                    <x-dashboard.pinned-apps />
                 </div>
                 <div class="row">
                     <h4 class="my-3">My Pinned Apps</h4>
@@ -219,25 +251,25 @@
                 <div class="row">
                     <div class="col-12 my-3">
                         <div class="row">
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-9 col-12">
                                 <h4>URL Bookmarks</h4>
                             </div>
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-3 col-12">
                                 <a href="{{ route('bookmark.create') }}" data-bs-toggle="tooltip"
                                     data-title="{{ __('Add Bookmark') }}"
                                     data-bs-original-title="{{ __('Add Bookmark') }}"
-                                    class="btn btn-sm btn-primary btn-icon ">
+                                    class="btn btn-sm btn-primary btn-icon">
                                     <i class="ti ti-plus"></i> Add Bookmark
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <x-dashboard.bookmarks :bookmarks="\App\Models\UrlBookmark::get()" />
+                    <x-dashboard.bookmarks :bookmarks="\App\Models\UrlBookmark::where('status', '1')->get()" />
                 </div>
 
             </div>
         </div>
-        <div class="col-md-4 col-12" style="">
+        <div class="col-md-4 col-12">
             @php
                 $events = App\Models\CalendarEvent::latest()
                     ->get()
@@ -248,6 +280,7 @@
                             'description' => $model->description,
                             'start' => $model->startDate,
                             'end' => $model->endDate,
+                            'color' => $model->color,
                             'url' => $model->url,
                         ];
                     })
@@ -255,20 +288,22 @@
             @endphp
             <div class="row">
                 <div class="card shadow rounded ps-3 pe-3 m-3">
-                    <x-dashboard.calendar :events="$events" />
+                    <div class="col-12">
+                        <x-dashboard.calendar :events="$events" />
+                    </div>
                     <div class="col-12 mt-4">
                         @php
                             $count = 0;
                         @endphp
                         @foreach ($events as $event)
-                            <hr class="text-black">
+                            <hr class="text-light-secondary">
                             @if (++$count <= 5)
                                 <h5>{{ $event['title'] }}</h5>
                                 <a href="{{ $event['url'] ?? '#' }}"
                                     {{ !empty($event['url']) ? 'target="_blank"' : '' }}>
-                                    <h5 class="link">{{ $event['start'] }} - {{ $event['end'] }}</h5>
+                                    <span class="link">{{ $event['start'] }} - {{ $event['end'] }}</span>
                                 </a>
-                                <p>
+                                <p class="mt-1">
                                     {{ $event['description'] }}
                                 </p>
                             @else
