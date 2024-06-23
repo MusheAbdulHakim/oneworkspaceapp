@@ -102,26 +102,31 @@ class HomeController extends Controller
                 $totalLeadDeals = Deal::where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
                 $totalLeadClients = User::where('type', '=', 'client')->where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
 
+                $ghl = null;
+                try {
+                    //GHL DATA
+                    $ghl = $this->initGHL();
+                    $locationId = $this->userGHL()->locationId;
+                    $contacts = $ghl->withVersion('2021-07-28')
+                        ->make()
+                        ->contacts()->list($locationId) ?? 0;
+                    $invoices = $ghl->withVersion('2021-07-28')
+                        ->make()->invoices()
+                        ->list($locationId, 'location', 100, 0) ?? 0;
+                    $funnels = $ghl->withVersion('2021-07-28')
+                        ->make()->funnels()->list($locationId, [
+                            'locationId' => $locationId
+                        ]) ?? 0;
 
-                //GHL DATA
-                $ghl = $this->initGHL();
-                $locationId = $this->userGHL()->locationId;
-                $contacts = $ghl->withVersion('2021-07-28')
-                    ->make()
-                    ->contacts()->list($locationId) ?? 0;
-                $invoices = $ghl->withVersion('2021-07-28')
-                    ->make()->invoices()
-                    ->list($locationId, 'location', 100, 0) ?? 0;
-                $funnels = $ghl->withVersion('2021-07-28')
-                    ->make()->funnels()->list($locationId, [
-                        'locationId' => $locationId
-                    ]) ?? 0;
+                    $ghl = [
+                        'contacts' => count($contacts),
+                        'invoices' => count($invoices),
+                        'funnels' => count($funnels)
+                    ];
+                } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
+                    return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
+                }
 
-                $ghl = [
-                    'contacts' => count($contacts),
-                    'invoices' => count($invoices),
-                    'funnels' => count($funnels)
-                ];
 
                 //Projects
                 $completeTask = 0;

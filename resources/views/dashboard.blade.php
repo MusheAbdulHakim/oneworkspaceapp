@@ -55,11 +55,13 @@
                                                 <p class="text-capitalize text-center text-white">Marketing
                                                     Automation</p>
                                             </div>
-                                            <div class="justify-content-centertext-center px-2">
-                                                <p>Contacts: {{ $ghl['contacts'] ?? 0 }}</p>
-                                                <p>Invoices: {{ $ghl['invoices'] ?? 0 }}</p>
-                                                <p>Funnels: {{ $ghl['funnels'] ?? 0 }}</p>
-                                            </div>
+                                            @if (!empty($ghl))
+                                                <div class="justify-content-centertext-center px-2">
+                                                    <p>Contacts: {{ $ghl['contacts'] ?? 0 }}</p>
+                                                    <p>Invoices: {{ $ghl['invoices'] ?? 0 }}</p>
+                                                    <p>Funnels: {{ $ghl['funnels'] ?? 0 }}</p>
+                                                </div>
+                                            @endif
                                         </div>
                                     </a>
                                 </div>
