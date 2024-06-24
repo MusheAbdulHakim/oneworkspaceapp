@@ -111,6 +111,13 @@
                                                     <p class="text-capitalize text-center text-white">POS &
                                                         Revenue</p>
                                                 </div>
+                                                <div class="justify-content-centertext-center px-2">
+                                                    <p>Total POS:
+                                                    </p>
+                                                    <p>Barcode:
+                                                    </p>
+
+                                                </div>
                                             </div>
                                         </a>
                                     </div>
@@ -160,8 +167,6 @@
                                                     <p class="text-capitalize text-center text-white">Pabbly
                                                         Connect</p>
                                                 </div>
-                                                {{-- <div class="card-body">
-                                                </div> --}}
                                             </div>
                                         </a>
                                     </div>
@@ -283,7 +288,7 @@
                             'start' => $model->startDate,
                             'end' => $model->endDate,
                             'color' => $model->color,
-                            'url' => $model->url,
+                            'url' => $model->url ?? '',
                         ];
                     })
                     ->all();

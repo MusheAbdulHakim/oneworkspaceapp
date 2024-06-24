@@ -32,7 +32,7 @@ class CalendarEventsController extends Controller
                 'start' => $model->startDate,
                 'end' => $model->endDate,
                 'color' => $model->color,
-                'url' => $model->url,
+                'url' => $model->url ?? '',
             ];
         });
         // dd($events->all());

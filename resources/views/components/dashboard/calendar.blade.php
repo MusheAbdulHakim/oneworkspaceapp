@@ -15,9 +15,11 @@
                 },
                 eventClick: function(info) {
                     info.jsEvent.preventDefault(); // don't let the browser navigate
-                    if (info.event.url) {
+                    let event = info.event;
+                    if (event.url != '' && event.url != null && event.url != undefined) {
                         window.open(info.event.url);
                     }
+                    document.getElementById("addEventbtn").click();
                 }
             }).render();
 

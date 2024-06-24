@@ -58,10 +58,12 @@
                 selectable: true,
                 selectMirror: true,
                 eventClick: function(info) {
-                    if (info.event && info.event.url) {
-                        info.jsEvent.preventDefault(); // don't let the browser navigate
+                    info.jsEvent.preventDefault(); // don't let the browser navigate
+                    let event = info.event;
+                    if (event.url != '' && event.url != null && event.url != undefined) {
                         window.open(info.event.url);
                     }
+                    document.getElementById("addEventbtn").click();
 
                 },
                 dateClick: function(info) {
