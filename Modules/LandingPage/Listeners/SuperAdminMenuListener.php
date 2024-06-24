@@ -13,9 +13,9 @@ class SuperAdminMenuListener
         $module = 'LandingPage';
         $menu = $event->menu;
         $menu->add([
-            'category' => __('Operations'),
+            'category' => __('General'),
             'title' => __('CMS'),
-            'icon' => 'package',
+            'icon' => 'document_scanner',
             'name' => 'landing-page',
             'parent' => null,
             'order' => 500,
@@ -26,9 +26,9 @@ class SuperAdminMenuListener
             'permission' => 'landingpage manage'
         ]);
         $menu->add([
-            'category' => __('Operations'),
+            'category' => __('General'),
             'title' => __('Landing Page'),
-            'icon' => 'settings',
+            'icon' => '',
             'name' => '',
             'parent' => 'landing-page',
             'order' => 10,
@@ -39,9 +39,9 @@ class SuperAdminMenuListener
             'permission' => 'landingpage manage'
         ]);
         $menu->add([
-            'category' => __('Operations'),
+            'category' => __('General'),
             'title' => __('Marketplace'),
-            'icon' => 'settings',
+            'icon' => '',
             'name' => '',
             'parent' => 'landing-page',
             'order' => 20,
@@ -52,9 +52,9 @@ class SuperAdminMenuListener
             'permission' => 'landingpage manage'
         ]);
         $menu->add([
-            'category' => __('Operations'),
+            'category' => __('General'),
             'title' => __('Custom Pages'),
-            'icon' => 'settings',
+            'icon' => '',
             'name' => '',
             'parent' => 'landing-page',
             'order' => 30,
