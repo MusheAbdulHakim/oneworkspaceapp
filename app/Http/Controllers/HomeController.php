@@ -81,52 +81,8 @@ class HomeController extends Controller
                 $dashboardItem = collect($menu_items)->first(function ($item) {
                     return $item['parent'] === 'dashboard';
                 });
-
                 $creatorId = creatorId();
                 $getActiveWorkSpace = getActiveWorkSpace();
-                if ($user->default_pipeline) {
-                    $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
-                        ->where('workspace_id', $getActiveWorkSpace)
-                        ->where('id', '=', $user->default_pipeline)
-                        ->first();
-                    if (!$LeadPipeline) {
-                        $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
-                            ->where('workspace_id', $getActiveWorkSpace)
-                            ->first();
-                    }
-                } else {
-                    $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
-                        ->where('workspace_id', $getActiveWorkSpace)
-                        ->first();
-                }
-                $totalLeadDeals = Deal::where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
-                $totalLeadClients = User::where('type', '=', 'client')->where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
-
-                $ghl = null;
-                try {
-                    //GHL DATA
-                    $ghl = $this->initGHL();
-                    $locationId = $this->userGHL()->locationId;
-                    $contacts = $ghl->withVersion('2021-07-28')
-                        ->make()
-                        ->contacts()->list($locationId) ?? 0;
-                    $invoices = $ghl->withVersion('2021-07-28')
-                        ->make()->invoices()
-                        ->list($locationId, 'location', 100, 0) ?? 0;
-                    $funnels = $ghl->withVersion('2021-07-28')
-                        ->make()->funnels()->list($locationId, [
-                            'locationId' => $locationId
-                        ]) ?? 0;
-
-                    $ghl = [
-                        'contacts' => count($contacts),
-                        'invoices' => count($invoices),
-                        'funnels' => count($funnels)
-                    ];
-                } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
-                    return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
-                }
-
 
                 //Projects
                 $completeTask = 0;
@@ -184,6 +140,58 @@ class HomeController extends Controller
                     'attendances' => $attendances,
                     'resignations' => $totalResignation
                 ];
+                if ($user->default_pipeline) {
+                    $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
+                        ->where('workspace_id', $getActiveWorkSpace)
+                        ->where('id', '=', $user->default_pipeline)
+                        ->first();
+                    if (!$LeadPipeline) {
+                        $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
+                            ->where('workspace_id', $getActiveWorkSpace)
+                            ->first();
+                    }
+                } else {
+                    $LeadPipeline = Pipeline::where('created_by', '=', $creatorId)
+                        ->where('workspace_id', $getActiveWorkSpace)
+                        ->first();
+                }
+                $totalLeadDeals = Deal::where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
+                $totalLeadClients = User::where('type', '=', 'client')->where('created_by', '=', $creatorId)->where('workspace_id', '=', $getActiveWorkSpace)->count();
+
+                $ghl = null;
+                try {
+                    //GHL DATA
+                    if(!empty($ghl)){
+                        $ghl = $this->initGHL();
+                        $locationId = $this->userGHL()->locationId;
+                        $contacts = $ghl->withVersion('2021-07-28')
+                            ->make()
+                            ->contacts()->list($locationId) ?? 0;
+                        $invoices = $ghl->withVersion('2021-07-28')
+                            ->make()->invoices()
+                            ->list($locationId, 'location', 100, 0) ?? 0;
+                        $funnels = $ghl->withVersion('2021-07-28')
+                            ->make()->funnels()->list($locationId, [
+                                'locationId' => $locationId
+                            ]) ?? 0;
+
+                        $ghl = [
+                            'contacts' => count($contacts),
+                            'invoices' => count($invoices),
+                            'funnels' => count($funnels)
+                        ];
+                    }
+                } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
+                    return view('dashboard', compact(
+                        'LeadPipeline',
+                        'totalLeadDeals',
+                        'totalLeadClients',
+                        'ghl',
+                        'projects',
+                        'procurement',
+                        'hrm'
+                    ))->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
+                }
                 return view('dashboard', compact(
                     'LeadPipeline',
                     'totalLeadDeals',
