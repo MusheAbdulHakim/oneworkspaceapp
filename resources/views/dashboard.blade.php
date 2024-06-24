@@ -188,16 +188,14 @@
                                 @endif
                                 @if (Route::has('ghl.dashboard'))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
-                                        <a href="{{ route('ghl.dashboard') }}">
+                                        <a href="{{ route('embeds.marketing-hub') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
                                                     class="product-img bg-secondary justify-content-center text-nowrap my-3">
                                                     <p class="text-capitalize text-center text-white">Expert
-                                                        Marketplace
+                                                        Unified Marketplace
                                                     </p>
                                                 </div>
-                                                {{-- <div class="card-body">
-                                                </div> --}}
                                             </div>
                                         </a>
                                     </div>
