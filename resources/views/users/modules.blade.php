@@ -238,7 +238,7 @@
                                         </li>
                                     </ul>
                                 
-                                    <div class="cart-footer-total-row bg-primary text-white rounded p-3 d-flex align-items-center justify-content-between">
+                                    <div class="cart-footer-total-row bg-primary text-white p-3 d-flex align-items-center justify-content-between rounded-0">
                                         <div class="mini-total-price">
                                             <div class="price">
                                                 <h3 class="text-white mb-0 total">{{ '0.00'.$currancy_symbol }}</h3>

@@ -54,7 +54,7 @@
                 <div class="card">
                     <div class="card-header border-0 pb-0">
                         <div class="d-flex align-items-center">
-                            <span class="badge bg-primary p-2 px-3 rounded">{{ $user->type }}</span>
+                            <span class="badge bg-primary p-2 px-3 rounded-0">{{ $user->type }}</span>
                         </div>
                         <div class="card-header-right">
                             @permission('user manage')

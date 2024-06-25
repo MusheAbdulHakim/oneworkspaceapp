@@ -101,7 +101,7 @@ $titles = __('User Log History') ;
                                 @if(Auth::user()->type == 'super admin' || Auth::user()->type == 'company')
                                 <td>{{ $user->user_name }}</td>
                                 <td>
-                                    <span class="me-5 badge p-2 px-3 rounded bg-primary status_badge">{{$user->user_type}}</span>
+                                    <span class="me-5 badge p-2 px-3 bg-primary status_badge rounded-0">{{$user->user_type}}</span>
                                 </td>
                                 @endif
                                 <td>{{ !empty($user->date) ? company_datetime_formate($user->date) : '-' }}</td>

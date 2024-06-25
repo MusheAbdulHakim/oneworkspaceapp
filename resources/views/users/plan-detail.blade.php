@@ -100,14 +100,14 @@
                             <div class="subscription-summery">
                                 <div class="">
                                     <span class="cart-sum-left"><h6 class="">{{ __('Payment Method') }}:</h6></span>
-                                    <div class="cart-footer-total-row bg-primary text-white rounded p-3 d-flex align-items-center justify-content-between">
+                                    <div class="cart-footer-total-row bg-primary text-white p-3 d-flex align-items-center justify-content-between rounded-0">
                                         <div class="mini-total-price">
                                             <div class="price">
                                                 <h3 class="text-white mb-0 total">{{ super_currency_format_with_sym($plan->package_price_monthly) }}</h3>
                                                 <span class="time-lbl plan-time-text">{{ __('/Month')}}</span>
                                             </div>
                                         </div>
-                                       
+
                                         {{Form::open(array('route'=>['assign.plan.user',[Crypt::encrypt($plan->id),Crypt::encrypt($user->id)]],'method'=>'post'))}}
                                             <input type="hidden" name="time_period" value="Month" class="time_period_input">
                                             <div class="text-end form-btn">
@@ -115,7 +115,7 @@
                                             </div>
                                         {{Form::close()}}
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
     </div>
     <!-- [ Main Content ] end -->
 @endsection
-@push('scripts')  
+@push('scripts')
     <script>
         $(document).on("click",".switch-change",function()
         {
@@ -228,7 +228,7 @@
         }
 
         function ChangePrice(user = null, user_module_price = 0) {
-            
+
             var planprice = '{{ super_currency_format_with_sym($planprice) }}';
             if ($('.switch-change').prop('checked')==true)
             {
@@ -237,7 +237,7 @@
 
             var currancy_symbol = '{{ $currancy_symbol }}';
             if (user == null) {
-                var user = parseInt($('.user_counter_input').val());    
+                var user = parseInt($('.user_counter_input').val());
             }
             if (user_module_price == 0) {
                 var user_module_price = parseFloat($('.user_module_price_input').val());
@@ -247,5 +247,5 @@
 
         }
     </script>
-    
+
 @endpush

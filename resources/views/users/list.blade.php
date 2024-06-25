@@ -76,7 +76,7 @@
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
-                                                <span class="badge bg-primary p-2 px-3 rounded rounded">
+                                                <span class="badge bg-primary p-2 px-3 rounded-0">
                                                     {{ $user->type }}
                                                 </span>
                                             </td>
