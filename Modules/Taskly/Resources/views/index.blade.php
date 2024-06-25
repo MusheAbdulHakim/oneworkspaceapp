@@ -13,19 +13,21 @@
         <div class="col-lg-7 col-md-7 col-sm-7">
             <div class="row">
                 <div class="col-xl-3 col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="theme-avtar bg-primary">
-                                <i class="fas fa-tasks bg-primary text-white"></i>
+                    <div class="card rounded-0">
+                        <a href="{{ route('projects.index') }}">
+                            <div class="card-body">
+                                <div class="theme-avtar bg-primary">
+                                    <i class="fas fa-tasks bg-primary text-white"></i>
+                                </div>
+                                <p class="text-muted text-sm"></p>
+                                <h6 class="mt-4 mb-4">{{ __('Total Project') }}</h6>
+                                <h3 class="mb-0">{{ $totalProject }} <span class="text-success text-sm"></span></h3>
                             </div>
-                            <p class="text-muted text-sm"></p>
-                            <h6 class="mt-4 mb-4">{{ __('Total Project') }}</h6>
-                            <h3 class="mb-0">{{ $totalProject }} <span class="text-success text-sm"></span></h3>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-12">
-                    <div class="card">
+                    <div class="card rounded-0">
                         <div class="card-body">
                             <div class="theme-avtar bg-info">
                                 <i class="fas fa-tag bg-info text-white"></i>
@@ -38,7 +40,7 @@
                 </div>
 
                 <div class="col-xl-3">
-                    <div class="card">
+                    <div class="card rounded-0">
                         <div class="card-body">
                             <div class="theme-avtar bg-danger">
                                 <i class="fas fa-bug bg-danger text-white"></i>
@@ -51,7 +53,7 @@
                 </div>
 
                 <div class="col-xl-3 col-md-12">
-                    <div class="card">
+                    <div class="card rounded-0">
                         <div class="card-body">
                             <div class="theme-avtar bg-success">
                                 <i class="fas fa-users bg-success text-white"></i>
@@ -64,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="card ">
+            <div class="card rounded-0">
                 <div class="card-header">
                     <div>
                         <div class="d-flex justify-content-between align-items-center">
@@ -132,7 +134,7 @@
             </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-5">
-            <div class="card">
+            <div class="card rounded-0">
                 <div class="card-header">
                     <h5>{{ __('Tasks Overview') }}</h5>
                 </div>
@@ -140,7 +142,7 @@
                     <div id="task-area-chart"></div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card rounded-0">
                 <div class="card-header">
                     <div class="float-end">
                         <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Refferals"><i

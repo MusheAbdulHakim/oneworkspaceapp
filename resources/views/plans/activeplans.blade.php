@@ -11,17 +11,17 @@
 @section('content')
     <div class="row justify-content-center px-0">
         @if (admin_setting('custome_package') == 'on' && admin_setting('plan_package') == 'on')
-            <div class=" col-12">
+            <div class="col-12">
                 <div class="">
                     <div class="card-body package-card-inner  d-flex align-items-center justify-content-center mb-4">
-                        <div class="tab-main-div">
+                        <div class="tab-main-div rounded-0">
                             <div class="nav-pills">
-                                <a class="nav-link active p-2" href="{{ route('active.plans') }}" role="tab"
+                                <a class="nav-link rounded-0 active p-2" href="{{ route('active.plans') }}" role="tab"
                                     aria-controls="pills-home"
                                     aria-selected="true">{{ __('Pre-Packaged Subscription') }}</a>
                             </div>
                             <div class="nav-pills">
-                                <a class="nav-link  p-2" href="{{ route('plans.index', ['type' => 'subscription']) }}"
+                                <a class="nav-link rounded-0 p-2" href="{{ route('plans.index', ['type' => 'subscription']) }}"
                                     role="tab" aria-controls="pills-home"
                                     aria-selected="true">{{ __('Usage Subscription') }}</a>
                             </div>

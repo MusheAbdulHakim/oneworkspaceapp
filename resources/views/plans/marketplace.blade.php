@@ -22,14 +22,14 @@
     <!-- [ Main Content ] start -->
     @if((admin_setting('custome_package') == 'on') && (admin_setting('plan_package') == 'on'))
         <div class=" col-12">
-            <div class="">
+            <div class="rounded-0">
                 <div class="card-body package-card-inner  d-flex align-items-center justify-content-center mb-4">
                     <div class="tab-main-div">
                         <div class="nav-pills">
-                            <a class="nav-link  p-2"   href="{{ route('active.plans')}}" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Pre-Packaged Subscription')}}</a>
+                            <a class="nav-link rounded-0 p-2"   href="{{ route('active.plans')}}" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Pre-Packaged Subscription')}}</a>
                     </div>
                     <div class="nav-pills">
-                        <a class="nav-link active p-2"   href="{{ route('plans.index',['type'=>'subscription'])}}" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Usage Subscription')}}</a>
+                        <a class="nav-link rounded-0 active p-2"   href="{{ route('plans.index',['type'=>'subscription'])}}" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Usage Subscription')}}</a>
                     </div>
                 </div>
                 </div>
@@ -43,7 +43,7 @@
                     <div class="row">
                         @if(SubscriptionDetails()['status'] == true)
                             <div class="col-12">
-                                <div class="card">
+                                <div class="card rounded-0">
                                     <div class="card-body package-card-inner  d-flex align-items-center">
                                         <div class="package-itm theme-avtar border border-secondary">
                                             <img src="{{ (!empty(admin_setting('favicon')) && check_file(admin_setting('favicon'))) ? get_file(admin_setting('favicon')) : get_file('uploads/logo/favicon.png')}}{{'?'.time()}}" alt="">
@@ -63,7 +63,7 @@
                             </div>
                         @endif
                         <div class="col-12">
-                            <div class="card">
+                            <div class="card rounded-0">
                                 <div class="card-body package-card-inner  d-flex align-items-center">
                                     <div class="package-itm theme-avtar border border-secondary">
                                         <img src="{{ (!empty(admin_setting('favicon')) && check_file(admin_setting('favicon'))) ? get_file(admin_setting('favicon')) : get_file('uploads/logo/favicon.png')}}{{'?'.time()}}" alt="">
@@ -90,7 +90,7 @@
                                 @if (!isset($json['display']) || $json['display'] == true)
                                 <div class="col-xxl-3 col-xl-4 col-lg-6 col-sm-6 product-card ">
                                     <div class="product-card-inner">
-                                        <div class="card user_module">
+                                        <div class="card user_module rounded-0">
                                             <div class="product-img">
                                                 <div class="theme-avtar">
                                                     <img src="{{ get_module_img($module->getName()) }}"
@@ -125,7 +125,7 @@
                             @endforeach
                         @else
                             <div class="col-lg-12 col-md-12">
-                                <div class="card p-5">
+                                <div class="card rounded-0 p-5">
                                     <div class="d-flex justify-content-center">
                                         <div class="ms-3 text-center">
                                             <h3>{{ __('Add-on Not Available') }}</h3>
@@ -147,7 +147,7 @@
                             @endphp
                             @if (!isset($json['display']) || $json['display'] == true)
                             <div class="col-xxl-3 col-xl-4 col-lg-6 col-sm-6 product-card ">
-                                <div class="card active_module">
+                                <div class="card active_module rounded-0">
                                     <div class="product-img">
                                         <div class="theme-avtar">
                                             <img src="{{ get_module_img($purchased->getName()) }}"
@@ -187,7 +187,7 @@
                     </div>
                 </div>
                 <div class="col-xxl-4 col-xl-5">
-                    <div class="card subscription-counter">
+                    <div class="card subscription-counter rounded-0">
                         <div class="card-header d-flex justify-content-between">
                             <h5 class="mt-1">{{ __('Basic Package')}}</h5>
                             <label class="switch ">
@@ -221,7 +221,7 @@
                                 <div class="summery-footer">
                                     <div class="user-qty">
                                         <div class="lbl"> {{ __('Choose Workspace') }}:</div>
-                                        <div class="qty-spinner">
+                                        <div class="qty-spinner rounded-0">
                                             <button type="button" class="quantity-decrement" data-name = "workspace">
                                                 <i class="ti ti-circle-minus m-2 ti-25"></i>
                                             </button>
@@ -233,7 +233,7 @@
                                     </div>
                                     <div class="user-qty">
                                         <div class="lbl"> {{ __('Choose Users') }}:</div>
-                                        <div class="qty-spinner">
+                                        <div class="qty-spinner rounded-0">
                                             <button type="button" class="quantity-decrement" data-name = "user">
                                                 <i class="ti ti-circle-minus m-2 ti-25"></i>
                                             </button>
@@ -331,7 +331,7 @@
                                         @endif
                                         @stack('company_plan_payment')
                                     </div>
-                                    <div class="cart-footer-total-row bg-primary text-white rounded p-3 d-flex align-items-center justify-content-between">
+                                    <div class="cart-footer-total-row bg-primary text-white p-3 d-flex align-items-center justify-content-between rounded-0">
                                         <div class="mini-total-price">
                                             <div class="price">
                                                 <h3 class="text-white mb-0 total">{{ '0.00'.$currancy_symbol }}</h3>
