@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\Rule;
 use Illuminate\Auth\Events\Registered;
 use Lab404\Impersonate\Impersonate;
+use Modules\GoHighLevel\Entities\Gohighlevel;
 
 use function GuzzleHttp\Promise\all;
 
