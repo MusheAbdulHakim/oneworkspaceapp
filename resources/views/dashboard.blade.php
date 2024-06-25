@@ -103,6 +103,10 @@
                                     </div>
                                 @endif
                                 @if (in_array('Pos', $activeModules))
+                                    @php
+                                        $posPayments = Modules\Pos\Entities\Pos::where('created_by', creatorId())->where('workspace',getActiveWorkSpace())->with('customer','warehouse','posPayment')->get();
+                                    @endphp
+                                    @if (auth()->user()->isAbleTo('pos dashboard manage'))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('pos.dashboard') }}">
                                             <div class="card manager-card rounded-0">
@@ -112,15 +116,14 @@
                                                         Revenue</p>
                                                 </div>
                                                 <div class="justify-content-centertext-center px-2">
-                                                    <p>Total POS:
+                                                    <p>Total POS: {{ \Modules\Pos\Entities\Pos::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->count() ?? 0 }}
                                                     </p>
-                                                    <p>Barcode:
-                                                    </p>
-
+                                                    <p>Orders: {{ $posPayments->count() ?? 0 }}</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
+                                    @endif
                                 @endif
                                 @if (in_array('Account', $activeModules))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
@@ -180,7 +183,9 @@
                                                     <p class="text-capitalize text-center text-white">Procurement</p>
                                                 </div>
                                                 <div class="justify-content-centertext-center px-2">
-                                                    <p>Purchases: {{ $procurement['totalPurchases'] ?? 0 }}</p>
+                                                    <p>Warehouses: {{ $procurement['warehouses'] ?? 0 }}</p>
+                                                    <p>Purchases: {{ $procurement['purchases'] ?? 0 }}</p>
+                                                    <p>Transfers: {{ $procurement['transfers'] ?? 0 }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -207,7 +212,7 @@
                 <div class="row">
                     <x-dashboard.addons />
                 </div>
-                
+
 
                 <div class="row">
                     <div class="col-12 my-3">

@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\File;
 use Modules\Hrm\Entities\Attendance;
 use Modules\Hrm\Entities\Resignation;
 use Modules\Taskly\Entities\UserProject;
+use App\Models\WarehouseTransfer;
+use App\Models\Warehouse;
+
 
 class HomeController extends Controller
 {
@@ -97,9 +100,13 @@ class HomeController extends Controller
                     'tasks' => $totalTask,
                     'total' => $totalProjects,
                 ];
-                $totalPurchases = Purchase::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->with('vender', 'category', 'user')->count() ?? 0;
+                $totalPurchases = Purchase::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->count() ?? 0;
+                $warehouses = Warehouse::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->count() ?? 0;
+                $transfers = WarehouseTransfer::where('created_by', '=', creatorId())->where('workspace',getActiveWorkSpace())->count() ?? 0;
                 $procurement = [
                     'purchases' => $totalPurchases,
+                    'warehouses' => $warehouses,
+                    'transfers' => $transfers,
                 ];
 
                 //HRM
