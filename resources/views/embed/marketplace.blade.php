@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="row" id="iframe_container">
-    <iframe id="page_iframe" src="https://marketplace.oneworkspace.io"
+    <iframe id="page_iframe" src="https://oneworkspace.io/services-marketplace"
     seamless="seamless" frameborder="0"></iframe>
 </div>
 @endsection
