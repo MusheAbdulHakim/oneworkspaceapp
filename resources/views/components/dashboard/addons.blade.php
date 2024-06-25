@@ -1,11 +1,13 @@
 @if (ActivatedModule())
     <h4>Oneworkspace Addons</h4>
     <div class="owl-carousel mt-4 owl-theme">
+        @php
+            $exceptions = ['ProductService', 'Stripe', 'Paypal'];
+            $icon_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        @endphp
         @foreach (ActivatedModule() as $i => $module)
             @php
-                $exceptions = ['ProductService', 'Stripe', 'Paypal'];
                 $module = Module::find($module);
-                $icon_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
                 $i += 1;
             @endphp
             @if (!in_array($module, $exceptions))
@@ -14,13 +16,30 @@
                         <div class="card rounded">
                             <div class="card-body p-2 m-2">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <div class="theme-avtar">
+                                    <div class="">
+                                        @php
+                                            $src = asset("images/widgets/$i.png");
+                                            $capitalizeName = strtoupper($module->getName());
+                                        @endphp
                                         @if (in_array($i, $icon_numbers))
-                                            <img src='{{ asset("images/widgets/$i.png") }}'
-                                                alt="{{ $module->getName() }}" style="max-width: 100%;"
+                                            @php
+                                                if($capitalizeName == 'GHL'){
+                                                    $src = asset('images/widgets/GoHighlevel.png');
+                                                }
+                                                if($capitalizeName == 'HRM'){
+                                                    $src = asset('images/widgets/HRM.png');
+                                                }
+                                                if($capitalizeName == 'Lead'){
+                                                    $src = asset('images/widgets/HRM.png');
+                                                }
+                                            @endphp
+                                            <img src='{{ $src }}'
+                                                alt="{{ $capitalizeName }}" style="max-width: 100%;"
                                                 class="img-user">
                                         @else
-                                            <span class="material-icons text-dark">extension</span>
+                                        <img src='{{ $src }}'
+                                            alt="{{ $capitalizeName }}" style="max-width: 100%;"
+                                            class="img-user">
                                         @endif
                                     </div>
                                 </div>

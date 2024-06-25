@@ -52,8 +52,7 @@
                                     <a href="#">
                                         <div class="card manager-card rounded-0">
                                             <div class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                <p class="text-capitalize text-center text-white">Marketing
-                                                    Automation</p>
+                                                <p class="text-capitalize text-center text-white">GoHighLevel</p>
                                             </div>
                                             @if (!empty($ghl))
                                                 <div class="justify-content-centertext-center px-2">

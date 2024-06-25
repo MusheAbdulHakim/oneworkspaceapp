@@ -15,7 +15,7 @@ class CompanyMenuListener
         $menu = $event->menu;
         $menu->add([
             'category' => 'General',
-            'title' => __('Marketing'),
+            'title' => __('GoHighLevel'),
             'icon' => 'location',
             'name' => 'ghl',
             'parent' => 'marketing',
@@ -28,7 +28,7 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('Marketing Dashboard'),
+            'title' => __('GoHighLevel Dashboard'),
             'icon' => '',
             'name' => 'ghl-dashboard',
             'parent' => 'dashboard',
