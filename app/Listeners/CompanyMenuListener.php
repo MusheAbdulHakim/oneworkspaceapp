@@ -56,7 +56,7 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('DBoS Strategy'),
+            'title' => __('Business Planning'),
             'icon' => 'chess',
             'name' => 'strategy',
             'parent' => null,
