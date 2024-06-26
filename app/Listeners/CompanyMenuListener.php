@@ -15,7 +15,7 @@ class CompanyMenuListener
         $menu = $event->menu;
         $menu->add([
             'category' => 'General',
-            'title' => __('Dashboards'),
+            'title' => __('All Dashboards'),
             'icon' => 'grid_view',
             'name' => 'dashboard',
             'parent' => null,
@@ -43,7 +43,7 @@ class CompanyMenuListener
 
         $menu->add([
             'category' => 'General',
-            'title' => __('Onboarding'),
+            'title' => __('User Onboarding'),
             'icon' => 'settings_account_box',
             'name' => 'onboarding',
             'parent' => null,
@@ -69,7 +69,7 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('Marketing'),
+            'title' => __('Customer Acquisition'),
             'icon' => 'select_all',
             'name' => 'marketing',
             'parent' => null,
@@ -230,19 +230,19 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => 'report warehouse'
         ]);
-        $menu->add([
-            'category' => 'General',
-            'title' => __('Customer Success'),
-            'icon' => 'support_agent',
-            'name' => 'customer-success',
-            'parent' => null,
-            'order' => 6,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => 'embeds.customer-success',
-            'module' => $module,
-            'permission' => ''
-        ]);
+        // $menu->add([
+        //     'category' => 'General',
+        //     'title' => __('Customer Success'),
+        //     'icon' => 'support_agent',
+        //     'name' => 'customer-success',
+        //     'parent' => null,
+        //     'order' => 6,
+        //     'ignore_if' => [],
+        //     'depend_on' => [],
+        //     'route' => 'embeds.customer-success',
+        //     'module' => $module,
+        //     'permission' => ''
+        // ]);
         $menu->add([
             'category' => 'General',
             'title' => __('Process Automation'),
@@ -258,7 +258,7 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('Website Manager'),
+            'title' => __('Digital Resources'),
             'icon' => 'language',
             'name' => 'websitemanager',
             'parent' => null,
@@ -269,22 +269,22 @@ class CompanyMenuListener
             'module' => $module,
             'permission' => ''
         ]);
+        // $menu->add([
+        //     'category' => 'General',
+        //     'title' => __('App Integrations'),
+        //     'icon' => 'support_agent',
+        //     'name' => 'app-integrations',
+        //     'parent' => null,
+        //     'order' => 8,
+        //     'ignore_if' => [],
+        //     'depend_on' => [],
+        //     'route' => 'embeds.app-integrations',
+        //     'module' => $module,
+        //     'permission' => ''
+        // ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('App Integrations'),
-            'icon' => 'support_agent',
-            'name' => 'app-integrations',
-            'parent' => null,
-            'order' => 8,
-            'ignore_if' => [],
-            'depend_on' => [],
-            'route' => 'embeds.app-integrations',
-            'module' => $module,
-            'permission' => ''
-        ]);
-        $menu->add([
-            'category' => 'General',
-            'title' => __('Marketplaces'),
+            'title' => __('Unified Marketplace'),
             'icon' => 'local_convenience_store',
             'name' => 'marketplace',
             'parent' => null,

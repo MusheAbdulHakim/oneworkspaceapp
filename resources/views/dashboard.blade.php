@@ -26,7 +26,7 @@
                         $activeModules = ActivatedModule();
                     @endphp
                     @if (!empty($activeModules))
-                        <h4>Widgets</h4>
+                        <h4><b>Dashboard Snapshots</b></h4>
                         <div class="col-12">
                             <div class="row">
                                 @if (in_array('Lead', $activeModules))
@@ -263,10 +263,10 @@
                         @foreach ($events as $event)
                             <hr class="text-light-secondary">
                             @if (++$count <= 5)
-                                <h5>{{ $event['title'] }}</h5>
+                                <h5><b>{{ $event['title'] }}</b></h5>
                                 <a href="{{ $event['url'] ?? '#' }}"
                                     {{ !empty($event['url']) ? 'target="_blank"' : '' }}>
-                                    <span class="link">{{ $event['start'] }} - {{ $event['end'] }}</span>
+                                    <p>{{ $event['start'] }} - {{ $event['end'] }}</p>
                                 </a>
                                 <p class="mt-1">
                                     {{ $event['description'] }}

@@ -1,5 +1,5 @@
 @if (ActivatedModule())
-    <h4>Oneworkspace Addons</h4>
+    <h4><b>Addon Manager</b></h4>
     <div class="owl-carousel mt-4 owl-theme">
         @php
             $exceptions = ['ProductService', 'Stripe', 'Paypal'];
