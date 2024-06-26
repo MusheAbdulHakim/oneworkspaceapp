@@ -16,7 +16,7 @@
             <div class="p-3">
                 <div class="row mb-4">
                     <div class="input-group mb-3 shadow py-1 rounded fill-secondary">
-                        <input type="text" class="form-control border-0" placeholder="Search"
+                        <input type="text" class="form-control border-0" placeholder="Search Oneworkspace"
                             aria-describedby="button-addon">
                         <span class="input-group-text btn" id="button-addon"><i class="ti ti-search"></i></span>
                     </div>

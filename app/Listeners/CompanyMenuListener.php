@@ -17,12 +17,12 @@ class CompanyMenuListener
             'category' => 'General',
             'title' => __('All Dashboards'),
             'icon' => 'grid_view',
-            'name' => 'dashboard',
+            'name' => 'alldashboards',
             'parent' => null,
             'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],
-            'route' => '',
+            'route' => 'home',
             'module' => $module,
             'permission' => ''
         ]);
