@@ -22,7 +22,8 @@
                     document.getElementById("addEventbtn").click();
                 }
             }).render();
-
+            $('.fc-toolbar-title').addClass('text-capitalize')
+            $('.fc-today-button').addClass('text-capitalize')
         });
     </script>
 @endpush
