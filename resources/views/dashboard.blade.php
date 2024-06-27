@@ -26,7 +26,7 @@
                         $activeModules = ActivatedModule();
                     @endphp
                     @if (!empty($activeModules))
-                        <h4><b>Dashboard Snapshots</b></h4>
+                        <p class="text-black"><b>Dashboard Snapshots</b></p>
                         <div class="col-12">
                             <div class="row">
                                 @if (in_array('Lead', $activeModules))
@@ -34,8 +34,8 @@
                                         <a href="{{ route('lead.dashboard') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">Lead
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center">Lead
                                                         Generation</p>
                                                 </div>
                                                 <div class="justify-content-centertext-center px-2">
@@ -51,8 +51,8 @@
                                 <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                     <a href="#">
                                         <div class="card manager-card rounded-0">
-                                            <div class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                <p class="text-capitalize text-center text-white">GoHighLevel</p>
+                                            <div class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                <p class="text-capitalize text-center">GoHighLevel</p>
                                             </div>
                                             @if (!empty($ghl))
                                                 <div class="justify-content-centertext-center px-2">
@@ -69,8 +69,8 @@
                                         <a href="{{ route('taskly.dashboard') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">Project
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center ">Project
                                                         Management
                                                     </p>
                                                 </div>
@@ -88,8 +88,8 @@
                                         <a href="{{ route('hrm.dashboard') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">HR
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center">HR
                                                         Management</p>
                                                 </div>
                                                 <div class="justify-content-centertext-center px-2">
@@ -110,8 +110,8 @@
                                         <a href="{{ route('pos.dashboard') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">POS &
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center">POS &
                                                         Revenue</p>
                                                 </div>
                                                 <div class="justify-content-centertext-center px-2">
@@ -129,8 +129,8 @@
                                         <a href="{{ route('dashboard.account') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">Accounts &
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center">Accounts &
                                                         Invoices
                                                     </p>
                                                 </div>
@@ -152,8 +152,8 @@
                                         <a href="{{ route('lead.dashboard') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">AI
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center ">AI
                                                         Assistant</p>
                                                 </div>
                                             </div>
@@ -165,8 +165,8 @@
                                         <a href="{{ route('pabbly.connect.index') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">Pabbly
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center">Pabbly
                                                         Connect</p>
                                                 </div>
                                             </div>
@@ -178,8 +178,8 @@
                                         <a href="{{ route('purchases.index') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">Procurement</p>
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center ">Procurement</p>
                                                 </div>
                                                 <div class="justify-content-centertext-center px-2">
                                                     <p>Warehouses: {{ $procurement['warehouses'] ?? 0 }}</p>
@@ -192,11 +192,11 @@
                                 @endif
                                 @if (Route::has('ghl.dashboard'))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
-                                        <a href="{{ route('embeds.marketing-hub') }}">
+                                        <a href="{{ route('embeds.marketplace') }}">
                                             <div class="card manager-card rounded-0">
                                                 <div
-                                                    class="product-img bg-secondary justify-content-center text-nowrap my-3 pb-0">
-                                                    <p class="text-capitalize text-center text-white">
+                                                    class="product-img bg-light-secondary text-black justify-content-center text-nowrap my-3 pb-0">
+                                                    <p class="text-capitalize text-center">
                                                         Unified Marketplace
                                                     </p>
                                                 </div>
@@ -217,7 +217,7 @@
                     <div class="col-12 my-3">
                         <div class="row">
                             <div class="col-md-9 col-12">
-                                <h4>URL Bookmarks</h4>
+                                <p class="text-black"><b>URL Bookmarks</b></p>
                             </div>
                             <div class="col-md-3 col-12">
                                 <a href="{{ route('bookmark.create') }}" data-bs-toggle="tooltip"
@@ -263,7 +263,7 @@
                         @foreach ($events as $event)
                             <hr class="text-light-secondary">
                             @if (++$count <= 5)
-                                <h5><b>{{ $event['title'] }}</b></h5>
+                                <p><b>{{ $event['title'] }}</b></p>
                                 <a href="{{ $event['url'] ?? '#' }}"
                                     {{ !empty($event['url']) ? 'target="_blank"' : '' }}>
                                     <p>{{ $event['start'] }} - {{ $event['end'] }}</p>

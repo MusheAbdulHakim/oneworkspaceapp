@@ -1,6 +1,6 @@
 @props(['bookmarks' => $bookmarks])
 @foreach ($bookmarks as $i => $bookmark)
-    <div class="col-md-3 col-sm-12 col-12 product-card">
+    <div class="col-sm-3 col-12 product-card">
         <div class="card manager-card rounded-0"
             @if (!empty($bookmark->color) && $bookmark->color != '#fff' && $bookmark->color != '#ffffff') style="background-color: {{ $bookmark->color }}; color: #fff;" @endif>
             <div class="checkbox-custom">
