@@ -65,8 +65,8 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                {{ Form::label('color', __('Color'), ['class' => 'col-form-label']) }}
-                                {{ Form::color('color', '#ffffff', ['class' => 'form-control','autocomplete'=>'off']) }}
+                                {{ Form::label('image', __('Background Image'), ['class' => 'col-form-label']) }}
+                                <input type="file" name="image" id="image" class="form-control">
                             </div>
                         </div>
 

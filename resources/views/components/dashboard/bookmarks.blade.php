@@ -1,8 +1,7 @@
 @props(['bookmarks' => $bookmarks])
 @foreach ($bookmarks as $i => $bookmark)
     <div class="col-sm-3 col-12 product-card">
-        <div class="card manager-card rounded-0"
-            @if (!empty($bookmark->color) && $bookmark->color != '#fff' && $bookmark->color != '#ffffff') style="background-color: {{ $bookmark->color }}; color: #fff;" @endif>
+        <div class="card rounded-0">
             <div class="checkbox-custom">
                 <div class="btn-group card-option float-end">
                     <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,11 +30,23 @@
             @else
                 <a href="{{ $bookmark->url }}" target="_blank">
             @endif
-
-            <div class="product-img justify-content-center my-3">
-                <span class="text-center text-white">{{ $bookmark->title }}</span>
+            @if (!empty($bookmark->image))
+            <div class="card-body p-2 m-2">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="theme-avtar">
+                        <img src='{{ asset("storage/bookmarks/".$bookmark->image) }}'
+                        style="max-width: 100%;" class="img-user">
+                    </div>
+                </div>
+                <p class="text-center">{{ $bookmark->title }}</p>
             </div>
+            @else
+            <div class="product-img justify-content-center my-3">
+                <p class="text-cente">{{ $bookmark->title }}</p>
+            </div>
+            @endif
             </a>
         </div>
+
     </div>
 @endforeach

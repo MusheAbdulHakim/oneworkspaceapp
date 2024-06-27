@@ -229,7 +229,7 @@
                             </div>
                         </div>
                     </div>
-                    <x-dashboard.bookmarks :bookmarks="\App\Models\UrlBookmark::where('status', '1')->get()" />
+                    <x-dashboard.bookmarks :bookmarks="\App\Models\UrlBookmark::where('status', '1')->orderBy('order')->get()" />
                 </div>
 
             </div>

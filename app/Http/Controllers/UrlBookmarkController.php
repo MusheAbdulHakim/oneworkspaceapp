@@ -81,19 +81,24 @@ class UrlBookmarkController extends Controller
             'url' => 'required',
             'title' => 'required',
         ]);
-        $bookmark = UrlBookmark::create([
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('storage/bookmarks'), $imageName);
+        }
+        UrlBookmark::create([
             'url' => $request->url,
             'title' => $request->title,
             'description' => $request->description,
             'color' => $request->color,
             'note' => $request->note,
             'type' => $request->bookmark_type,
-            'image' => null,
+            'image' => $imageName,
             'status' => !empty($request->status),
             'user_id' => auth()->user()->id,
             'order' => $request->order
         ]);
-        GenerateBookmarkImage::dispatch($bookmark);
+        // GenerateBookmarkImage::dispatch($bookmark);
         return redirect()->route('home')->with('success', 'Url has been bookmarked');
     }
 
@@ -127,8 +132,13 @@ class UrlBookmarkController extends Controller
     public function update(Request $request, string $id)
     {
         $bookmark = UrlBookmark::findOrFail($id);
-        if ($bookmark->url != $request->url) {
-            GenerateBookmarkImage::dispatch($bookmark);
+        // if ($bookmark->url != $request->url) {
+        //     GenerateBookmarkImage::dispatch($bookmark);
+        // }
+        $imageName = $bookmark->image;
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('storage/bookmarks'), $imageName);
         }
         $bookmark->update([
             'url' => $request->url,
@@ -139,7 +149,8 @@ class UrlBookmarkController extends Controller
             'type' => $request->bookmark_type,
             'status' => !empty($request->status),
             'user_id' => auth()->user()->id,
-            'order' => $request->order
+            'image' => $imageName,
+            'order' => $request->order,
         ]);
         return redirect()->route('home')->with('success', 'Bookmark has been updated');
     }
@@ -149,7 +160,7 @@ class UrlBookmarkController extends Controller
      */
     public function destroy(string $id)
     {
-        UrlBookmark::findOrFail($id);
+        UrlBookmark::findOrFail($id)->delete();
         return redirect()->route('home')->with('success', 'Bookmark has been deleted');
     }
 }
