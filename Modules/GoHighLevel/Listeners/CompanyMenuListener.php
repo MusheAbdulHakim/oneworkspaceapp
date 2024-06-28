@@ -80,7 +80,7 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('Calendars Events'),
+            'title' => __('Events'),
             'icon' => '',
             'name' => 'ghl-calendars-events',
             'parent' => 'ghl',
