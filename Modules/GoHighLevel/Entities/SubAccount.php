@@ -14,6 +14,11 @@ class SubAccount extends Model
         'snapshot','social','permissions','scopes','ghl_user_id','locationId'
     ];
 
+    protected $casts = [
+        'permissions' => 'collection',
+        'scopes' => 'collection',
+    ];
+
     public function gohighlevel(){
         return $this->belongsTo(Gohighlevel::class,'gohighlevel_id');
     }

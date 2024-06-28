@@ -186,8 +186,8 @@ class SettingsController extends Controller
                         'mail_driver' => 'required|string|max:255',
                         'mail_host' => 'required|string|max:255',
                         'mail_port' => 'required|string|max:255',
-                        'mail_username' => 'required|string|max:255',
-                        'mail_password' => 'required|string|max:255',
+                        'mail_username' => 'nullable|string|max:255',
+                        'mail_password' => 'nullable|string|max:255',
                         'mail_encryption' => 'required|string|max:255',
                         'mail_from_address' => 'required|string|max:255',
                         'mail_from_name' => 'required|string|max:255',
@@ -253,8 +253,8 @@ class SettingsController extends Controller
                                'mail_driver' => 'required',
                                'mail_host' => 'required',
                                'mail_port' => 'required',
-                               'mail_username' => 'required',
-                               'mail_password' => 'required',
+                               'mail_username' => 'nullable',
+                               'mail_password' => 'nullable',
                                'mail_from_address' => 'required',
                            ]
         );
