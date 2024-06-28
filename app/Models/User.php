@@ -40,9 +40,6 @@ class User extends Authenticatable implements LaratrustUser,MustVerifyEmail,JWTS
         return [];
     }
 
-    public function ghl(){
-        return $this->hasOne(\Modules\GHL\Entities\GhlIntegration::class,'user_id');
-    }
 
     public function gohighlevel(){
         return $this->hasOne(\Modules\GoHighLevel\Entities\GoHighLevel::class, 'user_id');

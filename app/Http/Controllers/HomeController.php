@@ -20,11 +20,10 @@ use Modules\Hrm\Entities\Resignation;
 use Modules\Taskly\Entities\UserProject;
 use App\Models\WarehouseTransfer;
 use App\Models\Warehouse;
-
+use Modules\GoHighLevel\Helper\GohighlevelHelper;
 
 class HomeController extends Controller
 {
-    use \Modules\GHL\Traits\UserGHL;
 
     /**
      * Show the application dashboard.
@@ -168,17 +167,20 @@ class HomeController extends Controller
                 $ghl = null;
                 try {
                     //GHL DATA
-                    if(!empty($ghl)){
-                        $ghl = $this->initGHL();
+                    $helper = (new GohighlevelHelper());
+                    $user = auth()->user();
+                    $client = $helper->SubAccountClient($user);
+                    $access = $helper->subAccountAccess($user);
+                    if(!empty($client) && !empty($access)){
                         $locationId = $this->userGHL()->locationId;
-                        $contacts = $ghl->withVersion('2021-07-28')
+                        $contacts = $client->withVersion('2021-07-28')
                             ->make()
                             ->contacts()->list($locationId) ?? 0;
-                        $invoices = $ghl->withVersion('2021-07-28')
+                        $invoices = $client->withVersion('2021-07-28')
                             ->make()->invoices()
                             ->list($locationId, 'location', 100, 0) ?? 0;
-                        $funnels = $ghl->withVersion('2021-07-28')
-                            ->make()->funnels()->list($locationId, [
+                        $funnels = $client->withVersion('2021-07-28')
+                            ->make()->funnel()->list($locationId, [
                                 'locationId' => $locationId
                             ]) ?? 0;
 
