@@ -17,11 +17,12 @@ use Modules\GoHighLevel\Http\Controllers\AuthController;
 use Modules\GoHighLevel\Http\Controllers\CalendarController;
 use Modules\GoHighLevel\Http\Controllers\DashboardController;
 use Modules\GoHighLevel\Http\Controllers\FunnelsController;
+use Modules\GoHighLevel\Http\Controllers\GoHighLevelController;
 use Modules\GoHighLevel\Http\Controllers\InvoicesController;
 
 Route::prefix('gohighlevel')->middleware(['auth','checkGhlApiKey'])->group(function() {
-    Route::get('/', 'GoHighLevelController@index');
-    Route::get('redirect', 'AuthController@redirect')->name('gohighlevel.redirect');
+    Route::get('/', [GoHighLevelController::class, 'index']);
+    Route::get('redirect', [AuthController::class,'redirect'])->name('gohighlevel.redirect');
 
     Route::get("dashboard", [DashboardController::class, 'dashboard'])->name('gohighlevel.dashboard');
     Route::get("campaigns", [CampaignsController::class, 'index'])->name('gohighlevel.campaigns');
