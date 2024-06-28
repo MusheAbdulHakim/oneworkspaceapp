@@ -31,7 +31,8 @@ class GoHighLevelListener
     public function handle(CreateUser $event)
     {
         $user = $event->user;
-        // $this->ghl->createUser($user);
-        ProcessGoHighLevelUser::dispatch($user);
+        $helper = new GohighlevelHelper();
+        $helper->createSubAccount($user, $event->request);
+
     }
 }

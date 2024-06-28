@@ -6,6 +6,7 @@ use App\Events\DestroyUser;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Modules\GoHighLevel\Entities\SubAccount;
+use Modules\GoHighLevel\Helper\GohighlevelHelper;
 
 class DeleteSubAccountListener
 {
@@ -29,8 +30,13 @@ class DeleteSubAccountListener
     {
         $user = $event->user;
         if(!empty($user)){
-            SubAccount::where('user_id', $user->id)
-            ->where('workspace',$user->workspace_id)->delete();
+            $helper = new GohighlevelHelper();
+            $subaccount = SubAccount::where('user_id', $user->id)
+            ->where('workspace',$user->workspace_id)->first();
+            if(!empty($subaccount)){
+                $helper->deleteSubAccount($subaccount->locationId);
+                $subaccount->delete();
+            }
         }
     }
 }
