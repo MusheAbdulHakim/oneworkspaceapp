@@ -21,7 +21,6 @@ class GohighlevelHelper
         }
     }
 
-
     public function generateCompanyToken($code){
         $client_id = env("GHL_CLIENT_ID");
         $client_secret = env("GHL_CLIENT_SECRET");
@@ -108,6 +107,8 @@ class GohighlevelHelper
                     'locationId' => $location['id'] ?? null,
                     'ghl_user_id' => $ghluser['id'] ?? null
                 ]);
+                $enableSaas = $this->ghlClient->withVersion('2021-04-15')->make()
+                    ->Saas()->enable($location['id']);
                 return true;
             }
         }catch(\Exception $e){
@@ -116,6 +117,22 @@ class GohighlevelHelper
         }
     }
 
+    public function locations(){
+
+    }
+
+    public function enableSaas($locationId){
+
+        $location = $this->ghlClient->withVersion('2021-07-28')
+                    ->make()
+                    ->location()
+                    ->get($locationId);
+
+        return $this->ghlClient->withVersion('2021-04-15')
+        ->withHttpHeader('channel','OAUTH')
+        ->withHttpHeader('source','INTEGRATION')
+        ->make()->Saas()->update($locationId);
+    }
 
     public function permissionsObject(){
         $permissions = [
