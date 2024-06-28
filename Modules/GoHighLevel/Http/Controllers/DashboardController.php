@@ -47,7 +47,7 @@ class DashboardController extends Controller
                     'funnels'
                 ));
             }
-            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+            return redirect()->route('settings.index')->with('error', 'Gohighlevel is not enabled for your account please contact the administrator');
         } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
             return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
@@ -86,7 +86,7 @@ class DashboardController extends Controller
                     'funnels'
                 ));
             }
-            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+            return redirect()->route('settings.index')->with('error', 'Gohighlevel is not enabled for your account please contact the administrator');
         } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
             return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }

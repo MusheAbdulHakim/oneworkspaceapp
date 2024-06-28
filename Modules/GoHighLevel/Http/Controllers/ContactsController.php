@@ -28,7 +28,7 @@ class ContactsController extends Controller
                     'contacts'
                 ));
             }
-            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+            return redirect()->route('settings.index')->with('error', 'Gohighlevel is not enabled for your account please contact the administrator');
         } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
             return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
@@ -52,7 +52,7 @@ class ContactsController extends Controller
                     'appointments'
                 ));
             }
-            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+            return redirect()->route('settings.index')->with('error', 'Gohighlevel is not enabled for your account please contact the administrator');
         } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
             return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
@@ -74,7 +74,7 @@ class ContactsController extends Controller
                     'slots'
                 ));
             }
-            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+            return redirect()->route('settings.index')->with('error', 'Gohighlevel is not enabled for your account please contact the administrator');
         } catch (\MusheAbdulHakim\GoHighLevel\Exceptions\ErrorException $e) {
             return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
         }
@@ -97,7 +97,7 @@ class ContactsController extends Controller
                     'slots'
                 ));
             }
-            return redirect()->route('settings.index')->with('error', 'Please authenticate your ghl account to continue');
+            return redirect()->route('settings.index')->with('error', 'Gohighlevel is not enabled for your account please contact the administrator');
         } catch (\Exception $e) {
             Log::alert($e->getMessage());
             return back()->with('error', 'Token has expired please authenticate GoHighLevel in the settings');
