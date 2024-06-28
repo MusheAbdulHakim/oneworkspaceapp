@@ -172,7 +172,7 @@ class HomeController extends Controller
                     $client = $helper->SubAccountClient($user);
                     $access = $helper->subAccountAccess($user);
                     if(!empty($client) && !empty($access)){
-                        $locationId = $this->userGHL()->locationId;
+                        $locationId = $access->locationId;
                         $contacts = $client->withVersion('2021-07-28')
                             ->make()
                             ->contacts()->list($locationId) ?? 0;
