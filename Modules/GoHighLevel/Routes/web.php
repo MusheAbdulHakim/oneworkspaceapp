@@ -11,23 +11,31 @@
 |
 */
 
+use Modules\GoHighLevel\Http\Controllers\CampaignsController;
+use Modules\GoHighLevel\Http\Controllers\ContactsController;
+use Modules\GoHighLevel\Http\Controllers\AuthController;
+use Modules\GoHighLevel\Http\Controllers\CalendarController;
+use Modules\GoHighLevel\Http\Controllers\DashboardController;
+use Modules\GoHighLevel\Http\Controllers\FunnelsController;
+use Modules\GoHighLevel\Http\Controllers\InvoicesController;
+
 Route::prefix('gohighlevel')->middleware(['auth','checkGhlApiKey'])->group(function() {
     Route::get('/', 'GoHighLevelController@index');
     Route::get('redirect', 'AuthController@redirect')->name('gohighlevel.redirect');
 
-    Route::get("dashboard", "Dashboardcontroller@dashboard")->name('gohighlevel.dashboard');
-    Route::get("campaigns", "CampaignsController@index")->name('gohighlevel.campaigns');
-    Route::get("contacts", "ContactsController@index")->name('gohighlevel.contacts');
-    Route::get("contacts/appointments/{contactId}", "ContactsController@appointments")->name('gohighlevel.contact.appointments');
-    Route::get("contacts/tasks/{contactId}", "ContactsController@tasks")->name('gohighlevel.contact.tasks');
-    Route::get("contacts/notes/{contactId}", "ContactsController@notes")->name('gohighlevel.contact.notes');
-    Route::get("calendars", "CalendarController@index")->name('gohighlevel.calendars');
-    Route::get("calendars/events", "CalendarController@events")->name('gohighlevel.calendars.events');
-    Route::get("calendars/slots/{calendarId}", "CalendarController@slots")->name('gohighlevel.calendar.slots');
-    Route::get("invoices", "InvoicesController@index")->name('gohighlevel.invoices');
-    Route::get("funnels", "FunnelsController@index")->name('gohighlevel.funnels');
-    Route::get("funnel/pages/{funnelId}", "FunnelsController@pages")->name('gohighlevel.funnel.pages');
+    Route::get("dashboard", [DashboardController::class, 'dashboard'])->name('gohighlevel.dashboard');
+    Route::get("campaigns", [CampaignsController::class, 'index'])->name('gohighlevel.campaigns');
+    Route::get("contacts", [ContactsController::class, 'index'])->name('gohighlevel.contacts');
+    Route::get("contacts/appointments/{contactId}", [ContactsController::class, 'appointments'])->name('gohighlevel.contact.appointments');
+    Route::get("contacts/tasks/{contactId}", [ContactsController::class, 'tasks'])->name('gohighlevel.contact.tasks');
+    Route::get("contacts/notes/{contactId}", [ContactsController::class, 'notes'])->name('gohighlevel.contact.notes');
+    Route::get("calendars", [CalendarController::class, 'index'])->name('gohighlevel.calendars');
+    Route::get("calendars/events", [CalendarController::class, 'events'])->name('gohighlevel.calendars.events');
+    Route::get("calendars/slots/{calendarId}", [CalendarController::class, 'slots'])->name('gohighlevel.calendar.slots');
+    Route::get("invoices", [InvoicesController::class, 'index'])->name('gohighlevel.invoices');
+    Route::get("funnels", [FunnelsController::class, "index"])->name('gohighlevel.funnels');
+    Route::get("funnel/pages/{funnelId}", [FunnelsController::class,"pages"])->name('gohighlevel.funnel.pages');
 });
 
-Route::get('gohigh-oauth/callback', 'AuthController@callback')->name('gohighlevel.callback');
+Route::get('gohigh-oauth/callback', [AuthController::class, 'callback'])->name('gohighlevel.callback');
 
