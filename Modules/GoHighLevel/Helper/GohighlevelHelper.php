@@ -2,6 +2,7 @@
 namespace Modules\GoHighLevel\Helper;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Modules\GoHighLevel\Entities\Gohighlevel as GHLEntity;
 use Modules\GoHighLevel\Entities\SubAccount;
 use \MusheAbdulHakim\GoHighLevel\GoHighLevel;
@@ -36,82 +37,144 @@ class GohighlevelHelper
 
     }
 
-    public function createUser(User $user){
-        $resource = $this->ghlClient->withVersion('2021-07-28')->make();
-        $companyId = $this->access->companyId;
-        $names = explode(',', $user->name);
-        $location = $resource->location()->create([
-            'name' => $user->name,
-            'companyId' => $companyId,
-            'email' => $user->email,
-        ]);
-        if(is_array($location) && (count($location) > 0)){
-            $ghluser = $resource->user()->create($companyId,[
-                'firstName' => $names[0] ?? '',
-                'lastName' => $names[1] ?? '',
+    public function createSubAccount(User $user, $request){
+        try {
+            $resource = $this->ghlClient->withVersion('2021-07-28')->make();
+            $companyId = $this->access->companyId;
+            $names = explode(',', $user->name);
+            $location = $resource->location()->create([
+                'name' => $user->name,
+                'companyId' => $companyId,
                 'email' => $user->email,
-                'password' => $user->password,
-                'type' => 'account',
-                'role' => 'admin',
-                'locationIds' => [$location['id']],
-                'permissions' => json_encode([
-                    "campaignsEnabled" => true,
-                    "campaignsReadOnly" => true,
-                    "contactsEnabled" => true,
-                    "workflowsEnabled" => true,
-                    "workflowsReadOnly" => true,
-                    "triggersEnabled" => true,
-                    "funnelsEnabled" => true,
-                    "websitesEnabled" => true,
-                    "opportunitiesEnabled" => true,
-                    "dashboardStatsEnabled" => true,
-                    "bulkRequestsEnabled" => true,
-                    "appointmentsEnabled" => true,
-                    "reviewsEnabled" => true,
-                    "onlineListingsEnabled" => true,
-                    "phoneCallEnabled" => true,
-                    "conversationsEnabled" => true,
-                    "assignedDataOnly" => true,
-                    "adwordsReportingEnabled" => true,
-                    "membershipEnabled" => true,
-                    "facebookAdsReportingEnabled" => true,
-                    "attributionsReportingEnabled" => true,
-                    "settingsEnabled" => true,
-                    "tagsEnabled" => true,
-                    "leadValueEnabled" => true,
-                    "marketingEnabled" => true,
-                    "agentReportingEnabled" => true,
-                    "botService" => true,
-                    "socialPlanner" => true,
-                    "bloggingEnabled" => true,
-                    "invoiceEnabled" => true,
-                    "affiliateManagerEnabled" => true,
-                    "contentAiEnabled" => true,
-                    "refundsEnabled" => true,
-                    "recordPaymentEnabled" => true,
-                    "cancelSubscriptionEnabled" => true,
-                    "paymentsEnabled" => true,
-                    "communitiesEnabled" => true,
-                    "exportPaymentsEnabled" => true
-                ]),
             ]);
-            SubAccount::create([
-                'gohighlevel_id' => $this->access->id,
-                'user_id' => $user->id,
-                'workspace' => $user->workspace_id ?? null,
-                'snapshot' => null,
-                'social' => null,
-                'permissions' => $location['permissions'] ?? null,
-                'scopes' => null,
-                'locationId' => $location['id'] ?? null,
-                'ghl_user_id' => $ghluser['id'] ?? null
-            ]);
+            if(is_array($location) && (count($location) > 0)){
+                $ghluser = $resource->user()->create($companyId,[
+                    'firstName' => $names[0] ?? '',
+                    'lastName' => $names[1] ?? '',
+                    'email' => $user->email,
+                    'password' => $request->password,
+                    'type' => 'account',
+                    'role' => 'admin',
+                    'locationIds' => [$location['id']],
+                    'permissions' => [
+                        "campaignsEnabled" => true,
+                        "campaignsReadOnly" => true,
+                        "contactsEnabled" => true,
+                        "workflowsEnabled" => true,
+                        "workflowsReadOnly" => true,
+                        "triggersEnabled" => true,
+                        "funnelsEnabled" => true,
+                        "websitesEnabled" => true,
+                        "opportunitiesEnabled" => true,
+                        "dashboardStatsEnabled" => true,
+                        "bulkRequestsEnabled" => true,
+                        "appointmentsEnabled" => true,
+                        "reviewsEnabled" => true,
+                        "onlineListingsEnabled" => true,
+                        "phoneCallEnabled" => true,
+                        "conversationsEnabled" => true,
+                        "assignedDataOnly" => true,
+                        "adwordsReportingEnabled" => true,
+                        "membershipEnabled" => true,
+                        "facebookAdsReportingEnabled" => true,
+                        "attributionsReportingEnabled" => true,
+                        "settingsEnabled" => true,
+                        "tagsEnabled" => true,
+                        "leadValueEnabled" => true,
+                        "marketingEnabled" => true,
+                        "agentReportingEnabled" => true,
+                        "botService" => true,
+                        "socialPlanner" => true,
+                        "bloggingEnabled" => true,
+                        "invoiceEnabled" => true,
+                        "affiliateManagerEnabled" => true,
+                        "contentAiEnabled" => true,
+                        "refundsEnabled" => true,
+                        "recordPaymentEnabled" => true,
+                        "cancelSubscriptionEnabled" => true,
+                        "paymentsEnabled" => true,
+                        "communitiesEnabled" => true,
+                        "exportPaymentsEnabled" => true
+                    ],
+                ]);
+                SubAccount::create([
+                    'gohighlevel_id' => $this->access->id,
+                    'user_id' => $user->id,
+                    'workspace' => getActiveWorkSpace($user->id) ?? null,
+                    'snapshot' => null,
+                    'social' => null,
+                    'permissions' => $ghluser['permissions'] ?? null,
+                    'scopes' => null,
+                    'locationId' => $location['id'] ?? null,
+                    'ghl_user_id' => $ghluser['id'] ?? null
+                ]);
+                return true;
+            }
+        }catch(\Exception $e){
+            Log::alert($e->getMessage());
+            return false;
         }
     }
 
-    public function deleteUser($id){
-        $resource = $this->ghlClient->withVersion('2021-07-28')->make()->user();
-        return $resource->delete($id);
+
+    public function permissionsObject(){
+        $permissions = [
+                "campaignsEnabled" => true,
+                "campaignsReadOnly" => true,
+                "contactsEnabled" => true,
+                "workflowsEnabled" => true,
+                "workflowsReadOnly" => true,
+                "triggersEnabled" => true,
+                "funnelsEnabled" => true,
+                "websitesEnabled" => true,
+                "opportunitiesEnabled" => true,
+                "dashboardStatsEnabled" => true,
+                "bulkRequestsEnabled" => true,
+                "appointmentsEnabled" => true,
+                "reviewsEnabled" => true,
+                "onlineListingsEnabled" => true,
+                "phoneCallEnabled" => true,
+                "conversationsEnabled" => true,
+                "assignedDataOnly" => true,
+                "adwordsReportingEnabled" => true,
+                "membershipEnabled" => true,
+                "facebookAdsReportingEnabled" => true,
+                "attributionsReportingEnabled" => true,
+                "settingsEnabled" => true,
+                "tagsEnabled" => true,
+                "leadValueEnabled" => true,
+                "marketingEnabled" => true,
+                "agentReportingEnabled" => true,
+                "botService" => true,
+                "socialPlanner" => true,
+                "bloggingEnabled" => true,
+                "invoiceEnabled" => true,
+                "affiliateManagerEnabled" => true,
+                "contentAiEnabled" => true,
+                "refundsEnabled" => true,
+                "recordPaymentEnabled" => true,
+                "cancelSubscriptionEnabled" => true,
+                "paymentsEnabled" => true,
+                "communitiesEnabled" => true,
+                "exportPaymentsEnabled" => true
+        ];
+        return (object)json_encode($permissions, JSON_FORCE_OBJECT);
+    }
+
+    public function deleteSubAccount($id){
+        try{
+            return $this->ghlClient->withVersion('2021-07-28')
+                ->make()->location()->delete($id);
+        }catch(\Exception $e){
+            Log::error($e->getMessage());
+        }
+    }
+
+
+
+    public function getUsers($locationId){
+        return $this->ghlClient->withVersion('2021-07-28')->make()
+            ->user()->byLocation($locationId);
     }
 
 }
