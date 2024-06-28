@@ -44,7 +44,7 @@ class CompanyMenuListener
             'icon' => 'location',
             'name' => 'ghl',
             'parent' => 'marketing',
-            'order' => 1,
+            'order' => 10,
             'ignore_if' => [],
             'depend_on' => [],
             'route' => '',
