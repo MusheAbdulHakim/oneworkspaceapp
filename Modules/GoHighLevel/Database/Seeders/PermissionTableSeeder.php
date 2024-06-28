@@ -20,6 +20,7 @@ class PermissionTableSeeder extends Seeder
             'manage dashboard',
             'manage contacts',
             'manage invoices',
+            'manage calendars',
             'manage users',
         ];
 

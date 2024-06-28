@@ -43,7 +43,7 @@
         "milon/barcode": "^10.0",
         "mollie/mollie-api-php": "^2.50",
         "munafio/chatify": "^1.5",
-        "musheabdulhakim/gohighlevel-php": "^1.0",
+        "musheabdulhakim/gohighlevel-php": "dev-master",
         "nwidart/laravel-modules": "^10.0",
         "obydul/laraskrill": "^1.2",
         "omniphx/forrest": "2.*",

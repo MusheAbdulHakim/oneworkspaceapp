@@ -49,7 +49,7 @@
                                         <td>
                                             <div class="action-btn bg-warning ms-2">
                                                 <a href="#" class="mx-3 btn btn-sm d-inline-flex align-items-center"
-                                                    data-url="{{ route('ghl.contact.appointments',($contact['id'])) }}"
+                                                    data-url="{{ route('gohighlevel.contact.appointments',($contact['id'])) }}"
                                                     data-ajax-popup="true" data-size="lg" data-bs-toggle="tooltip"
                                                     data-bs-original-title="{{ __('Appointments')}}">
                                                     <span class="text-white"><i class="ti ti-calendar"></i>
@@ -57,7 +57,7 @@
                                             </div>
                                             <div class="action-btn bg-info ms-2">
                                                 <a href="#" class="mx-3 btn btn-sm d-inline-flex align-items-center"
-                                                    data-url="{{ route('ghl.contact.notes',($contact['id'])) }}"
+                                                    data-url="{{ route('gohighlevel.contact.notes',($contact['id'])) }}"
                                                     data-ajax-popup="true" data-size="lg"  data-bs-toggle="tooltip"
                                                     data-bs-original-title="{{ __('Notes')}}">
                                                     <span class="text-white"><i class="ti ti-note"></i>
@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="action-btn bg-info ms-2">
                                                 <a href="#" class="mx-3 btn btn-sm d-inline-flex align-items-center"
-                                                    data-url="{{ route('ghl.contact.tasks',($contact['id'])) }}"
+                                                    data-url="{{ route('gohighlevel.contact.tasks',($contact['id'])) }}"
                                                     data-ajax-popup="true" data-size="lg"  data-bs-toggle="tooltip"
                                                     data-bs-original-title="{{ __('Task')}}">
                                                     <span class="text-white"><i class="ti ti-clock"></i>

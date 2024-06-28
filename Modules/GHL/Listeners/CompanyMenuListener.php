@@ -18,7 +18,7 @@ class CompanyMenuListener
             'title' => __('GoHighLevel'),
             'icon' => 'location',
             'name' => 'ghl',
-            'parent' => 'marketing',
+            'parent' => null,
             'order' => 1,
             'ignore_if' => [],
             'depend_on' => [],

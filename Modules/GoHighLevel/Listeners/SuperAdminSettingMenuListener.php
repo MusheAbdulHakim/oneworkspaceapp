@@ -13,7 +13,7 @@ class SuperAdminSettingMenuListener
         $module = 'GoHighLevel';
         $menu = $event->menu;
         $menu->add([
-            'title' => 'New GoHighLevel',
+            'title' => 'GoHighLevel',
             'name' => 'gohighlevel',
             'order' => 100,
             'ignore_if' => [],

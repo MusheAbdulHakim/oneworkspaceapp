@@ -37,7 +37,7 @@
                                         <td>
                                             <div class="action-btn bg-info ms-2">
                                                 <a href="#" class="mx-3 btn btn-sm d-inline-flex align-items-center"
-                                                    data-url="{{ route('ghl.funnel.pages',['funnelId' => $funnel['_id']]) }}"
+                                                    data-url="{{ route('gohighlevel.funnel.pages',['funnelId' => $funnel['_id']]) }}"
                                                     data-ajax-popup="true" data-size="lg"  data-bs-toggle="tooltip"
                                                     data-bs-original-title="{{ __('Pages')}}">
                                                     <span class="text-white"><i class="ti ti-file"></i>

@@ -69,6 +69,7 @@ class Kernel extends HttpKernel
         '2fa' => \PragmaRX\Google2FALaravel\Middleware::class,
         'studentAuth' => \Modules\LMS\Http\Middleware\StudentAuth::class,
         'CustomerAuth' => \Modules\TVStudio\Http\Middleware\CustomerAuth::class,
+        'checkGhlApiKey' => \Modules\GoHighLevel\Http\Middleware\ApiKeyIsNotExpired::class,
         'domain-check' => \App\Http\Middleware\DomainCheck::class,
         'jwt.api.auth' => \App\Http\Middleware\CustomApiAuth::class
     ];

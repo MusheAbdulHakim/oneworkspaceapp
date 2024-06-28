@@ -21,6 +21,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 
+
+if(!function_exists('api_key_expired')){
+    function api_key_expired($expiration_time) {
+        $current_time = time();
+        return $current_time > $expiration_time;
+    }
+}
+
 if (!function_exists('getPageTitle')) {
 
     function getPageTitle($url)

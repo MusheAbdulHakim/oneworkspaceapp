@@ -12,7 +12,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-4 col-sm-6 product-card">
-            <a href="{{ route('ghl.contacts') }}">
+            <a href="{{ route('gohighlevel.contacts') }}">
                 <div class="card text-center">
                     <div class="card-body">
                         <h2 class="fw-bolder">{{ count($contacts) ?? 0 }}</h2>
@@ -22,7 +22,7 @@
             </a>
         </div>
         <div class="col-md-4 col-sm-6 product-card">
-            <a href="{{ route('ghl.invoices') }}">
+            <a href="{{ route('gohighlevel.invoices') }}">
                 <div class="card text-center">
                     <div class="card-body">
                         <h2 class="fw-bolder">{{ count($invoices) ?? 0 }}</h2>
@@ -32,7 +32,7 @@
             </a>
         </div>
         <div class="col-md-4 col-sm-6 product-card">
-            <a href="{{ route('ghl.funnels') }}">
+            <a href="{{ route('gohighlevel.funnels') }}">
                 <div class="card text-center">
                     <div class="card-body">
                         <h2 class="fw-bolder">{{ $funnels['count'] ?? 0 }}</h2>

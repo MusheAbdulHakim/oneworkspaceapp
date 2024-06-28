@@ -18,5 +18,9 @@ class Gohighlevel extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function subAccounts(){
+        return $this->hasMany(SubAccount::class);
+    }
+
 
 }

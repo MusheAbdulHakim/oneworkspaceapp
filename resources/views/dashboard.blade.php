@@ -48,6 +48,7 @@
                                     </div>
                                 @endif
 
+                                @if (in_array('gohighlevel',$activeModules) || in_array('GoHighLevel', $activeModules))
                                 <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                     <a href="#">
                                         <div class="card manager-card rounded-0">
@@ -64,6 +65,7 @@
                                         </div>
                                     </a>
                                 </div>
+                                @endif
                                 @if (in_array('Taskly', $activeModules))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('taskly.dashboard') }}">
@@ -190,7 +192,7 @@
                                         </a>
                                     </div>
                                 @endif
-                                @if (Route::has('ghl.dashboard'))
+                                @if (Route::has('gohighlevel.dashboard'))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('embeds.marketplace') }}">
                                             <div class="card manager-card rounded-0">

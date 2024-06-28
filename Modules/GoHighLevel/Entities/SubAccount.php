@@ -11,7 +11,8 @@ class SubAccount extends Model
 
     protected $fillable = [
         'gohighlevel_id','user_id','workspace',
-        'snapshot','social','permissions','scopes','ghl_user_id','locationId'
+        'snapshot','social','permissions','scopes',
+        'ghl_user_id','locationId'
     ];
 
     protected $casts = [
@@ -21,6 +22,10 @@ class SubAccount extends Model
 
     public function gohighlevel(){
         return $this->belongsTo(Gohighlevel::class,'gohighlevel_id');
+    }
+
+    public function token(){
+        return $this->hasOne(SubaccountToken::class,'sub_account_id');
     }
 
 }
