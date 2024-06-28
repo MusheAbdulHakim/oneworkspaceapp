@@ -40,7 +40,7 @@ class CompanyMenuListener
         ]);
         $menu->add([
             'category' => 'General',
-            'title' => __('GoHighLevel'),
+            'title' => __('GHL Addon'),
             'icon' => 'location',
             'name' => 'ghl',
             'parent' => 'marketing',
