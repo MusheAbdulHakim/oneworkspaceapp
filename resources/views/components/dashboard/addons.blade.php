@@ -1,4 +1,4 @@
-@if (ActivatedModule())
+@if (!empty(ActivatedModule()) && count(ActivatedModule()) > 0)
     <p class="text-black"><b>Addon Manager</b></p>
     <div class="carouselContent">
         <div class="owl-carousel mt-4 owl-theme">
