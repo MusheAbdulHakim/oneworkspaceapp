@@ -57,61 +57,61 @@
             </div>
         </div>
     </div>
-@endif
-
-@push('scripts')
-    <style>
-        .carouselContent {
-            position: relative;
-            .owl-theme {
-                .custom-carouselNav {
-                    position: absolute;
-                    top: 10%;
-                    left: 0;
-                    right: 0;
-
-                    .owl-prev, .owl-next {
+    @push('scripts')
+        <style>
+            .carouselContent {
+                position: relative;
+                .owl-theme {
+                    .custom-carouselNav {
                         position: absolute;
-                        height: 100px;
-                        color: inherit;
-                        background: none;
-                        border: none;
-                        z-index: 100;
-
-                        i {
-                            font-size: 2.5rem;
-                            color: #cecece;
-                        }
-                    }
-
-                    .owl-prev {
+                        top: 10%;
                         left: 0;
-                    }
-
-                    .owl-next {
                         right: 0;
+    
+                        .owl-prev, .owl-next {
+                            position: absolute;
+                            height: 100px;
+                            color: inherit;
+                            background: none;
+                            border: none;
+                            z-index: 100;
+    
+                            i {
+                                font-size: 2.5rem;
+                                color: #cecece;
+                            }
+                        }
+    
+                        .owl-prev {
+                            left: 0;
+                        }
+    
+                        .owl-next {
+                            right: 0;
+                        }
                     }
                 }
             }
-        }
-    </style>
-    <script>
-        $(document).ready(function() {
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 5,
-                items: 6,
-                responsiveClass: true,
-                autoplayHoverPause: true,
-                nav: true,
-                dots: false,
-                lazyLoad: true,
-                navText: [
-                    '<span class="material-symbols-outlined">chevron_left</span>',
-                    '<span class="material-symbols-outlined">chevron_right</span>',
-                ],
-                navContainer: '.carouselContent .custom-carouselNav'
-            });
-        })
-    </script>
-@endpush
+        </style>
+        <script>
+            $(document).ready(function() {
+                $('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 5,
+                    items: 6,
+                    responsiveClass: true,
+                    autoplayHoverPause: true,
+                    nav: true,
+                    dots: false,
+                    lazyLoad: true,
+                    navText: [
+                        '<span class="material-symbols-outlined">chevron_left</span>',
+                        '<span class="material-symbols-outlined">chevron_right</span>',
+                    ],
+                    navContainer: '.carouselContent .custom-carouselNav'
+                });
+            })
+        </script>
+    @endpush
+@endif
+
