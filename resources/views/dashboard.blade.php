@@ -5,8 +5,34 @@
 @endsection
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('js/owlcarousel/assets/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/owlcarousel/assets/owl.theme.default.min.css') }}">
+    <!--Slick CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/slick/slick-theme.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/slick/slick.css') }}"/>
+    <style>
+        .slick-slide{
+          margin:10px;
+        }
+        .customPrev, .customNext {
+            display: block;
+            top: 50%;
+            background: inherit;
+            color: inherit;
+            position: absolute;
+            border: none;
+            outline: none;
+            -webkit-transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            cursor: pointer;
+            z-index: 100;
+        }
+        .customPrev {
+            left: -20px;
+        }
+        .customNext {
+            right: -20px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -21,7 +47,7 @@
                         <span class="input-group-text btn" id="button-addon"><i class="ti ti-search"></i></span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-4">
                     @php
                         $activeModules = ActivatedModule();
                     @endphp
@@ -29,7 +55,8 @@
                         <p class="text-black"><b>Dashboard Snapshots</b></p>
                         <div class="col-12">
                             <div class="row">
-                                @if (in_array('Lead', $activeModules))
+                                <div id="modules-slick">
+                                    @if (in_array('Lead', $activeModules))
                                     <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                         <a href="{{ route('lead.dashboard') }}">
                                             <div class="card manager-card rounded-0">
@@ -47,7 +74,6 @@
                                         </a>
                                     </div>
                                 @endif
-
                                 @if (in_array('gohighlevel',$activeModules) || in_array('GoHighLevel', $activeModules))
                                 <div class="col-xxl-3 col-lg-3 col-sm-6 product-card">
                                     <a href="#">
@@ -206,34 +232,18 @@
                                         </a>
                                     </div>
                                 @endif
+                                </div>
                             </div>
                         </div>
                     @endif
                 </div>
-                <div class="row">
-                    <x-dashboard.addons />
+                <div class="row mb-4">
+                    <x-dashboard.slick-addons />
                 </div>
 
-
-                <div class="row">
-                    <div class="col-12 my-3">
-                        <div class="row">
-                            <div class="col-md-9 col-12">
-                                <p class="text-black"><b>URL Bookmarks</b></p>
-                            </div>
-                            <div class="col-md-3 col-12">
-                                <a href="{{ route('bookmark.create') }}" data-bs-toggle="tooltip"
-                                    data-title="{{ __('Add Bookmark') }}"
-                                    data-bs-original-title="{{ __('Add Bookmark') }}"
-                                    class="btn btn-sm btn-primary btn-icon">
-                                    <i class="ti ti-plus"></i> Add Bookmark
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <x-dashboard.bookmarks :bookmarks="\App\Models\UrlBookmark::where('status', '1')->orderBy('order')->get()" />
+                <div class="row mb-4">
+                    <x-dashboard.bookmark-carousel />
                 </div>
-
             </div>
         </div>
         <div class="col-md-4 col-12">
@@ -286,5 +296,18 @@
 
 
 @push('scripts')
-<script src="{{ asset('js/owlcarousel/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/slick/slick.min.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $('#modules-slick').slick({
+            infinite: true,
+            lazyLoad: 'ondemand',
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            draggable: true,
+            prevArrow: '<button type="button" class="btn btn-sm customPrev btn-primary"><span class="material-symbols-outlined">chevron_left</span></button>',
+            nextArrow: '<button type="button" class="btn btn-sm customNext btn-primary"><span class="material-symbols-outlined">chevron_right</span></button>',
+        });   
+    })
+</script>
 @endpush
