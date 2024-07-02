@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TRController;
 use App\Http\Controllers\Api\AuthApiController;
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use App\Http\Controllers\Api\AuthApiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('users', [TRController::class, 'index']);
+Route::get('mig', [TRController::class, 'mig']);
+Route::get('ch', [TRController::class, 'ch']);
 
 Route::prefix('{module}')->group(function () {
 
