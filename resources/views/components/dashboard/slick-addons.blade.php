@@ -1,7 +1,7 @@
 @if (!empty(ActivatedModule()) && count(ActivatedModule()) > 0)
 
     <p class="text-black my-3"><b>Addon Manager</b></p>
-    <div class="slick-addon">
+    <div class="slick-addon mt-3">
         @php
             $exceptions = ['ProductService', 'Stripe', 'Paypal'];
             $icon_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

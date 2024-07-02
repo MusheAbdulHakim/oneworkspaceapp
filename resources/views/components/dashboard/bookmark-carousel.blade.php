@@ -2,7 +2,7 @@
     $bookmarks = \App\Models\UrlBookmark::where('status', '1')->orderBy('order')->get();
 @endphp
 @if(!empty($bookmarks) && $bookmarks->count() > 0)
-<div class="col-md-9 col-12">
+<div class="col-md-9 col-12 mt-3">
     <p class="text-black"><b> URL Bookmarks</b></p>
 </div>
 <div class="col-md-3 col-12">
@@ -16,7 +16,7 @@
 <div class="bookmark-carousel">
     @foreach ($bookmarks as $i => $bookmark)
     <div class="col-sm-3 col-12 product-card">
-        <div class="card rounded-0">
+        <div class="card rounded-0" style="height: 10rem;">
             <div class="checkbox-custom">
                 <div class="btn-group card-option float-end">
                     <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
