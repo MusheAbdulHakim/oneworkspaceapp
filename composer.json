@@ -49,7 +49,7 @@
         "orhanerday/open-ai": "4.8",
         "paytabscom/laravel_paytabs": "^1.4",
         "php-open-source-saver/jwt-auth": "^2.1",
-        "phpoffice/phpspreadsheet": "^1.29",
+        "phpoffice/phpspreadsheet": "^2.2",
         "pragmarx/google2fa-laravel": "^2.1",
         "rachidlaasri/laravel-installer": "^4.1",
         "salla/zatca": "^2.0",
